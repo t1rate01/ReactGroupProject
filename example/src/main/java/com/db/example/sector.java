@@ -7,6 +7,7 @@ public class sector {
     @Id
     private String sector;
     private String share;
+    
 
     public sector(String sector, String share) {
         this.sector = sector;
