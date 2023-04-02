@@ -1,4 +1,4 @@
-package com.db.example;
+package com.db.example.visual5;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
