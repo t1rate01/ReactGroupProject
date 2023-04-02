@@ -3,6 +3,7 @@ package com.db.example.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +12,7 @@ import com.db.example.visual5.sector;
 import com.db.example.visual5.Sub_sector;
 import com.db.example.visual5.subsector_breakdown;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class visual5restController {
 
