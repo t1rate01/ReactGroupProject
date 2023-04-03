@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.db.example.visual5.sector;
+import com.db.example.visual5.sectori;
 import com.db.example.visual5.Sub_sector;
 import com.db.example.visual5.subsector_breakdown;
 import com.db.example.visual5.brokensectorRepository;
@@ -28,11 +28,11 @@ public class visual5service {
     }
 
 
-    public List<sector> getSectors() {
+    public List<sectori> getSectors() {
         return sectorRepo.findAll();
     }
 
-    public void addSector(sector sector) {
+    public void addSector(sectori sector) {
         sectorRepo.save(sector);
     }
         

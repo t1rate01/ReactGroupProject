@@ -31,6 +31,7 @@ const BrokenSectorChart = () => {
     datasets: [
       {
         label: "Sector share",
+        type: "doughnut",
         data: shares,
         backgroundColor: [
             "#FF4136",

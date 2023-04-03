@@ -3,6 +3,7 @@ package com.db.example.visual5;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+
 @Entity
 public class subsector_breakdown {
     @Id

@@ -2,27 +2,28 @@ package com.db.example.visual5;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+
 @Entity
-public class sector {
+public class sectori {
     @Id
-    private String sector;
+    private String Sector;
     private String share;
     
 
-    public sector(String sector, String share) {
-        this.sector = sector;
+    public sectori(String Sector, String share) {
+        this.Sector = Sector;
         this.share = share;
     }
 
-    public sector() {
+    public sectori() {
     }
 
     public String getSector() {
-        return this.sector;
+        return this.Sector;
     }
 
-    public void setSector(String sector) {
-        this.sector = sector;
+    public void setSector(String Sector) {
+        this.Sector = Sector;
     }
 
     public String getShare() {
@@ -33,12 +34,12 @@ public class sector {
         this.share = share;
     }
 
-    public sector Sector(String sector) {
-        setSector(sector);
+    public sectori Sector(String Sector) {
+        setSector(Sector);
         return this;
     }
 
-    public sector share(String share) {
+    public sectori share(String share) {
         setShare(share);
         return this;
     }

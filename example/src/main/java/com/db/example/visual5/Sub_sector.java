@@ -8,14 +8,17 @@ public class Sub_sector {
     @Id
     private String subsector;
     private String share;
+    private String sector_name;
+
 
 
     public Sub_sector() {
     }
 
-    public Sub_sector(String subsector, String share) {
+    public Sub_sector(String subsector, String share, String sector_name) {
         this.subsector = subsector;
         this.share = share;
+        this.sector_name = sector_name;
     }
 
     public String getSubsector() {
@@ -34,6 +37,14 @@ public class Sub_sector {
         this.share = share;
     }
 
+    public String getSector_name() {
+        return this.sector_name;
+    }
+
+    public void setSector_name(String sector_name) {
+        this.sector_name = sector_name;
+    }
+
     public Sub_sector subsector(String subsector) {
         setSubsector(subsector);
         return this;
@@ -44,5 +55,9 @@ public class Sub_sector {
         return this;
     }
 
-    
+    public Sub_sector sector_name(String sector_name) {
+        setSector_name(sector_name);
+        return this;
+    }
 }
+   

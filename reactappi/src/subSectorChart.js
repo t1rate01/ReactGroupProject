@@ -23,7 +23,7 @@ const SubSectorChart = () => {
 
   const labels = sectorData.map((item) => item.subsector);
   const shares = sectorData.map((item) => item.share);
-
+  
 
 
   const chartData = {
@@ -31,6 +31,7 @@ const SubSectorChart = () => {
     datasets: [
       {
         label: "Sector share",
+        type: "doughnut",
         data: shares,
         backgroundColor: [
             "#FF4136",

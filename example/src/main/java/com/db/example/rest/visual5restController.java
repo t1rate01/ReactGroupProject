@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.db.example.service.visual5service;
-import com.db.example.visual5.sector;
+import com.db.example.visual5.sectori;
 import com.db.example.visual5.Sub_sector;
 import com.db.example.visual5.subsector_breakdown;
 
@@ -26,7 +26,7 @@ public class visual5restController {
 
     // TÄNNE REST CONTROLLERIT POLUT JNE
     @GetMapping("/sectors")
-    public List<sector> getSectors(){
+    public List<sectori> getSectors(){
         System.out.println("@Get sectors");
         return Visual5Service.getSectors();
     }
