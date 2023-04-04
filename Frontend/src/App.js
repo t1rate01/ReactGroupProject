@@ -1,6 +1,5 @@
 import {Bar, Line, Pie} from 'react-chartjs-2';
 import {Chart as ChartJS} from 'chart.js/auto';
-import './App.css';
 import {useState, useEffect} from 'react';
 import SectorChart from './Visual5/sectorChart.js';
 import DemoData from './Visual5/demoPiechart';
@@ -28,14 +27,6 @@ function App() {
       <div style={{ flex: 1 }}>
         <h2>Sector Chart</h2>
         <SectorChart />
-      </div>
-      <div style={{ flex: 1 }}>
-        <h2>Sub-Sector Chart</h2>
-        <SubSectorChart />
-      </div>
-      <div style={{ flex: 1 }}>
-        <h2>Broken Sector Chart</h2>
-        <BrokenSectorChart />
       </div>
     </div>
   );
