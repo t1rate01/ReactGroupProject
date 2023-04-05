@@ -30,9 +30,23 @@ const [nhmonthlyData, setnhmonthlyData] = useState([]);
     
 },[]);
 
+const [shmonthlyData, setshmonthlyData] = useState([]);
+
+    useEffect(()=>{
+        fetch("http://localhost:8080/shmonthly")
+        .then(response=>response.json())
+        .then(result=>{
+            console.log(result);
+            setshmonthlyData(result);
+        })
+        .catch(error=>console.log(error));
+    
+},[]);
+
 const labels = visual1MoData.map(d => d.yearmo);
 const temp = visual1MoData.map(t => t.anomaly);
 const nhmotemp = nhmonthlyData.map(t => t.anomaly);
+const shmotemp = shmonthlyData.map(t => t.anomaly);
 
 
 
@@ -51,6 +65,13 @@ const chartData ={
             data: nhmotemp,
             backgroundColor:[
                 "pink"
+            ]
+        },
+        {
+            label: "Southern monthly anomalies",
+            data: shmotemp,
+            backgroundColor:[
+                "navy"
             ]
         }
     ]
