@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.db.example.service.visual1Service;
 import com.db.example.visual1.nhannual;
+import com.db.example.visual1.shannual;
 import com.db.example.visual1.visual1;
 
 @CrossOrigin(origins ="http://localhost:3000")
@@ -29,8 +30,12 @@ public class visual1RestController {
         return Visual1Service.getVisual();
     }
     @GetMapping("/nhannual")
-    public List<nhannual> geNhannuals(){
-        return Visual1Service.geNhannuals();
+    public List<nhannual> getNhannuals(){
+        return Visual1Service.getNhannuals();
+    }
+    @GetMapping("/shannual")
+    public List<shannual> getShannuals(){
+        return Visual1Service.getShannuals();
     }
  
 }

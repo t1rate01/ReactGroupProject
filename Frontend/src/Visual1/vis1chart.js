@@ -29,9 +29,23 @@ const [nhannual1Data, setnhannualData] = useState([]);
     
 },[]);
 
+const [shannual1Data, setshannualData] = useState([]);
+
+    useEffect(()=>{
+        fetch("http://localhost:8080/shannual")
+        .then(response=>response.json())
+        .then(result=>{
+            console.log(result);
+            setshannualData(result);
+        })
+        .catch(error=>console.log(error));
+    
+},[]);
+
 const labels = visual1Data.map(d => d.year);
 const temp = visual1Data.map(t => t.anomaly);
 const nhtemp = nhannual1Data.map(t=>t.anomaly);
+const shtemp = shannual1Data.map(t=>t.anomaly);
 
 const chartData ={
     labels: labels,
@@ -48,6 +62,13 @@ const chartData ={
             data: nhtemp,
             backgroundColor: [
                 "yellow"
+            ]
+        },
+        {
+            label:"Southern annual anomalies",
+            data: shtemp,
+            backgroundColor: [
+                "red"
             ]
         }
     ]
