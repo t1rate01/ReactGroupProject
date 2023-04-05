@@ -7,6 +7,7 @@ import DemoData from './Visual5/demoPiechart';
 import SubSectorChart from './Visual5/subSectorChart';
 import BrokenSectorChart from './Visual5/brokenSectorChart';
 import Visual1 from './Visual1/vis1chart';
+import Visual2 from './Visual1/vis1chartmonthly';
 
 
 
@@ -30,8 +31,14 @@ function App() {
       <div>
         <h2>Visual 1</h2>
         <Visual1/>
-      </div>
     </div>
+
+<div style ={{flex:1}}>
+
+<h2>Visual 2</h2>
+<Visual2/>
+</div>
+</div>
   );
 }
 

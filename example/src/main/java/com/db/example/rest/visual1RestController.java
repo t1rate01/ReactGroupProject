@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.db.example.service.visual1Service;
+import com.db.example.visual1.globalmonthly;
 import com.db.example.visual1.nhannual;
+import com.db.example.visual1.nhmonthly;
 import com.db.example.visual1.shannual;
 import com.db.example.visual1.visual1;
 
@@ -36,6 +38,14 @@ public class visual1RestController {
     @GetMapping("/shannual")
     public List<shannual> getShannuals(){
         return Visual1Service.getShannuals();
+    }
+    @GetMapping("/globalmonthly")
+    public List<globalmonthly> getGlobalmonths(){
+        return Visual1Service.getGlobalmonths();
+    }
+    @GetMapping("/nhmonthly")
+    public List<nhmonthly> getNhmonths(){
+        return Visual1Service.getNhmonths();
     }
  
 }

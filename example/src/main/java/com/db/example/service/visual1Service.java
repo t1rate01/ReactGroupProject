@@ -5,8 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.db.example.visual1.globalmonthly;
+import com.db.example.visual1.globalmonthlyRepository;
 import com.db.example.visual1.nhannual;
 import com.db.example.visual1.nhannualRepository;
+import com.db.example.visual1.nhmonthly;
+import com.db.example.visual1.nhmonthlyRepository;
 import com.db.example.visual1.shannual;
 import com.db.example.visual1.shannualRepository;
 import com.db.example.visual1.visual1;
@@ -20,6 +24,10 @@ public class visual1Service {
     nhannualRepository nhannualRepo;
     @Autowired
     shannualRepository shannualRepo;
+    @Autowired
+    globalmonthlyRepository globalmonthlyRepo;
+    @Autowired
+    nhmonthlyRepository nhmonthlyRepo;
 
 
     public visual1Service(){
@@ -36,5 +44,13 @@ public class visual1Service {
 
     public List<shannual> getShannuals(){
         return shannualRepo.findAll();
+    }
+
+    public List<globalmonthly> getGlobalmonths(){
+        return globalmonthlyRepo.findAll();
+    }
+
+    public List<nhmonthly> getNhmonths(){
+        return nhmonthlyRepo.findAll();
     }
 }
