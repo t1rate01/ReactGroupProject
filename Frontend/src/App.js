@@ -6,6 +6,7 @@ import SectorChart from './Visual5/sectorChart.js';
 import DemoData from './Visual5/demoPiechart';
 import SubSectorChart from './Visual5/subSectorChart';
 import BrokenSectorChart from './Visual5/brokenSectorChart';
+import Visual1 from './Visual1/vis1chart';
 
 
 
@@ -25,17 +26,10 @@ import BrokenSectorChart from './Visual5/brokenSectorChart';
 function App() {
   return (
     <div className="App" style={{ display: "flex" }}>
-      <div style={{ flex: 1 }}>
-        <h2>Sector Chart</h2>
-        <SectorChart />
-      </div>
-      <div style={{ flex: 1 }}>
-        <h2>Sub-Sector Chart</h2>
-        <SubSectorChart />
-      </div>
-      <div style={{ flex: 1 }}>
-        <h2>Broken Sector Chart</h2>
-        <BrokenSectorChart />
+      
+      <div>
+        <h2>Visual 1</h2>
+        <Visual1/>
       </div>
     </div>
   );
