@@ -2,10 +2,7 @@ import {Bar, Line, Pie} from 'react-chartjs-2';
 import {Chart as ChartJS} from 'chart.js/auto';
 import {useState, useEffect} from 'react';
 import SectorChart from './Visual5/sectorChart.js';
-import DemoData from './Visual5/demoPiechart';
-import SubSectorChart from './Visual5/subSectorChart';
-import BrokenSectorChart from './Visual5/brokenSectorChart';
-
+import MainMenu from './controller/mainmenu.js';
 
 
 
@@ -21,14 +18,9 @@ import BrokenSectorChart from './Visual5/brokenSectorChart';
     </div>
   );
 }*/
-function App() {
+function App() {   // kutsutaan aluksi vain MainMenu, joka ohjaa logiikkaa
   return (
-    <div className="App" style={{ display: "flex" }}>
-      <div style={{ flex: 1 }}>
-        <h2>Sector Chart</h2>
-        <SectorChart />
-      </div>
-    </div>
+        <MainMenu />
   );
 }
 

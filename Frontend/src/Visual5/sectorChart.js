@@ -1,20 +1,51 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Pie, getElementsAtEvent, getElementAtEvent } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import visual5styles from "./visual5styles.css";
+import MainMenu from "../controller/mainmenu.js";
 
+const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana mainmenulta saatu funktio exitToMenu !!!
+  const [sectorData, setSectorData] = useState([]);    // sectorin data ja muuttamisfunktio
+  const [subSectorData, setSubSectorData] = useState([]);  // subsectorin data ja muuttamisfunktio
+  const [selectedSector, setSelectedSector] = useState(null); // valitun sectorin muuttuja ja muuttamisfunktio
+  const [breakdownData, setBreakdownData] = useState([]);    // breakdownin data ja muuttamisfunktio
+  const [showBreakdown, setShowBreakdown] = useState(false);  // lisätietoa napin muuttuja ja muuttamisfunktio
+  const chartRef = useRef();  // referenssi liittyy klikkauksen tunnistamiseen
+  const colourList = [ "#FFC300", "#FF5733", "#C70039", "#900C3F", "#581845", "#A93226", "#DC7633", "#F39C12", "#F7DC6F", "#F0B27A", "#BA4A00", "#7B241C", "#D2B4DE", "#9B59B6", "#76448A", "#6C3483", "#1F618D", "#148F77", "#2ECC71", "#239B56"];
 
-
-
-const SectorChart = () => {
-  const [sectorData, setSectorData] = useState([]); 
-  const [subSectorData, setSubSectorData] = useState([]); 
-  const [selectedSector, setSelectedSector] = useState(null); 
-  const [breakdownData, setBreakdownData] = useState([]);
-  const chartRef = useRef();
+  const donutOptions = {  // perusdonitsien asetukset
+    layout: {
+      padding: {
+        left: 50,
+        right: 50,
+        top: 0,
+        bottom: 50,
+      },
+    },
+  };
+  
+  const brokenDonitsiOptions = { // muotoilusyistä donitsille joka antaa kaiken datan eri asetukset
+    layout: {
+      padding: {
+        left: 50,
+        right: 50,
+        top: 0,
+        bottom: 50,
+      },
+    },
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false, // labelit piiloon, ainoa olennainen ero
+      },
+    },
+  };
+  
+  
 
   ChartJS.register(ArcElement, Tooltip, Legend);
   
-  useEffect(() => {
+  useEffect(() => {    // sectoridatan automaattihaku
     fetch("http://localhost:8080/sectors")
       .then(response => response.json())
       .then(result => {
@@ -23,7 +54,7 @@ const SectorChart = () => {
       .catch(error => console.log(error));
   }, []);
   
-  useEffect(() => {
+  useEffect(() => {   // subsectoridatan automaattihaku
     fetch("http://localhost:8080/subsectors")
       .then(response => response.json())
       .then(result => {
@@ -32,8 +63,8 @@ const SectorChart = () => {
       .catch(error => console.log(error));
   }, []);
 
-  useEffect(() => {
-    fetch("http:localhost:8080/breakdowns")
+  useEffect(() => {   // breakdownidatan automaattihaku
+    fetch("http://localhost:8080/breakdowns")
       .then(response => response.json())
       .then(result => {
         setBreakdownData(result);
@@ -41,107 +72,112 @@ const SectorChart = () => {
       .catch(error => console.log(error));
   }, []);
 
-  let previousSector = null;
-  const handleSectorClick = (event) => {
-    if(getElementsAtEvent(chartRef.current, event).length > 0) {   // rajaa hutiklikkaukset 
-    const activeSectorIndexNum = getElementsAtEvent(chartRef.current, event)[0].datasetIndex; // poista myöh
-    const activeSectorIndex = getElementsAtEvent(chartRef.current, event)[0].index;   // älä poista, tällä löytyy labeli
+  const handleSectorClick = (event) => {    // Tämä reagoi donitsin osioiden klikkauksiin
+    if(getElementsAtEvent(chartRef.current, event).length > 0) {   // rajaa hutiklikkaukset
+    const activeSectorIndexNum = getElementsAtEvent(chartRef.current, event)[0].datasetIndex; // poista myöhemmin !!!!!!!!!!!!!!!!!!!!!!!!
+    const activeSectorIndex = getElementsAtEvent(chartRef.current, event)[0].index;   // älä poista, tällä löytyy labeli arraystä
     const activeSector = sectorData[activeSectorIndex].sector;  // labelin haku indeksillä
-    previousSector = activeSector;
     console.log("activeSectorIndexNum: " + activeSectorIndexNum + " activeSectorIndex: " + activeSectorIndex);  // poista myöh
     if (activeSector) {
-      setSelectedSector(activeSector);
+      setSelectedSector(activeSector);   // muuttaa muuttujaa ja se aiheuttaa if kutsun
    }
   };
   }
 
-  let chartData = {
+  const handleBreakdownClick = (event) => {   // muuttaa chartdatan niin että donitsiin piirtyy kaikki pilkottu data
+    setShowBreakdown(true);
+    setSelectedSector(null);
+  }
+
+
+  const handleBackClick = (event) => {     // takaisin painike, jos on chartin etusivulla -> kutsuu mainmenun antamaa funktiota
+    if(showBreakdown===false && selectedSector===null) {
+      console.log("Exit to menu");
+      exitToMenu();
+    }
+    else { 
+    setShowBreakdown(false);    // muussa tapauksessa nollaa chartin muuttujat ja palauttaa donitsin alkutilaan
+    setSelectedSector(null);
+    }
+  }
+
+  let chartData = {   // chartin defaulttidata, neljä pääsektoria, ks ensimmäinen fetchi
     labels: sectorData.map((item) => item.sector),
     datasets: [
       {
-        label: "Sector share",
+        label: "Share",
         type: "doughnut",
         data: sectorData.map((item) => item.share),
-        backgroundColor: [
-          "#99346C",
-          "#E6DA85",
-          "#E66EB0",
-          "#57D8E6"
-        ]
+        backgroundColor: colourList.slice(0, sectorData.length)
       }
     ]
   };
+
+  if (showBreakdown)   // jos lisätietoa nappia painetaan, chartti kutsuu kolmannen fetchin datat näkyviin
+  {
+    colourList.sort(() => Math.random() - 0.5);  // sekoittaa värit ettei ala aina keltasesta
+    chartData = {
+      labels: breakdownData.map((item) => item.sub_sector),
+      datasets: [
+        {
+          label: "Share",
+          type: "doughnut",
+          data: breakdownData.map((item) => item.sector_Share),
+          backgroundColor: colourList.slice(0, breakdownData.length)
+        }
+      ]
+    }
+  }
   
-  if (selectedSector) {
-    if(previousSector !== "broken") {
-    const filteredSubSectorData = subSectorData.filter((item) => item.sector_name === selectedSector);
+  if (selectedSector) {   // donitsin osioiden klikkauksen tunnistavan funktion muutettua muuttujaa, ja vaihtaa datan perustuen klikkauksesta saatuun indexinumeroon 
+    console.log("selectedSector: " + selectedSector)
+    colourList.sort(() => Math.random() - 0.5);  // sekoittaa värit ettei aina samat subsektoreissa
+    const filteredSubSectorData = subSectorData.filter((item) => item.sector_name === selectedSector);  // filtteröi tietokantadataan listyn sector_name viitaten, käyttää vertailuun klikkauksen indexin perusteella haettua labelia
     chartData = {
       labels: filteredSubSectorData.map((item) => item.subsector),
       datasets: [
         {
-          label: "Sub-sector share",
+          label: "Share",
           type: "doughnut",
           data: filteredSubSectorData.map((item) => item.share),
-          backgroundColor: [
-            "#99346C",
-            "#E6DA85",
-            "#E66EB0",
-            "#57D8E6"
-          ]
+          backgroundColor: colourList.slice(0, filteredSubSectorData.length) 
         }
       ]
-    };
-  }
-  else if(previousSector === "broken"){
-    const filteredBreakdownData = breakdownData.filter((item) => item.sector_name === previousSector);
-    chartData = {
-      labels: filteredBreakdownData.map((item) => item.sub_sector),
-      datasets: [
-        {
-          label: "Breakdown share",
-          type: "doughnut",
-          data: filteredBreakdownData.map((item) => item.sector_share),
-          backgroundColor: [
-            "#99346C",
-            "#E6DA85",
-            "#E66EB0",
-            "#57D8E6"
-          ]
-        }
-      ]
-    };
-  }
-   else {
-    chartData = {
-      labels: sectorData.map((item) => item.sector),
-      datasets: [
-        {
-          label: "Sector share",
-          type: "doughnut",
-          data: sectorData.map((item) => item.share),
-          backgroundColor: [
-            "#99346C",
-            "#E6DA85",
-            "#E66EB0",
-            "#57D8E6"
-          ]
-        }
-      ]
-    };
   }
   }
   
+  // eka returni on perusdonitsi, toinen on klikkauksen perusteella rajattu donitsi, kolmas on kaiken datan antava donitsi, joka tulee lisätietoa napista esiin
+  // tokassa tarkistetaan onko selectedSectori eri kuin null ja breakdownia ei ole painettu
+  // kolmannessa tarkistetaan onko breakdownia painettu
+  // napit piirretään aina ulkopuolisena
+  // .css tiedostossa on rajattu mitkä antaa pointer-eventtejä
 
-  return (
-    <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
-      <div>
-        <Pie data={chartData} width={500} height={500} onClick={handleSectorClick} ref = {chartRef} ></Pie>
-      </div>
-      <div><button onClick={() => setSelectedSector(null)}>Alkuun</button><button onClick={() => setSelectedSector("broken")}>Lisätietoa</button>
-      </div>
+  return (    
+    <div className="maindonitsi">
+       <h1 id="donitsiotsikko">{selectedSector === null && !showBreakdown ? 'Sectors' : showBreakdown ? 'Breakdown' : selectedSector}</h1> 
+      {selectedSector === null && showBreakdown === false && (
+        <div className="donitsi">
+          <Pie data={chartData} onClick={handleSectorClick} ref={chartRef} options={donutOptions} width={500} height={500} />
+        </div>
+      )}
+      {selectedSector !== null && !showBreakdown && (
+        <div className="donitsi">
+          <Pie data={chartData} ref={chartRef} options={donutOptions} width={500} height={500} />
+        </div>
+      )}
+      {showBreakdown && (
+        <div className="donitsi">
+          <h3 id="alaotsikko">Move your mouse on a sector to see details</h3>
+          <Pie data={chartData} ref={chartRef} options={brokenDonitsiOptions} width={500} height={500} />
+        </div>
+      )}
+            <div className="donitsinapit">
+            <button onClick={handleBackClick}>Back</button>
+            <button onClick={handleBreakdownClick}>All Data</button>
+          </div>
     </div>
   );
-};
-
+  
+  }
 
 export default SectorChart;
