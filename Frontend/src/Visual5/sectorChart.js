@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Pie, getElementsAtEvent, getElementAtEvent } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import visual5styles from "./visual5styles.css";
-import MainMenu from "../controller/mainmenu.js";
+
 
 const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana mainmenulta saatu funktio exitToMenu !!!
   const [sectorData, setSectorData] = useState([]);    // sectorin data ja muuttamisfunktio
@@ -23,6 +23,11 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
       },
     },
   };
+
+  // HOX  ! DONITSICHARTIN EKALTA SIVULTA PÄÄSEE ALAKATEGORIOIHIN, MUTTA KOSKA BROKEN 
+  // SUB KATEGORIOISSA EI OLLUT JÄRKEVÄÄ TAPAA SAADA KAIKKIA LOKEROITUA ENKÄ NÄHNYT JÄRKEVÄNÄ LAITTAA "OTHER"
+  // KATEGORIAA, LAITOIN NYT NIIN ETTÄ PÄÄDONITSISTA VOI KLIKATA ALASEKTOREIHIN, JA SAATAVILLA ON ERIKSEEN
+  // NAPPI JOKA ANTAA KAIKEN DATAN BROKENDOWN DATAN PERUSTEELLA
   
   const brokenDonitsiOptions = { // muotoilusyistä donitsille joka antaa kaiken datan eri asetukset
     layout: {

@@ -50,17 +50,15 @@
         border: solid white;
         outline: none;
         cursor: pointer;
-        gap: 0px;
-        
-        
+        gap: 0px;   
     }
 
   
     #donitsiotsikko {
         position: absolute;
-        top: 10px;
-        
-        font-size: 2.5em;
+        top: 0px;
+        padding: 0px;
+        font-size: 2.0em;
         font-family: "Comic Sans MS";
         pointer-events: none;
       }
