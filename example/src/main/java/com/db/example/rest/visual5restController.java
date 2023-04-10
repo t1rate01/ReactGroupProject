@@ -13,7 +13,7 @@ import com.db.example.visual5.Sub_sector;
 import com.db.example.visual5.subsector_breakdown;
 
 //@CrossOrigin(origins = "http://localhost:3000")
-@CrossOrigin
+@CrossOrigin  // hyväksynee tällä kaiken
 @RestController
 public class visual5restController {
 
