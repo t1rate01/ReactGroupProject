@@ -4,6 +4,10 @@ import {Chart as ChartJS} from 'chart.js/auto';
 import {useState, useEffect} from 'react';
 import SectorChart from '../Visual5/sectorChart.js';
 import Visual2 from '../Visual2/visual2Chart.js';
+
+
+// DEMOCHARTIT
+//import Visual2 from '../Visual2/visual2demoChart.js';
 import DemoData from '../Visual5/demoPiechart.js';
 
 
