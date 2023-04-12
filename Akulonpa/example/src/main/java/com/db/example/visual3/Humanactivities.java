@@ -5,24 +5,24 @@ import jakarta.persistence.Id;
 
 
 @Entity
-public class Humanactions {
+public class Humanactivities {
     @Id
-    private int time;
+    private Integer time;
     private String event;
 
-    public Humanactions() {
+    public Humanactivities() {
     }
 
-    public Humanactions(int time, String event) {
+    public Humanactivities(Integer time, String event) {
         this.time = time;
         this.event = event;
     }
 
-    public int getTime() {
+    public Integer getTime() {
         return this.time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 
@@ -34,16 +34,13 @@ public class Humanactions {
         this.event = event;
     }
 
-    public Humanactions time(int time) {
+    public Humanactivities time(Integer time) {
         setTime(time);
         return this;
     }
 
-    public Humanactions event(String event) {
+    public Humanactivities event(String event) {
         setEvent(event);
         return this;
     }
 }
-
-
-

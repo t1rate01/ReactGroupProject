@@ -6,11 +6,7 @@ import SectorChart from './Visual5/sectorChart.js';
 import DemoData from './Visual5/demoPiechart';
 import SubSectorChart from './Visual5/subSectorChart';
 import BrokenSectorChart from './Visual5/brokenSectorChart';
-
-
-
-
-
+import MyVisual3Chart from './Visual3/visual3Chart';
 
 /*function App() {
   return (
@@ -39,7 +35,7 @@ function App() {
       </div>
       <div style={{ flex: 1 }}>
         <h2>Evolution of global temperature over the past two million years</h2>
-        <visual3Chart />
+        <MyVisual3Chart />
       </div>
     </div>
   );

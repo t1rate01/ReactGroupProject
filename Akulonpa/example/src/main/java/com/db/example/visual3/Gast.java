@@ -1,27 +1,29 @@
 package com.db.example.visual3;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
 public class Gast {
     @Id
-    private int time;
-    private double fifty;
+    private Integer time;
+    @Column(name = "50")
+    private Double fifty;
 
     public Gast() {
     }
 
-    public Gast(int time, double fifty) {
+    public Gast(Integer time, Double fifty) {
         this.time = time;
         this.fifty = fifty;
     }
 
-    public int getTime() {
+    public Integer getTime() {
         return this.time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 
@@ -33,12 +35,12 @@ public class Gast {
         this.fifty = fifty;
     }
 
-    public Gast time(int time) {
+    public Gast time(Integer time) {
         setTime(time);
         return this;
     }
 
-    public Gast fifty(double fifty) {
+    public Gast fifty(Double fifty) {
         setFifty(fifty);
         return this;
     }

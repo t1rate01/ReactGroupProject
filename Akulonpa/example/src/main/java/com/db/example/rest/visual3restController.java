@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.db.example.service.visual3service;
 import com.db.example.visual3.Gast;
-import com.db.example.visual3.Humanactions;
+import com.db.example.visual3.Humanactivities;
 import com.db.example.visual3.Carbon;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -37,10 +37,10 @@ public class visual3restController {
         return Visual3Service.getGasts();
     }
 
-    @GetMapping("/humanactions")
-    public List<Humanactions> getHumanactions(){
+    @GetMapping("/humanactivities")
+    public List<Humanactivities> getHumanactions(){
         System.out.println("@Get humanactions");
-        return Visual3Service.getHumanactions();
+        return Visual3Service.getHumanactivities();
     }
 
 }

@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.db.example.visual3.Gast;
 import com.db.example.visual3.Carbon;
-import com.db.example.visual3.Humanactions;
+import com.db.example.visual3.Humanactivities;
 import com.db.example.visual3.gastRepository;
 import com.db.example.visual3.carbonRepository;
-import com.db.example.visual3.humanactionsRepository;
+import com.db.example.visual3.humanactivitiesRepository;
 
 
 @Service
@@ -21,7 +21,7 @@ public class visual3service {
 	@Autowired
 	carbonRepository carbRepo;
 	@Autowired
-	humanactionsRepository humanRepo;
+	humanactivitiesRepository humanRepo;
 
     public visual3service() {
  
@@ -45,11 +45,11 @@ public class visual3service {
         carbRepo.save(carbon);
     }
 
-    public List<Humanactions> getHumanactions() {
+    public List<Humanactivities> getHumanactivities() {
         return humanRepo.findAll();
     }
 
-    public void addHumanactions(Humanactions humanactions) {
+    public void addHumanactions(Humanactivities humanactions) {
         humanRepo.save(humanactions);
     }
 
