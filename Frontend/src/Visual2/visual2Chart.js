@@ -25,21 +25,7 @@ const Visual2 = ({exitToMenu}) => {
     const [monthlyChartData, setMonthlyChartData] = useState([]);
     const colourList = [ "#FFC300", "#FF5733", "#C70039", "#900C3F", "#581845", "#A93226", "#DC7633", "#F39C12", "#F7DC6F", "#F0B27A", "#BA4A00", "#7B241C", "#D2B4DE", "#9B59B6", "#76448A", "#6C3483", "#1F618D", "#148F77", "#2ECC71", "#239B56"];
 
-const Options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            position: 'top',
-        },
-        title: {
-            display: true,
-            text: '******change later********',
-        },
-        grid: {
-            drawOnChartArea: false,
-        },
-    },
-};
+
 
 const handleExitClick = (event) => {
     console.log("handleExitClick");
@@ -68,47 +54,62 @@ const handleExitClick = (event) => {
     }
     , []);
 
-    const ylabels = () => {
-        let lukuarray = [];
-        for (let i = 0; i < monthlyChartData.length; i++) {
-            let luku = monthlyChartData[i].decimalyear;
-            let lukux = luku.split(".")[0];
-            lukuarray.push(lukux);
-        }
-        return lukuarray;
-    }
-
-    const yearLabels = () => {
-        let lukuarray = [];
-        for (let i = 0; i < annualChartData.length; i++) {
-            let luku = annualChartData[i].year;
-            lukuarray.push(luku);
-        }
-        return lukuarray;
-    }
-
-    const annualData = annualChartData.map((item) => item.mean);
-    const annualMeans = annualChartData.map((item) => item.mean);
+    const monthlyDates = monthlyChartData.map((item) => item.decimalyear);
     const monthlyData = monthlyChartData.map((item) => item.average);
+    const monthlyMin = monthlyChartData.map((item) => item.min);
+    const monthlyMax = monthlyChartData.map((item) => item.max);
 
-
-
+    const Options = {
+        
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            scales: {
+                x: {
+                    display: true,
+                    min: monthlyDates[0],
+                    max: monthlyDates[monthlyDates.length - 1],
+                },
+                y: {
+                    display: true,
+                    min: monthlyMin,
+                    max: monthlyMax,
+            },
+            },
+            title: {
+                display: true,
+                text: '******change later********',
+            },
+            grid: {
+                drawOnChartArea: false,
+            },
+        },
+    };
 
     let lineChartData = {
-        labels:  ylabels(),
+        
+        
+        labels: annualChartData.map((item) => item.year),
         datasets: [
             {
-                label: 'Annual Chart',
-                data: annualData,
-                borderColor: 'blue',
-                pointRadius: 1,
-            },
-            {
-                label: 'Monthly Chart',
+                label: 'Monthly Chart*******************',
+                showLine: true,
                 data: monthlyData,
                 borderColor: 'red',
                 pointRadius: 1,
-            }
+                
+                
+            },
+            {
+                label: 'Annual Chart**************',
+                showLine: true,
+                data: annualChartData.map((item) => item.mean),
+                borderColor: 'blue',
+                pointRadius: 1,
+            },
+       
         ],
     };
 

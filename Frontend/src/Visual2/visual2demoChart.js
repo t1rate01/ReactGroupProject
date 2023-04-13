@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
+  CategoryScale,  // x axeli
+  LinearScale,  // y axeli
   PointElement,
-  LineElement,
+  LineElement,  
   Title,
   Tooltip,
   Legend,
