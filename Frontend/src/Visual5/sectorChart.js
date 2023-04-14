@@ -46,7 +46,6 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
     },
   };
   
-  
 
   ChartJS.register(ArcElement, Tooltip, Legend);
   
