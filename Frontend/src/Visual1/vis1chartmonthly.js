@@ -56,21 +56,21 @@ const chartData ={
         {
             label: "Global monthly anomalies",
             data: temp,
-            backgroundColor:[
+            borderColor:[
                 "green"
             ]
         },
         {
             label: "Northern monthly anomalies",
             data: nhmotemp,
-            backgroundColor:[
+            borderColor:[
                 "pink"
             ]
         },
         {
             label: "Southern monthly anomalies",
             data: shmotemp,
-            backgroundColor:[
+            borderColor:[
                 "navy"
             ]
         }
@@ -79,6 +79,8 @@ const chartData ={
 
 const options ={
     responsive: true,
+    lineTension: 0,
+    radius: 0,
     scales:{
         x:{
             type: "time",
@@ -91,7 +93,7 @@ const options ={
 return(
     <div style={{display: "flex", alingItems: "center", flexWrap:"wrap"}}>
         <div>
-            <Line options={options} data={chartData} width={1200} height = {500}/>
+            <Line options={options} data={chartData} width={1500} height = {800}/>
         </div>
     </div>
 )

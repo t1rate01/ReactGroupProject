@@ -42,45 +42,74 @@ const [shannual1Data, setshannualData] = useState([]);
     
 },[]);
 
+const [recoData, setRecoData] = useState([]);
+
+    useEffect(()=>{
+        fetch("http://localhost:8080/reconstruction")
+        .then(response=>response.json())
+        .then(result=>{
+            console.log(result);
+            setRecoData(result);
+        })
+        .catch(error=>console.log(error));
+    
+},[]);
+
 const labels = visual1Data.map(d => d.year);
 const temp = visual1Data.map(t => t.anomaly);
 const nhtemp = nhannual1Data.map(t=>t.anomaly);
 const shtemp = shannual1Data.map(t=>t.anomaly);
+const recoLabes = recoData.map(t => t.year);
+const recoTemp = recoData.map(y => y.value);
 
-const chartData ={
+var chartData ={
+    
     labels: labels,
     datasets: [
         {
             label: "Global annual anomalies",
             data: temp,
-            backgroundColor:[
+            borderColor:[
                 "blue"
             ]
         },
         {
             label:"Northern annual anomalies",
             data: nhtemp,
-            backgroundColor: [
+            borderColor: [
                 "yellow"
             ]
         },
         {
             label:"Southern annual anomalies",
             data: shtemp,
-            backgroundColor: [
+            borderColor: [
                 "red"
             ]
+            
+        },
+        {
+            label:"Reconstruction",
+            data: recoTemp,
+            labels: recoLabes,
+            borderColor: [
+                "black"
+            ]
+            
         }
     ]
 };
 
 const options ={
-    responsive: true
+    responsive: true,
+    lineTension: 0,
+    radius: 0,
+    
 }
 return(
     <div style={{display: "flex", alingItems: "center", flexWrap:"wrap"}}>
         <div>
-            <Line options={options} data={chartData} width={1200} height = {500}/>
+            <Line options={options} data={chartData} width={1500} height = {800}/>
         </div>
     </div>
 )

@@ -11,6 +11,8 @@ import com.db.example.visual1.nhannual;
 import com.db.example.visual1.nhannualRepository;
 import com.db.example.visual1.nhmonthly;
 import com.db.example.visual1.nhmonthlyRepository;
+import com.db.example.visual1.reconstruction;
+import com.db.example.visual1.reconstructionRepository;
 import com.db.example.visual1.shannual;
 import com.db.example.visual1.shannualRepository;
 import com.db.example.visual1.shmonthly;
@@ -32,6 +34,8 @@ public class visual1Service {
     nhmonthlyRepository nhmonthlyRepo;
     @Autowired
     shmonthlyRepository shmonthlyRepo;
+    @Autowired
+    reconstructionRepository reconstructionRepo;
 
 
     public visual1Service(){
@@ -60,5 +64,9 @@ public class visual1Service {
 
     public List<shmonthly> getShmonths(){
         return shmonthlyRepo.findAll();
+    }
+
+    public List<reconstruction> getReconstruction(){
+        return reconstructionRepo.findAll();
     }
 }

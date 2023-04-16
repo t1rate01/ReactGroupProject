@@ -11,6 +11,7 @@ import com.db.example.service.visual1Service;
 import com.db.example.visual1.globalmonthly;
 import com.db.example.visual1.nhannual;
 import com.db.example.visual1.nhmonthly;
+import com.db.example.visual1.reconstruction;
 import com.db.example.visual1.shannual;
 import com.db.example.visual1.shmonthly;
 import com.db.example.visual1.visual1;
@@ -51,6 +52,10 @@ public class visual1RestController {
     @GetMapping("/shmonthly")
     public List<shmonthly> getShmonths(){
         return Visual1Service.getShmonths();
+    }
+    @GetMapping("/reconstruction")
+    public List<reconstruction> getReconstruction(){
+        return Visual1Service.getReconstruction();
     }
  
 }
