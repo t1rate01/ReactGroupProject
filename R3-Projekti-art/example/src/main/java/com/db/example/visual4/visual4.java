@@ -4,16 +4,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class visual1 {
+public class visual4 {
      
     @Id
     private int year;
     private double anomaly;
 
-    public visual1() {
+    public visual4() {
     }
 
-    public visual1(int year, double anomaly) {
+    public visual4(int year, double anomaly) {
         this.year = year;
         this.anomaly = anomaly;
     }
