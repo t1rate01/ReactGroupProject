@@ -1,4 +1,4 @@
-package com.db.example.controller;
+package com.db.example.rest;
 
 import java.util.List;
 
