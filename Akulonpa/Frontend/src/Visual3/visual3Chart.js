@@ -31,16 +31,18 @@ const MyVisual3Chart = () => {
   }, []);
 
   const getCarbonDataForChart = () => {
+    const filteredData = carbonData.filter(item => item !== null); // filter out null values
     const data = {
-      labels: carbonData.map(item => item.time),
+      labels: filteredData.map(item => item?.time),
       datasets: [
         {
           label: "CO2 ppm",
           yAxisID: "left",
-          data: carbonData.map(item => item.carbondioxide),
+          data: filteredData.map(item => item?.carbondioxide),
           borderColor: "#FF4136",
           backgroundColor: "rgba(255, 65, 54, 0.2)",
           fill: true,
+
         },
       ],
     };
@@ -123,7 +125,7 @@ const MyVisual3Chart = () => {
 
   return (
     <div>
-      <div> style</div>
+      <div> Evolution of global temperature over the past two million years</div>
       <div>
         <button onClick={() => setShowHumanActions(!showHumanActions)}>
           {showHumanActions ? "Hide" : "Show"} human actions

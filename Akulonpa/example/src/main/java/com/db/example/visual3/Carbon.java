@@ -7,24 +7,24 @@ import jakarta.persistence.Id;
 public class Carbon {
     @Id
 
-    private Long time;
+    private Integer time;
     private Double carbondioxide;
     private Double carbondioxide_un;
 
     public Carbon() {
     }
 
-    public Carbon(Long time, Double carbondioxide, Double carbondioxide_un) {
+    public Carbon(Integer time, Double carbondioxide, Double carbondioxide_un) {
         this.time = time;
         this.carbondioxide = carbondioxide;
         this.carbondioxide_un = carbondioxide_un;
     }
 
-    public Long getTime() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(Long time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 

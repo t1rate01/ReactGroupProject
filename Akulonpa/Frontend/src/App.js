@@ -34,7 +34,6 @@ function App() {
         <BrokenSectorChart />
       </div>
       <div style={{ flex: 1 }}>
-        <h2>Evolution of global temperature over the past two million years</h2>
         <MyVisual3Chart />
       </div>
     </div>
