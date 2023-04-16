@@ -14,7 +14,7 @@ public class Visual4DataService {
     @Autowired
     private Visual4DataRepository visual4DataRepository;
 
-    public Visual4DataDataService() {
+    public Visual4DataService() {
     }
 
     public List<Visual4Data> getAllVisual4Data() {
