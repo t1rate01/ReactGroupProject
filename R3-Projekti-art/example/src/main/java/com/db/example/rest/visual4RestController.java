@@ -1,56 +1,63 @@
-package com.db.example.rest;
+package com.db.example.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.db.example.service.visual1Service;
-import com.db.example.visual1.globalmonthly;
-import com.db.example.visual1.nhannual;
-import com.db.example.visual1.nhmonthly;
-import com.db.example.visual1.shannual;
-import com.db.example.visual1.shmonthly;
-import com.db.example.visual1.visual4;
+import com.db.example.service.Visual4DataService;
+import com.db.example.visual4.Visual4Data;
 
 @CrossOrigin(origins ="http://localhost:3000")
 @RestController
-public class visual1RestController {
-    
-    visual1Service Visual1Service;
-
-
+@RequestMapping("/api/visual4data")
+public class Visual4DataController {
 
     @Autowired
-    public visual1RestController(visual1Service Visual1Service){
-        this.Visual1Service = Visual1Service;
+    private Visual4DataService visual4DataService;
+
+    @GetMapping
+    public List<Visual4Data> getAllVisual4Data() {
+        return visual4DataService.getAllVisual4Data();
     }
 
-    @GetMapping("/visual1")
-    public List<visual4> getVisual(){
-        return Visual1Service.getVisual();
+    @GetMapping("/{year}")
+    public ResponseEntity<Visual4Data> getVisual4DataByYear(@PathVariable("year") int year) {
+        Visual4Data visual4Data = visual4DataService.getVisual4DataByYear(year);
+        if (visual4Data == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(visual4Data, HttpStatus.OK);
     }
-    @GetMapping("/nhannual")
-    public List<nhannual> getNhannuals(){
-        return Visual1Service.getNhannuals();
+
+    @PostMapping
+    public ResponseEntity<Visual4Data> saveVisual4Data(@RequestBody Visual4Data visual4Data) {
+        Visual4Data savedVisual4Data = visual4DataService.saveVisual4Data(visual4Data);
+        return new ResponseEntity<>(savedVisual4Data, HttpStatus.CREATED);
     }
-    @GetMapping("/shannual")
-    public List<shannual> getShannuals(){
-        return Visual1Service.getShannuals();
+
+    @PutMapping("/{year}")
+    public ResponseEntity<Visual4Data> updateVisual4Data(@PathVariable("year") int year, @RequestBody Visual4Data visual4Data) {
+        Visual4Data currentVisual4Data = visual4DataService.getVisual4DataByYear(year);
+        if (currentVisual4Data == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        currentVisual4Data.setData(visual4Data.getData());
+        Visual4Data updatedVisual4Data = visual4DataService.saveVisual4Data(currentVisual4Data);
+        return new ResponseEntity<>(updatedVisual4Data, HttpStatus.OK);
     }
-    @GetMapping("/globalmonthly")
-    public List<globalmonthly> getGlobalmonths(){
-        return Visual1Service.getGlobalmonths();
+
+    @DeleteMapping("/{year}")
+    public ResponseEntity<HttpStatus> deleteVisual4Data(@PathVariable("year") int year) {
+        Visual4Data visual4Data = visual4DataService.getVisual4DataByYear(year);
+        if (visual4Data == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        visual4DataService.deleteVisual4Data(visual4Data);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @GetMapping("/nhmonthly")
-    public List<nhmonthly> getNhmonths(){
-        return Visual1Service.getNhmonths();
-    }
-    @GetMapping("/shmonthly")
-    public List<shmonthly> getShmonths(){
-        return Visual1Service.getShmonths();
-    }
- 
+
 }

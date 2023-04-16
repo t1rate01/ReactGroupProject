@@ -1,24 +1,25 @@
-package com.db.example.visual1;
+package com.db.example.visual4;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Entity
-public class visual4 {
-     
+public class Visual4Data {
     @Id
     private int year;
-    private double anomaly;
+    private Map<String, Double> data;
 
-    public visual4() {
+    public Visual4Data() {
+        data = new HashMap<>();
     }
 
-    public visual4(int year, double anomaly) {
+    public Visual4Data(int year) {
         this.year = year;
-        this.anomaly = anomaly;
+        data = new HashMap<>();
     }
-
-
 
     public int getYear() {
         return this.year;
@@ -28,11 +29,11 @@ public class visual4 {
         this.year = year;
     }
 
-    public double getAnomaly() {
-        return this.anomaly;
+    public double getCountryData(String country) {
+        return this.data.getOrDefault(country, 0.0);
     }
 
-    public void setAnomaly(double anomaly) {
-        this.anomaly = anomaly;
+    public void setCountryData(String country, double value) {
+        this.data.put(country, value);
     }
 }

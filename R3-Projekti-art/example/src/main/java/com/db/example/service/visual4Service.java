@@ -5,60 +5,32 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.db.example.visual1.globalmonthly;
-import com.db.example.visual1.globalmonthlyRepository;
-import com.db.example.visual1.nhannual;
-import com.db.example.visual1.nhannualRepository;
-import com.db.example.visual1.nhmonthly;
-import com.db.example.visual1.nhmonthlyRepository;
-import com.db.example.visual1.shannual;
-import com.db.example.visual1.shannualRepository;
-import com.db.example.visual1.shmonthly;
-import com.db.example.visual1.shmonthlyRepository;
-import com.db.example.visual1.visual4;
-import com.db.example.visual4.visual1Repository;
+import com.db.example.visual4.Visual4Data;
+import com.db.example.visual4.Visual4DataRepository;
 
 @Service
-public class visual1Service {
+public class Visual4DataService {
+
     @Autowired
-    visual1Repository vis1Repo;
-    @Autowired
-    nhannualRepository nhannualRepo;
-    @Autowired
-    shannualRepository shannualRepo;
-    @Autowired
-    globalmonthlyRepository globalmonthlyRepo;
-    @Autowired
-    nhmonthlyRepository nhmonthlyRepo;
-    @Autowired
-    shmonthlyRepository shmonthlyRepo;
+    private Visual4DataRepository visual4DataRepository;
 
-
-    public visual1Service(){
-        
+    public Visual4DataDataService() {
     }
 
-    public List<visual4> getVisual(){
-    return vis1Repo.findAll();
+    public List<Visual4Data> getAllVisual4Data() {
+        return visual4DataRepository.findAll();
     }
 
-    public List<nhannual> getNhannuals(){
-        return nhannualRepo.findAll();
+    public Visual4Data getVisual4DataByYear(int year) {
+        return visual4DataRepository.findById(year).orElse(null);
     }
 
-    public List<shannual> getShannuals(){
-        return shannualRepo.findAll();
+    public Visual4Data saveVisual4Data(Visual4Data visual4Data) {
+        return visual4DataRepository.save(visual4Data);
     }
 
-    public List<globalmonthly> getGlobalmonths(){
-        return globalmonthlyRepo.findAll();
+    public void deleteVisual4Data(Visual4Data visual4Data) {
+        visual4DataRepository.delete(visual4Data);
     }
 
-    public List<nhmonthly> getNhmonths(){
-        return nhmonthlyRepo.findAll();
-    }
-
-    public List<shmonthly> getShmonths(){
-        return shmonthlyRepo.findAll();
-    }
 }

@@ -1,46 +1,17 @@
-import {Bar, Line, Pie} from 'react-chartjs-2';
-import {Chart as ChartJS} from 'chart.js/auto';
+import { useState, useEffect } from 'react';
+import { Line } from 'react-chartjs-2';
 import './App.css';
-import {useState, useEffect} from 'react';
-import SectorChart from './Visual5/sectorChart.js';
-import DemoData from './Visual5/demoPiechart';
-import SubSectorChart from './Visual5/subSectorChart';
-import BrokenSectorChart from './Visual5/brokenSectorChart';
-import Visual1 from './Visual1/vis1chart';
-import Visual2 from './Visual1/vis1chartmonthly';
+import Visual4Chart from './Visual4Chart';
 
-
-
-
-
-
-/*function App() {
-  return (
-    <div className="App">
-      <h1>Sector Chart</h1>
-      <SectorChart />
-      <SubSectorChart />
-      <BrokenSectorChart />
-    </div>
-  );
-}*/
 function App() {
   return (
-    <div className="App" style={{ display: "flex" }}>
-      
-      <div>
-        <h2>Visual 1</h2>
-        <Visual1/>
+    <div className="App" style={{ display: 'flex' }}>
+      <div style={{ flex: 1 }}>
+        <h2>Visual 4</h2>
+        <Visual4Chart />
+      </div>
     </div>
-
-<div style ={{flex:1}}>
-
-<h2>Visual 2</h2>
-<Visual2/>
-</div>
-</div>
   );
 }
-
 
 export default App;
