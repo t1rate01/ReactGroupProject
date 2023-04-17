@@ -81,6 +81,7 @@ const options ={
     responsive: true,
     lineTension: 0,
     radius: 0,
+    borderWidth: 1,
     scales:{
         x:{
             type: "time",
