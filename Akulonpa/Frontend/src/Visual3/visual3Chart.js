@@ -30,39 +30,20 @@ const MyVisual3Chart = () => {
       .catch(error => console.log(error));
   }, []);
 
-  const getCarbonDataForChart = () => {
-    const filteredData = carbonData.filter(item => item !== null); // filter out null values
+  const getCombinedDataForChart = () => {
+    const filteredCarbonData = carbonData.filter(item => item !== null); // filter out null values
+    const filteredHumanData = humanData.filter(item => item !== null); // filter out null values
     const data = {
-      labels: filteredData.map(item => item?.time),
+      labels: filteredCarbonData.map(item => item?.time),
       datasets: [
         {
           label: "CO2 ppm",
           yAxisID: "left",
-          data: filteredData.map(item => item?.carbondioxide),
+          data: filteredCarbonData.map(item => item?.carbondioxide),
           borderColor: "#FF4136",
           backgroundColor: "rgba(255, 65, 54, 0.2)",
           fill: true,
-
         },
-      ],
-    };
-    if (showHumanActions) {
-      data.datasets.push({
-        label: "CO2 ppm with human actions",
-        yAxisID: "left",
-        data: carbonData.map(item => item.carbondioxide_un),
-        borderColor: "#F012BE",
-        backgroundColor: "rgba(240, 18, 190, 0.2)",
-        fill: true,
-      });
-    }
-    return data;
-  };
-
-  const getGastDataForChart = () => {
-    return {
-      labels: gastData.map(item => item.time),
-      datasets: [
         {
           label: "Surface temperature change",
           yAxisID: "right",
@@ -71,23 +52,22 @@ const MyVisual3Chart = () => {
           backgroundColor: "rgba(0, 116, 217, 0.2)",
           fill: false,
         },
-      ],
-    };
-  };
-
-  const getHumanDataForChart = () => {
-    return {
-      labels: humanData.map(item => item.time),
-      datasets: [
         {
           label: "Human actions",
-          data: humanData.map(item => item.action),
-          borderColor: "#3D9970",
-          backgroundColor: "rgba(61, 153, 112, 0.2)",
-          fill: false,
+          data: filteredHumanData.map(item => ({x: item?.time, y: item?.action})),
+          borderColor: "transparent",
+          backgroundColor: "transparent",
+          pointRadius: 5,
+          pointHoverRadius: 8,
+          pointHitRadius: 10,
+          pointBorderWidth: 2,
+          pointBackgroundColor: "rgba(61, 153, 112, 0.2)",
+          pointBorderColor: "#3D9970",
+          showLine: false,
         },
       ],
     };
+    return data;
   };
 
   const chartOptions = {
@@ -124,26 +104,18 @@ const MyVisual3Chart = () => {
   };
 
   return (
-    <div>
+    <><div className="chart-container">
       <div> Evolution of global temperature over the past two million years</div>
       <div>
         <button onClick={() => setShowHumanActions(!showHumanActions)}>
-          {showHumanActions ? "Hide" : "Show"} human actions
-        </button>
-      </div>
-      <div>
-        <Line data={getCarbonDataForChart()} options={chartOptions} />
-      </div>
-      <div>
-        <Line data={getGastDataForChart()} options={chartOptions} />
-      </div>
-      {showHumanActions && (
-        <div>
-          <Line data={getHumanDataForChart()} options={chartOptions} />
-        </div>
-      )}
-    </div>
-  );
-}
-        
-        export default MyVisual3Chart;
+          {showHumanActions ? "Hide" : "Show"} Human
+</button>
+</div>
+      <Line data={getCombinedDataForChart()} options={chartOptions} />
+    </div><div>
+      </div></>
+
+);
+};
+
+export default MyVisual3Chart;
