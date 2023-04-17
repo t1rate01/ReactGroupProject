@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface visual4Repository extends JpaRepository<visual4, Long> {
+public interface visual4Repository extends JpaRepository<Visual4Data, Long> {
 
     
 }
