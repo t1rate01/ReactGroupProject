@@ -32,7 +32,6 @@ const handleExitClick = (event) => {
     exitToMenu();
 }
 
-
  useEffect(() => {
     fetch("http://localhost:8080/v2annuals")
         .then(response => response.json())
@@ -89,7 +88,6 @@ const handleExitClick = (event) => {
     };
 
     let lineChartData = {
-        
         
         labels: annualChartData.map((item) => item.year),
         datasets: [

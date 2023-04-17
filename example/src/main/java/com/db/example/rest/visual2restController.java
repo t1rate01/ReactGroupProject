@@ -16,9 +16,10 @@ import com.db.example.visual2.maunaloa_monthly;
 @RestController
 public class visual2restController {
     
+    @Autowired
     visual2service Visual2Service;
 
-    @Autowired
+   
     public visual2restController(visual2service Visual2Service) {
         this.Visual2Service = Visual2Service;
     }
