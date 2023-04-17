@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Pie, getElementsAtEvent, getElementAtEvent } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import visual5styles from "./visual5styles.css";
+import "./visual5styles.css";
 
 
 const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana mainmenulta saatu funktio exitToMenu !!!
