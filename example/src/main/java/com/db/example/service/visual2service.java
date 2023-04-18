@@ -8,6 +8,12 @@ import com.db.example.visual2.annualRepository;
 import com.db.example.visual2.maunaloa_annual;
 import com.db.example.visual2.monthlyRepository;
 import com.db.example.visual2.maunaloa_monthly;
+import com.db.example.visual2.ice_age_1;
+import com.db.example.visual2.ice_age_2;
+import com.db.example.visual2.ice_age_3;
+import com.db.example.visual2.ice_age_1_Repository;
+import com.db.example.visual2.ice_age_2_Repository;
+import com.db.example.visual2.ice_age_3_Repository;
 
 @Service
 public class visual2service {
@@ -16,9 +22,40 @@ public class visual2service {
     annualRepository annualRepo;
     @Autowired
     monthlyRepository monthlyRepo;
+    @Autowired
+    ice_age_1_Repository ice_age_1_Repo;
+    @Autowired
+    ice_age_2_Repository ice_age_2_Repo;
+    @Autowired
+    ice_age_3_Repository ice_age_3_Repo;
+
 
     public visual2service() {
  
+    }
+
+    public List<ice_age_1> getIce_age_1s() {
+        return ice_age_1_Repo.findAll();
+    }
+
+    public void addIce_age_1(ice_age_1 ice_age_1) {
+        ice_age_1_Repo.save(ice_age_1);
+    }
+
+    public List<ice_age_2> getIce_age_2s() {
+        return ice_age_2_Repo.findAll();
+    }
+
+    public void addIce_age_2(ice_age_2 ice_age_2) {
+        ice_age_2_Repo.save(ice_age_2);
+    }
+
+    public List<ice_age_3> getIce_age_3s() {
+        return ice_age_3_Repo.findAll();
+    }
+
+    public void addIce_age_3(ice_age_3 ice_age_3) {
+        ice_age_3_Repo.save(ice_age_3);
     }
 
     public List<maunaloa_annual> getAnnuals() {

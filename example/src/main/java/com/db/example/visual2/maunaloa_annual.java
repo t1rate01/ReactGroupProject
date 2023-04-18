@@ -6,40 +6,42 @@ import jakarta.persistence.Id;
 @Entity
 public class maunaloa_annual {
     @Id
-    private String year;
-    private String mean;
+    private int year;
+    private Float mean;
+
 
     public maunaloa_annual() {
     }
 
-    public maunaloa_annual(String year, String mean) {
+    public maunaloa_annual(int year, Float mean) {
         this.year = year;
         this.mean = mean;
     }
 
-    public String getYear() {
+    public int getYear() {
         return this.year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public String getMean() {
+    public Float getMean() {
         return this.mean;
     }
 
-    public void setMean(String mean) {
+    public void setMean(Float mean) {
         this.mean = mean;
     }
 
-    public maunaloa_annual year(String year) {
+    public maunaloa_annual year(int year) {
         setYear(year);
         return this;
     }
 
-    public maunaloa_annual mean(String mean) {
+    public maunaloa_annual mean(Float mean) {
         setMean(mean);
         return this;
     }
+  
 }
