@@ -7,23 +7,23 @@ import jakarta.persistence.Id;
 @Entity
 public class Humanactivities {
     @Id
-    private Integer time;
+    private Integer mytime;
     private String event;
 
     public Humanactivities() {
     }
 
-    public Humanactivities(Integer time, String event) {
-        this.time = time;
+    public Humanactivities(Integer mytime, String event) {
+        this.mytime = mytime;
         this.event = event;
     }
 
     public Integer getTime() {
-        return this.time;
+        return this.mytime;
     }
 
-    public void setTime(Integer time) {
-        this.time = time;
+    public void setTime(Integer mytime) {
+        this.mytime = mytime;
     }
 
     public String getEvent() {
@@ -34,8 +34,8 @@ public class Humanactivities {
         this.event = event;
     }
 
-    public Humanactivities time(Integer time) {
-        setTime(time);
+    public Humanactivities mytime(Integer mytime) {
+        setTime(mytime);
         return this;
     }
 

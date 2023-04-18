@@ -7,24 +7,24 @@ import jakarta.persistence.Id;
 @Entity
 public class Gast {
     @Id
-    private Integer time;
+    private Integer mytime;
     @Column(name = "50")
     private Double fifty;
 
     public Gast() {
     }
 
-    public Gast(Integer time, Double fifty) {
-        this.time = time;
+    public Gast(Integer mytime, Double fifty) {
+        this.mytime = mytime;
         this.fifty = fifty;
     }
 
     public Integer getTime() {
-        return this.time;
+        return this.mytime;
     }
 
-    public void setTime(Integer time) {
-        this.time = time;
+    public void setTime(Integer mytime) {
+        this.mytime = mytime;
     }
 
     public double getFifty() {
@@ -35,8 +35,8 @@ public class Gast {
         this.fifty = fifty;
     }
 
-    public Gast time(Integer time) {
-        setTime(time);
+    public Gast mytime(Integer mytime) {
+        setTime(mytime);
         return this;
     }
 

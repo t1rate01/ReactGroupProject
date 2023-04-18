@@ -21,18 +21,7 @@ import MyVisual3Chart from './Visual3/visual3Chart';
 function App() {
   return (
     <div className="App" style={{ display: "flex" }}>
-      <div style={{ flex: 1 }}>
-        <h2>Sector Chart</h2>
-        <SectorChart />
-      </div>
-      <div style={{ flex: 1 }}>
-        <h2>Sub-Sector Chart</h2>
-        <SubSectorChart />
-      </div>
-      <div style={{ flex: 1 }}>
-        <h2>Broken Sector Chart</h2>
-        <BrokenSectorChart />
-      </div>
+      
       <div style={{ flex: 1 }}>
         <MyVisual3Chart />
       </div>
