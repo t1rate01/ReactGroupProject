@@ -7,22 +7,22 @@ import jakarta.persistence.Id;
 public class reconstruction {
     
     @Id
-    private int year;
+    private String year;
     private double value;
 
     public reconstruction() {
     }
 
-    public reconstruction(int year, double value) {
+    public reconstruction(String year, double value) {
         this.year = year;
         this.value = value;
     }
 
-    public int getYear() {
+    public String getYear() {
         return this.year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
