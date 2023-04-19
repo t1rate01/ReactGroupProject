@@ -2,6 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import SectorChart from '../Visual5/sectorChart.js';
 import Visual2 from '../Visual2/visual2Chart.js';
+import Visual1 from '../Visual1/visual1.js';
 
 
 // DEMOCHARTIT
@@ -39,7 +40,9 @@ const MainMenu = () => {
             )
         case 4:
             return (
-                setMenuSwitch(null)
+                <div>
+                    <Visual1 exitToMenu= {() => setMenuSwitch(null)}/>
+                </div>
             )
         case 5: 
             return (
@@ -55,6 +58,7 @@ const MainMenu = () => {
                         <button onClick={() => menuSwitchHandler(5)}>Visual 5</button>
                         <button onClick={() => menuSwitchHandler(3)}>Demo Chart</button>
                         <button onClick={() => menuSwitchHandler(2)}>Visual2 Chart</button>
+                        <button onClick={() => menuSwitchHandler(4)}>Visual1 Chart</button>
                     </div>
                 )
     }
