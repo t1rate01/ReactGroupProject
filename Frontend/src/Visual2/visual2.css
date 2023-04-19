@@ -1,0 +1,60 @@
+
+.description {
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 1.1;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  }
+  
+  .chart {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
+    margin : 0 auto;
+    padding: 0px;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color:  #FFEFC1;
+  }
+
+  .chart #exit {
+    margin: 0 auto;
+    padding: 3px;
+    border-radius: 5px;
+    background-color: #f44336;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  }
+
+p {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 14.5px;
+    line-height: 1.2;
+}
+
+#link {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 12px;
+    padding: 5px;
+    line-height: 1.2;
+}
+
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    margin: auto;
+    background: rgb(255, 255, 255);
+    padding: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    height : 500px;
+    width : 800px;
+    overflow: auto;
+  }
+ 

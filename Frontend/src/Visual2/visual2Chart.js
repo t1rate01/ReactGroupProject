@@ -8,6 +8,9 @@ LineElement,
 Title,
 Tooltip,
 Legend,} from 'chart.js';
+import Popup from 'reactjs-popup';
+import {DateTime} from 'luxon';
+import './visual2.css';
 
 ChartJS.register(
 CategoryScale,
@@ -26,212 +29,180 @@ const Visual2 = ({exitToMenu}) => {
     const [iceAge1Data, setIceAge1Data] = useState([]);
     const [iceAge2Data, setIceAge2Data] = useState([]);
     const [iceAge3Data, setIceAge3Data] = useState([]);
-    const colourList = [ "#FFC300", "#FF5733", "#C70039", "#900C3F", "#581845", "#A93226", "#DC7633", "#F39C12", "#F7DC6F", "#F0B27A", "#BA4A00", "#7B241C", "#D2B4DE", "#9B59B6", "#76448A", "#6C3483", "#1F618D", "#148F77", "#2ECC71", "#239B56"];
 
+    function decimalYearConverter(decimalYear) {   // muuttaa desimaalivuoden joka monthlychartdatalla luxon DateTimeksi
+        let year = Math.floor(decimalYear);
+        let dayOfYear = Math.round((decimalYear - year) * 365);
+        let date = DateTime.fromObject({ year, ordinal: dayOfYear });
+        return date;
+      }
+      
+      function yearToDate(year){            // muuttaa vuoden joka annualchartdatalla ja ice ageilla luxon DateTimeksi pvmäärällä 1.1
+        let dayofYear = 1;
+        let date = DateTime.fromObject({
+          year, ordinal: dayofYear
+        })
+        return date;
+      }
+      
 
-
-const handleExitClick = (event) => {
+const handleExitClick = (event) => { //   Mainmenulta perityn exitfunction kutsu
     console.log("handleExitClick");
     exitToMenu();
 }
 
- useEffect(() => {
+ useEffect(() => {   // Kaiken datan haku ja datan muokkaus x ja y arvoiksi, x arvojen muutto ISO muotoiseksi ja järjestys päivämäärän mukaan
+    Promise.all([
     fetch("http://localhost:8080/v2annuals")
         .then(response => response.json())
         .then(result => {
-            let chartData = result.map((item) => ({ x: item.year, y: item.mean }));
+            let chartData = result.map((item) => ({ x: yearToDate(item.year).toISODate(), y: item.mean }));
+            chartData.sort((a, b) => DateTime.fromISO(a.x) - DateTime.fromISO(b.x));
             setAnnualChartData(chartData);
         }   
-        )
-        .catch(error => console.log(error));
+        ),
+    fetch("http://localhost:8080/v2monthlys")
+        .then(response => response.json())
+        .then(result => {
+            let chartData = result.map((item) => ({ x: decimalYearConverter(item.decimalyear).toISODate(), y: item.average }));
+            chartData.sort((a, b) => DateTime.fromISO(a.x) - DateTime.fromISO(b.x));
+            setMonthlyChartData(chartData);
+        }
+        ),
+    fetch("http://localhost:8080/v2ice_age_1")
+        .then(response => response.json())
+        .then(result => {
+            let chartData = result.map((item) => ({ x: yearToDate(item.year).toISODate(), y: item.co2 }));
+            chartData.sort((a, b) => DateTime.fromISO(a.x) - DateTime.fromISO(b.x));
+            setIceAge1Data(chartData);
+        }
+        ),
+    fetch("http://localhost:8080/v2ice_age_2")
+        .then(response => response.json())
+        .then(result => {
+            let chartData = result.map((item) => ({ x: yearToDate(item.year).toISODate(), y: item.co2 }));
+            chartData.sort((a, b) => DateTime.fromISO(a.x) - DateTime.fromISO(b.x));
+            setIceAge2Data(chartData);
+        }
+        ),
+    fetch("http://localhost:8080/v2ice_age_3")
+        .then(response => response.json())
+        .then(result => {
+            let chartData = result.map((item) => ({ x: yearToDate(item.year).toISODate(), y: item.co2 }));
+            chartData.sort((a, b) => DateTime.fromISO(a.x) - DateTime.fromISO(b.x));
+            setIceAge3Data(chartData);
+        }
+        ),
+    ])
+    .catch(error => console.log(error));
 }, []);
 
-    useEffect(() => {
-        fetch("http://localhost:8080/v2monthlys")
-            .then(response => response.json())
-            .then(result => {
-                let chartData = result.map((item) => ({ x: item.decimalyear, y: item.average }));
-                setMonthlyChartData(chartData);
-            }   
-            )
-            .catch(error => console.log(error));
-    }
-    , []);
-
-    useEffect(() => {
-        fetch("http://localhost:8080/v2ice_age_1")
-            .then(response => response.json())
-            .then(result => {
-                result.sort((a, b) => a.year - b.year);
-                let chartData = result.map((item) => ({ x: item.year, y: item.co2 }));
-                setIceAge1Data(chartData);
-            }
-            )
-            .catch(error => console.log(error));
-    }, []);
-
-    useEffect(() => {
-        fetch("http://localhost:8080/v2ice_age_2")
-            .then(response => response.json())
-            .then(result => {
-                result.sort((a, b) => a.year - b.year);
-                let chartData = result.map((item) => ({ x: item.year, y: item.co2 }));
-                setIceAge2Data(chartData);
-            }
-            )
-            .catch(error => console.log(error));
-    }, []);
-
-    useEffect(() => {
-        fetch("http://localhost:8080/v2ice_age_3")
-            .then(response => response.json())
-            .then(result => {
-                result.sort((a, b) => a.year - b.year);
-                let chartData = result.map((item) => ({ x: item.year, y: item.co2 }));
-                setIceAge3Data(chartData);
-            }
-            )
-            .catch(error => console.log(error));
-    }, []);
-      
+const popUpText = (<div id='popup'>    
+    <h1>About annual and monthly CO2 lines</h1>
+    <p>NOAA's Earth System Research Laboratory (ESRL) Global Monitoring Division (GMD) measures atmospheric carbon dioxide (CO2) concentrations from several locations around the world. These measurements are critical for understanding the long-term trends and changes in the Earth's climate system, and help inform policy decisions related to mitigating and adapting to climate change. The GMD's data and research also provide valuable insights into the sources and sinks of CO2, and how different regions and ecosystems are affected by climate change. Learn more about the GMD's measurements and research at the link below.</p>
+    <p id="link"><a href="https://gml.noaa.gov/ccgg/about/co2_measurements.html">About monthly and annual data</a></p>
     
-    const xMin = Math.min(
-        ...[
-          ...iceAge1Data.map(item => item.x),
-          ...iceAge2Data.map(item => item.x),
-          ...iceAge3Data.map(item => item.x),
-          ...monthlyChartData.map(item => item.x),
-          ...annualChartData.map(item => item.x),
-        ]
-      );
-      
-      const xMax = Math.max(
-        ...[
-          ...iceAge1Data.map(item => item.x),
-          ...iceAge2Data.map(item => item.x),
-          ...iceAge3Data.map(item => item.x),
-          ...monthlyChartData.map(item => item.x),
-          ...annualChartData.map(item => item.x),
-        ]
-      );
-    const Options = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            scales: {
-                x: {
-                min: xMin,
-                max: xMax,
-                },
-                y: {
-                  display: true,
-                  min: Math.min(...[
-                    ...iceAge1Data.map(item => item.y),
-                    ...iceAge2Data.map(item => item.y),
-                    ...iceAge3Data.map(item => item.y),
-                    ...monthlyChartData.map(item => item.y),
-                    ...annualChartData.map(item => item.y),
-                  ].filter(y => y)),
-                  max: Math.max(...[
-                    ...iceAge1Data.map(item => item.y),
-                    ...iceAge2Data.map(item => item.y),
-                    ...iceAge3Data.map(item => item.y),
-                    ...monthlyChartData.map(item => item.y),
-                    ...annualChartData.map(item => item.y),
-                  ].filter(y => y)),
-                },
-              },
-              
-            title: {
-                display: true,
-                text: '******change later********',
-            },
-            grid: {
-                drawOnChartArea: true,
-            },
+    <h1>About Ice core lines</h1>
+    <p>The line chart shows the concentration of carbon dioxide (CO2) in the atmosphere over time, as measured at the Law Dome ice core in Antarctica. The data is presented in several different ways, including monthly and annual averages, as well as measurements taken during previous ice ages. The chart illustrates how CO2 levels have fluctuated over thousands of years, with spikes during periods of increased volcanic activity and drops during periods of glaciation. In recent years, however, the chart shows a significant and unprecedented increase in CO2 levels, largely due to human activities such as burning fossil fuels.</p>
+    <p id="link"><a href="https://cdiac.ess-dive.lbl.gov/trends/co2/lawdome.html">About ice core data</a></p>
+    
+    <h2>Links to measurement data</h2>
+    <p id="link"><a href="https://gml.noaa.gov/ccgg/trends/data.html">Monthly and Annual datasets</a> <a href="https://cdiac.ess-dive.lbl.gov/ftp/trends/co2/lawdome.combined.dat">Ice core datasets</a></p>
+    </div>);
+
+// popuptextin sisältö
+
+const allData = [...iceAge1Data, ...iceAge2Data, ...iceAge3Data, ...monthlyChartData, ...annualChartData];  // kaikki data yhteen taulukkoon
+let dates = [...new Set(allData.map(item => item.x))].sort((a, b) => a.localeCompare(b)); // jotta saa kaikki päivämäärät yhteen taulukkoon ja järjestykseen
+//const firstYear = dates[0];     // Todnäk turhia muuttujia, haettu raja arvojen muokkaukseen
+// const lastYear =   dates[dates.length - 1];
+
+let Options = {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+        tooltip: {
+            enabled: true,
+            intersect: false,
+            mode: 'index',
+            position: 'nearest',
+            callbacks: {    // hover efektin teksti ja parsinta
+                label: function(context) {
+                    let label = context.dataset.label || '';
+                    if (label) {
+                        label += ': ';    // väliin : 
+                    }
+                    if (context.parsed.y !== null) {
+                        label += context.parsed.y;  // ja perään y arvo
+                    }
+                    return label;
+                }
+            }
         },
-    };
-
-    const firstYear = Math.min(
-        ...[
-          ...iceAge1Data.map((item) => item.x),
-          ...iceAge2Data.map((item) => item.x),
-          ...iceAge3Data.map((item) => item.x),
-          ...monthlyChartData.map((item) => item.x),
-          ...annualChartData.map((item) => item.x),
-        ]
-      );
-      
-      const lastYear = Math.max(
-        ...[
-          ...iceAge1Data.map((item) => item.x),
-          ...iceAge2Data.map((item) => item.x),
-          ...iceAge3Data.map((item) => item.x),
-          ...monthlyChartData.map((item) => item.x),
-          ...annualChartData.map((item) => item.x),
-        ]
-      );
-
-    /*  const chartlabels = [];
-for (let i = firstYear; i <= lastYear; i++) {
-    i = i.toFixed(4);
-  chartlabels.push(i);
-}
-*/
-      
-            const chartlabels = [];
-for (let i = firstYear; i <= lastYear; i++) {
-    if (i < 1010){
-    parseFloat(i);
-  chartlabels.push(i);
-    }
-    if (i > 1800){
-    parseFloat(i);
-    chartlabels.push(i);
-    }
-}     // TÄMÄ CHARTLABELS EI TODNÄK OLE HYVÄ -- TEE KLIKKAUKSEEN REAGOIVA ICE AGE 3 NAPPI JA MUUTA SEN MUKAAN CHARTLABELSIN ALKUARVOJA, JOTTA ZOOMAUTUU KIVASTI
-      // MONTHLYCHARTDATA EDELLEEN VITUILLAAN
-    let lineChartData = {
-        labels: chartlabels,
+    scales: {
+        x: {
+            type: 'time',
+            time: {
+                unit: 'year', 
+        },},
+        y: {
+            display: true,
+            min: Math.min(...[...allData.map(item => item.y)].filter(y => y)),
+            max: Math.max(...[...allData.map(item => item.y)].filter(y => y)),
+        }
+    },
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Visual 2',
+      },
+      grid: {
+        drawOnChartArea: true,
+      },
+    }, 
+  };
+  
+    let lineChartData = {  // linecharttiin menevä data, määrätään x ja y arvot jotka kaikissa datoissa yhtenäisiä
+        labels: dates,
         datasets: [
             {
-                label: 'Monthly Chart*******************',
+                label: 'CO2 Monthly',
                 showLine: true,
-                data: monthlyChartData.map(item => ({x: Number(item.x), y: item.y})),
+                data: monthlyChartData.map(item => ({x: item.x, y: item.y})),
                 borderColor: 'red',
                 pointRadius: 1,
 
             },
             {
-                label: 'Annual Chart**************',
+                label: 'CO2 Annually',
                 showLine: true,
-                data: annualChartData ,
+                data: annualChartData.map(item => ({x: item.x, y: item.y})),
                 borderColor: 'blue',
                 pointRadius: 1,
             },
             {
-                label: 'Ice Age 1',
+                label: 'Ice core 1',            // Ice coret defaulttina piilotettu
                 showLine: true,
                 hidden: true,
-                data: iceAge1Data,
+                data: iceAge1Data.map(item => ({x: item.x, y: item.y})),
                 borderColor: 'green',
                 pointRadius: 1,
             },
             {
-                label: 'Ice Age 2',
+                label: 'Ice core 2',
                 showLine: true,
                 hidden: true,
-                data: iceAge2Data,
+                data: iceAge2Data.map(item => ({x: item.x, y: item.y})),
                 borderColor: 'yellow',
                 pointRadius: 1,
             },
             {
-                label: 'Ice Age 3',
+                label: 'Ice core 3',
                 showLine: true,
                 hidden: true,
-                data: iceAge3Data,
+                data: iceAge3Data.map(item => ({x: item.x, y: item.y})),
                 borderColor: 'orange',
                 pointRadius: 1,
             },
@@ -239,25 +210,26 @@ for (let i = firstYear; i <= lastYear; i++) {
         ],
     };
 
-    function logs (){
+   /* function logs (){
         console.log("iceAge1Data", iceAge1Data);
         console.log("iceAge2Data", iceAge2Data);
         console.log("iceAge3Data", iceAge3Data);
         console.log("monthlyChartData", monthlyChartData);
         console.log("annualChartData", annualChartData);
-        console.log("firstYear", firstYear);
-        console.log("Map item x ", iceAge1Data.map((item) => item.x));
-        console.log("Map item y ", iceAge1Data.map((item) => item.y));
-        console.log("x min " , xMin);
-        console.log("x max " , xMax);
-    }
 
+        console.log("Dates ", dates);
+    }*/
+    
+    //logs();
 
    return (
-        logs(),
         <div>
+            <div className="chart">
             <Line data={lineChartData} options={Options} />
-            <button onClick={handleExitClick}>Exit</button>
+            <button id='exit' onClick={handleExitClick}>Exit</button><Popup trigger={<button id="exit">Info</button>} position="right center">
+                <div>{popUpText}</div>
+            </Popup>
+            </div>
         </div>
     );
 
