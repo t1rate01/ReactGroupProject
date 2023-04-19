@@ -116,9 +116,10 @@ const allData = [...iceAge1Data, ...iceAge2Data, ...iceAge3Data, ...monthlyChart
 let dates = [...new Set(allData.map(item => item.x))].sort((a, b) => a.localeCompare(b)); // jotta saa kaikki päivämäärät yhteen taulukkoon ja järjestykseen
 //const firstYear = dates[0];     // Todnäk turhia muuttujia, haettu raja arvojen muokkaukseen
 // const lastYear =   dates[dates.length - 1];
-
 let Options = {
     responsive: true,
+    borderWidth: 1,
+    radius: 0,
     maintainAspectRatio: true,
     plugins: {
         tooltip: {
@@ -172,15 +173,13 @@ let Options = {
                 showLine: true,
                 data: monthlyChartData.map(item => ({x: item.x, y: item.y})),
                 borderColor: 'red',
-                pointRadius: 1,
-
             },
             {
                 label: 'CO2 Annually',
                 showLine: true,
                 data: annualChartData.map(item => ({x: item.x, y: item.y})),
                 borderColor: 'blue',
-                pointRadius: 1,
+               
             },
             {
                 label: 'Ice core 1',            // Ice coret defaulttina piilotettu
@@ -188,7 +187,7 @@ let Options = {
                 hidden: true,
                 data: iceAge1Data.map(item => ({x: item.x, y: item.y})),
                 borderColor: 'green',
-                pointRadius: 1,
+                
             },
             {
                 label: 'Ice core 2',
@@ -196,20 +195,16 @@ let Options = {
                 hidden: true,
                 data: iceAge2Data.map(item => ({x: item.x, y: item.y})),
                 borderColor: 'yellow',
-                pointRadius: 1,
             },
             {
                 label: 'Ice core 3',
                 showLine: true,
                 hidden: true,
                 data: iceAge3Data.map(item => ({x: item.x, y: item.y})),
-                borderColor: 'orange',
-                pointRadius: 1,
-            },
-       
+                borderColor: 'orange',         
+            },   
         ],
     };
-
    /* function logs (){
         console.log("iceAge1Data", iceAge1Data);
         console.log("iceAge2Data", iceAge2Data);
@@ -219,9 +214,7 @@ let Options = {
 
         console.log("Dates ", dates);
     }*/
-    
     //logs();
-
    return (
         <div>
             <div className="chart">
@@ -232,8 +225,6 @@ let Options = {
             </div>
         </div>
     );
-
-     
     }
 
  export default Visual2;
