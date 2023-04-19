@@ -3,7 +3,7 @@ import { Chart } from "chart.js";
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-luxon";
 
-const Visual1Chart = () =>{ //haetaan käyrien tiedot ja muutetaan jsoniksi
+const Visual1Chart = ({exitToMenu}) =>{ //haetaan käyrien tiedot ja muutetaan jsoniksi
     const [visual1Data, setVisual1Data] = useState([]);
 
     useEffect(()=>{
@@ -12,6 +12,7 @@ const Visual1Chart = () =>{ //haetaan käyrien tiedot ja muutetaan jsoniksi
         .then(result=>{
             let chartData = result.map((item)=>({x: item.year, y: item.anomaly}));
             setVisual1Data(chartData);
+            console.log("globalannuual", chartData)
 
         })
         .catch(error=>console.log(error));
@@ -57,13 +58,20 @@ const [recoData, setRecoData] = useState([]);
     
 },[]);
 
+const handleExitClick = (event) => { //   Mainmenulta perityn exitfunction kutsu
+    console.log("handleExitClick");
+    exitToMenu();
+}
+
 let chartData ={
-   
     //labels: labels, //tässä annan x-akselin tiedot, eli vuodet 1850-2021
     datasets: [
         {
             label: "Global annual anomalies",
             data: visual1Data,
+            parsing:{
+                xAxisKey: "x"
+            },
             borderColor:[
                 "blue"
             ]
@@ -71,6 +79,10 @@ let chartData ={
         {
             label:"Northern annual anomalies",
             data: nhannual1Data,
+            parsing: {
+                xAxisKey: "x",
+                yAxisKey: "y"
+            },
             borderColor: [
                 "yellow"
             ]
@@ -78,6 +90,10 @@ let chartData ={
         {
             label:"Southern annual anomalies",
             data: shannual1Data,
+            parsing:{
+                xAxisKey: "x",
+                yAxisKey: "y"
+            },
             borderColor: [
                 "red"
             ]
@@ -86,10 +102,21 @@ let chartData ={
         {
             label:"Reconstruction",
             data: recoData,
+            parsing:{
+                xAxisKey: "x",
+                yAxisKey: "y"
+            },
             hidden: true, //defaulttina poissa näkyvistä
             borderColor: [
                 "black"
             ],
+            
+            scales:{
+                y:{
+                    min: "1",
+                    max: "1900"
+                }
+            }
             
             
             
@@ -97,16 +124,20 @@ let chartData ={
     ]
 };
 
-const handleClick = (e) =>{ //tässä yritin kötöstellä jotain että x-akselin data muuuttuisi kun reconstruction data näkyvillä
-   
-    chartData.update();
-}
+//const allData = [...visual1Data, ...nhannual1Data, ...shannual1Data, ...recoData];  // kaikki data yhteen taulukkoon
+//let dates = [...new Set(allData.map(item => item.x))].sort((a, b) => a.localeCompare(b));
 
 const options ={
     responsive: true,
     lineTension: 0,
     radius: 0,
     borderWidth: 1,
+    plugins:{
+        title:{
+            display: true,
+            text: "Visualization 1"
+        }
+    },
     scales:{
         x:{
             type: "time",
