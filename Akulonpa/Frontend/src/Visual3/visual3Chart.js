@@ -37,8 +37,8 @@ const MyVisual3Chart = () => {
       labels: gastData.map(item => item.time),
       datasets: [
         {
-          label: "CO2 ppm",
-          yAxisID: "left-axis",
+          label: "Carbon data",
+          yAxisID: "co2",
           data: carbonData.map(item => item.carbondioxide),
           borderColor: "#FF4136",
           backgroundColor: "rgba(255, 65, 54, 0.2)",
@@ -48,22 +48,10 @@ const MyVisual3Chart = () => {
           pointHitRadius: 0,
           pointBorderWidth: 0,
         },
+      
         {
-          label: "Human actions",
-          data: humanData.map(item =>  item.event),
-          borderColor: "transparent",
-          backgroundColor: "transparent",
-          pointRadius: 10,
-          pointHoverRadius: 10,
-          pointHitRadius: 10,
-          pointBorderWidth: 10,
-          pointBackgroundColor: "rgba(61, 153, 112, 0.2)",
-          pointBorderColor: "#3D9970",
-          pointStyle: "circle",
-        },
-        {
-          label: "Surface temperature change",
-          yAxisID: "right-axis",
+          label: "Global data",
+          yAxisID: "temp",
           data: gastData.map(item => item.fifty),
           borderColor: "#0074D9",
           backgroundColor: "rgba(0, 116, 217, 0.2)",
@@ -77,59 +65,14 @@ const MyVisual3Chart = () => {
     };
     return data;
   };
-
-  useEffect(() => {
-    Chart.register({
-      id: "left-axis",
-      type: "linear",
-      position: "left",
-      gridLines: {
-        drawOnChartArea: false,
-      },
-      ticks: {
-        beginAtZero: true,
-      },
-      scaleLabel: {
-        display: true,
-        labelString: "CO2 ppm",
-      },
-    });
-
-    Chart.register({
-      id: "right-axis",
-      type: "linear",
-      position: "right",
-      gridLines: {
-        drawOnChartArea: false,
-      },
-      ticks: {
-        beginAtZero: true,
-      },
-      scaleLabel: {
-        display: true,
-        labelString: "Surface temperature change",
-      },
-    });
-    Chart.register({
-      id: "category",
-      type: "category",
-      position: "bottom",
-      display: false,
-      ticks: {
-        autoSkip: false,
-        maxRotation: 90,
-        minRotation: 90,
-        padding: 5,
-      },
-    });
-    }, []);const options = {
+    const options = {
       plugins: {
       legend: {
       position: "top",
       },
       title: {
       display: true,
-      text: "Climate Change Visualization",
+      text: "Evolution of global temperature over the past two million years",
       font: {
       size: 20,
       weight: "bold",
@@ -137,38 +80,39 @@ const MyVisual3Chart = () => {
       },
       },
       scales: {
-      yAxes: [
-      {
-      id: "left-axis",
-      type: "linear",
-      position: "left",
+      y:{
+        beginAtZero: true,
+        type:"linear",
+        position:"left",
+        ticks:{
+          display: false
+        }
       },
-      {
-      id: "right-axis",
-      type: "linear",
-      position: "right",
+      temp:{
+        beginAtZero: true,
+        type:"linear",
+        position:"right"
       },
-      ],
-      xAxes: [
-      {
-      id: "category",
-      type: "category",
-      position: "bottom",
-      },
-      ],
+      x:{
+          reverse: true,
+      }
       },
       };
       
       return (
       <>
+      <div className="chart-container">
       <Line data={getCombinedDataForChart()} options={options} />
       <div style={{ marginTop: "20px" }}>
       <button onClick={() => setShowHumanActions(!showHumanActions)}>
       {showHumanActions ? "Hide" : "Show"} human actions
       </button>
+      <div><h4>Here is a line chart about global temperature and CO2 measurements from over 2 million years. There are also some human events that are connected to eather of those things and you can view them by pressing the button above.Below is a link to the source of the info in this chart.</h4>
+      <h4>https://moodle.oulu.fi/pluginfile.php/1617782/course/section/235812/Climate%20Data%20Sources.pdf</h4></div>
       </div>
+      </div >
       {showHumanActions && (
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: "20px", width: "800px", height: "600px", overflow: "auto" }}>
       <h3>Human Actions</h3>
       <ul>
       {humanData.map((item, index) => (
@@ -176,6 +120,7 @@ const MyVisual3Chart = () => {
       ))}
       </ul>
       </div>
+      
       )}
       </>
       );
