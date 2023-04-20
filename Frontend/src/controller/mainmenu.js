@@ -2,6 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import SectorChart from '../Visual5/sectorChart.js';
 import Visual2 from '../Visual2/visual2Chart.js';
+import Visual1 from '../Visual1/visual1.js';
 
 
 // DEMOCHARTIT
@@ -41,11 +42,7 @@ const MainMenu = () => {
             )
         case 4:
             return (
-<<<<<<< Updated upstream
-                setMenuSwitch(null)
-=======
                setMenuSwitch(null)
->>>>>>> Stashed changes
             )
         case 5: 
             return (
@@ -61,10 +58,7 @@ const MainMenu = () => {
                         <button onClick={() => menuSwitchHandler(5)}>Visual 5</button>
                         <button onClick={() => menuSwitchHandler(3)}>Demo Chart</button>
                         <button onClick={() => menuSwitchHandler(2)}>Visual2 Chart</button>
-<<<<<<< Updated upstream
-=======
                         <button onClick={() => menuSwitchHandler(1)}>Visual1 Chart</button>
->>>>>>> Stashed changes
                     </div>
                 )
     }
