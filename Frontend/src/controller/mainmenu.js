@@ -24,7 +24,9 @@ const MainMenu = () => {
             )
         case 1:     // exittomenu antaa kutsuttavan funktion sectorchartille, lisätään chartin esittelyyn ks ****** sectorChartissa
             return (
-                setMenuSwitch(null)
+                <div>
+                <Visual1 exitToMenu= {() => setMenuSwitch(null)}/>
+            </div>
             )
         case 2:   
             return (
@@ -40,9 +42,7 @@ const MainMenu = () => {
             )
         case 4:
             return (
-                <div>
-                    <Visual1 exitToMenu= {() => setMenuSwitch(null)}/>
-                </div>
+               setMenuSwitch(null)
             )
         case 5: 
             return (
@@ -58,7 +58,7 @@ const MainMenu = () => {
                         <button onClick={() => menuSwitchHandler(5)}>Visual 5</button>
                         <button onClick={() => menuSwitchHandler(3)}>Demo Chart</button>
                         <button onClick={() => menuSwitchHandler(2)}>Visual2 Chart</button>
-                        <button onClick={() => menuSwitchHandler(4)}>Visual1 Chart</button>
+                        <button onClick={() => menuSwitchHandler(1)}>Visual1 Chart</button>
                     </div>
                 )
     }
