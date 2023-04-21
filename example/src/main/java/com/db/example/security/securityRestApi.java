@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -28,7 +29,7 @@ public class securityRestApi {
     }
 
 
-    @PostMapping("/login")
+    @PostMapping("/users/login")
     public ResponseEntity<String> login(@RequestHeader("Authorization") String basicAuth) {
         if(basicAuth != null && basicAuth.startsWith("Basic")){
         String credentials = basicAuth.split(" ")[1];   // basic encoodattu stringi alkaa "Basic " ja perässä encoodattu setti
@@ -48,7 +49,7 @@ public class securityRestApi {
         return new ResponseEntity<>("Wrong/Missing username or password", HttpStatus.UNAUTHORIZED);
     }
 
-    @GetMapping("/private")
+    @GetMapping("/users/private")
     public ResponseEntity<String> getPrivateData(@RequestHeader("Authorization") String bearer){
         if (bearer != null){
             if (bearer.startsWith("Bearer")){
@@ -60,5 +61,19 @@ public class securityRestApi {
         }}
     return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
     }
-    
+
+    @DeleteMapping("/users/")
+    public ResponseEntity<String> deleteUser(@RequestHeader("Authorization") String bearer){
+        if (bearer != null){
+            if (bearer.startsWith("Bearer")){
+                String token = bearer.split(" ")[1];  // toinen tapa pilkkoa
+                String username = secService.validateToken(token);
+                if (username != null){
+                    secService.deleteUser(username);
+                    return new ResponseEntity<>("User "+username+" deleted", HttpStatus.OK);
+                }
+            }}
+        return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
+}
+
 }

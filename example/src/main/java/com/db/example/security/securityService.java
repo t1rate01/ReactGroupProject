@@ -3,6 +3,8 @@ package com.db.example.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+
 import java.util.Date;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -19,6 +21,7 @@ public class securityService {
 
     @Value("${jwt.secret}")
     private String jwtKey;
+    
 
     // UUSI KÄYTTÄJÄ
     public users register(String username, String password) {
@@ -67,4 +70,15 @@ public class securityService {
        }
          return null;
     }
+
+    public String deleteUser(String username) {
+        try {
+            userRepo.deleteById(username);
+            return "User deleted";
+        }
+        catch (Exception e) {
+            //virhe kiinni
+        }
+        return "User not found";
+}
 }

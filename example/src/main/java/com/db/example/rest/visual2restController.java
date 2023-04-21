@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.db.example.security.securityService;
 import com.db.example.service.visual2service;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.db.example.visual2.maunaloa_annual;
 import com.db.example.visual2.maunaloa_monthly;
@@ -15,23 +17,26 @@ import com.db.example.visual2.ice_age_1;
 import com.db.example.visual2.ice_age_2;
 import com.db.example.visual2.ice_age_3;
 
+
 @CrossOrigin
 @RestController
 public class visual2restController {
     
     @Autowired
     visual2service Visual2Service;
+    @Autowired
+    securityService secService;
    
-
    
     public visual2restController(visual2service Visual2Service) {
         this.Visual2Service = Visual2Service;
     }
 
-     // REST MAPPAUKSET
-
+   // REST MAPPAUKSET
+    
     @GetMapping("/v2annuals")
     public List<maunaloa_annual> getAnnuals(){
+        
         System.out.println("@Get annuals");
         return Visual2Service.getAnnuals();
     }
