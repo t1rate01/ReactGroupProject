@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Pie } from "react-chartjs-2";
 
-const demoSectors = [
+const demoSectors =  [
   { sector: "sector1", share: "200" },
   { sector: "sector2", share: "100" },
   { sector: "sector3", share: "50" },
   { sector: "sector4", share: "25" },
 ];
 
-function DemoData() {
+const DemoData = ({ exitToMenu }) => {
   const [demoChartData, setDemoChartData] = useState({
     labels: demoSectors.map((d) => d.sector),
     datasets: [
@@ -20,10 +20,15 @@ function DemoData() {
     ],
   });
 
+  const exitClick = (e) => {
+    exitToMenu();
+  };
+
   return (
     <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
       <div>
         <Pie data={demoChartData} width={500} height={500} />
+        <button onClick={exitClick}>Exit</button>
       </div>
     </div>
   );
