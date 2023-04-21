@@ -1,10 +1,6 @@
-# Ryhmä 3
-
-#### Github tunnukset ja jäsenet:
+# R3-Projekti
 
 t1rate01 = Tero Rantanen  
 saattaja = Janita Kaikkonen  
-Akulonpa = Alisa Kulonpää  
-Cerveku = Art Karimäki  
-
-> TVT22KMO
+akulonpa = Alisa Kulonpää  
+cerveku = Art Karimäki  
