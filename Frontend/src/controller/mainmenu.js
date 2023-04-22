@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import SectorChart from '../Visual5/sectorChart.js';
 import Visual2 from '../Visual2/visual2Chart.js';
 import Visual1 from '../Visual1/visual1.js';
+import Visual3 from '../Visual3/visual3Chart.js';
 
 
 // DEMOCHARTIT
@@ -24,7 +25,9 @@ const MainMenu = () => {
             )
         case 1:     // exittomenu antaa kutsuttavan funktion sectorchartille, lisätään chartin esittelyyn ks ****** sectorChartissa
             return (
-                setMenuSwitch(null)
+                <div>
+                <Visual1 exitToMenu= {() => setMenuSwitch(null)}/>
+            </div>
             )
         case 2:   
             return (
@@ -35,14 +38,12 @@ const MainMenu = () => {
             case 3:   
             return (
                 <div>
-                    <DemoData exitToMenu= {() => setMenuSwitch(null)}/>
+                    <Visual3 exitToMenu= {() => setMenuSwitch(null)}/>
                 </div>
             )
         case 4:
             return (
-                <div>
-                    <Visual1 exitToMenu= {() => setMenuSwitch(null)}/>
-                </div>
+               setMenuSwitch(null)
             )
         case 5: 
             return (
@@ -56,9 +57,9 @@ const MainMenu = () => {
                     <div>
                         <h1>Main Menu</h1>
                         <button onClick={() => menuSwitchHandler(5)}>Visual 5</button>
-                        <button onClick={() => menuSwitchHandler(3)}>Demo Chart</button>
+                        <button onClick={() => menuSwitchHandler(3)}>Visual 3 chart</button>
                         <button onClick={() => menuSwitchHandler(2)}>Visual2 Chart</button>
-                        <button onClick={() => menuSwitchHandler(4)}>Visual1 Chart</button>
+                        <button onClick={() => menuSwitchHandler(1)}>Visual1 Chart</button>
                     </div>
                 )
     }
