@@ -4,8 +4,8 @@ import Visual2 from '../Visual2/visual2Chart';
 import SectorChart from '../Visual5/sectorChart';
 
 const Render = ({ settings }) => {
-  const renderOptions = (settings) => {
-    let settingsArray = [...settings];
+  const renderOptions = () => {
+    let settingsArray = settings[0].split(',').map(Number);
     let chartsToDisplay = [];
     if (settingsArray[0] === 1) {
       chartsToDisplay.push(<Visual1Chart />);
@@ -26,7 +26,7 @@ const Render = ({ settings }) => {
   };
 
   return (
-  <div>{renderOptions(settings)}</div>
+    <div>{renderOptions()}</div>
   );
 };
 

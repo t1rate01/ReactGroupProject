@@ -6,7 +6,7 @@ import Render from "./render.js";
 
 const ChartView = () => {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [viewArray, setViewArray] = useState([]);
+    const [viewArray, setViewArray] = useState();
     const navigate = useNavigate();
     let settings = [viewArray];
 
@@ -20,7 +20,7 @@ const ChartView = () => {
         }
     }, []);
 
-
+    var renderString = "";
 useEffect(() => {
     fetch('http://localhost:8080/users/view', {
         method: 'GET',  
@@ -32,22 +32,18 @@ useEffect(() => {
     .then(response => response.text())
     .then(data => {
         console.log(" Fethin data on " +data);
-        setViewArray(data.split(","));
-    
+        setViewArray(data);
     })
     .catch((error) => {
-        console.error('Error:', error);
-        
+        console.error('Error:', error); 
     });
-
+    renderString = [viewArray];
 }, [])
-
-    
 
     return (
         <div>
             <h1>ChartView</h1>
-            <Render settings={viewArray}/>
+            <Render settings={renderString}/>
         </div>
     )
 
