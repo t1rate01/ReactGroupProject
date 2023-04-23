@@ -80,7 +80,7 @@ public class securityService {
             //virhe kiinni
         }
         return "User not found";
-}
+    }
 
     public String updateDefaultView(String username, String defaultview){
         users u = userRepo.findById(username).orElse(null);
@@ -95,6 +95,18 @@ public class securityService {
         return null;
     }
 
+    public String getDefaultView(String username){
+        users u = userRepo.findById(username).orElse(null);
+        try {
+            return u.getDefaultview();
+        }
+        catch (Exception e) {
+            //virhe kiinni
+        }
+        return null;
+    }
+
    
 
 }
+
