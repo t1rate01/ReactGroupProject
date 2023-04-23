@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { setToken, getToken, clearToken } from "./tokenStorage";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const loginBtn = async (event) => {
        event.preventDefault();   // event objektista löytyy, estää selaimen sekaantumisen formiin(?) ja sen sijaan mennään omilla toiminnoilla
@@ -25,9 +26,12 @@ const LoginPage = () => {
             },
         });
         const data = await response.text();
+        if (data.lenght !== "Wrong/Missing username or password"){
         setToken(data);
         console.log("Token datassa on " +data);
         console.log("Token on "+ getToken());
+        navigate("/menu");
+    }
     }
 
 
