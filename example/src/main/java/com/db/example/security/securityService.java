@@ -24,9 +24,9 @@ public class securityService {
     
 
     // UUSI KÄYTTÄJÄ
-    public users register(String username, String password) {
+    public users register(String username, String password, String defaultview) {
         String encodedPassword = enco.encode(password);
-        users user = new users(username, encodedPassword);
+        users user = new users(username, encodedPassword, defaultview);
         userRepo.save(user);
         return user;
     }
@@ -81,4 +81,20 @@ public class securityService {
         }
         return "User not found";
 }
+
+    public String updateDefaultView(String username, String defaultview){
+        users u = userRepo.findById(username).orElse(null);
+        try {
+            u.setdefaultview(defaultview);
+            userRepo.save(u);
+            return "Default view updated";
+        }
+        catch (Exception e) {
+            //virhe kiinni
+        }
+        return null;
+    }
+
+   
+
 }
