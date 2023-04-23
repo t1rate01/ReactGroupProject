@@ -2,6 +2,7 @@ import React,{useState, useEffect} from "react";
 import { Chart } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-luxon";
+import Popup from "reactjs-popup";
 
 const Visual1ChartMonthly = () =>{
     const [visual1MoData, setVisual1MoData] = useState([]);
@@ -48,7 +49,25 @@ const temp = visual1MoData.map(t => t.anomaly);
 const nhmotemp = nhmonthlyData.map(t => t.anomaly);
 const shmotemp = shmonthlyData.map(t => t.anomaly);
 
+const popUpText = (
+    <div id="popup">
+        <h1>About annual and monthly HadCRUT5 data</h1>
+        <p>HadCRUT5 is a gridded dataset of global historical surface temperature anomalies relative to a 1961-1990 
+            reference period. Data are available for each month from January 1850 onwards, on a 5 degree grid and as
+             global and regional average time series. The dataset is a collaborative product of the Met Office Hadley
+              Centre and the Climatic Research Unit at the University of East Anglia.
+        </p>
+        <p id="link"><a href ="https://www.metoffice.gov.uk/hadobs/hadcrut5/">Source of HadCRUT5 data</a></p>
 
+        <h1>About Reconstruction-data</h1>
+        <p>Northern Hemisphere temperature reconstruction for the past 2,000 years by combining low-resolution 
+            proxies with tree-ring data, using a wavelet transform technique to achieve 
+            timescale-dependent processing of the data.</p>
+            <p id="link"><a href="https://bolin.su.se/data/moberg-2012-nh-1?n=moberg-2005">Source of Reconstruction data</a></p>
+            <p id="link"><a href="https://www.nature.com/articles/nature03265">Full study</a></p>
+        
+    </div>
+);
 
 const chartData ={
     labels: labels,
@@ -95,6 +114,9 @@ return(
     <div style={{display: "flex", alingItems: "center", flexWrap:"wrap"}}>
         <div>
             <Line options={options} data={chartData} width={1500} height = {800}/>
+            <Popup trigger={<button id="exit">Info</button>} position="right center">
+                <div>{popUpText}</div>
+            </Popup>
         </div>
     </div>
 )

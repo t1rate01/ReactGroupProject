@@ -3,6 +3,7 @@ import {Line} from "react-chartjs-2";
 import {Chart as ChartJS} from "chart.js/auto";
 import AnnualChart from "../Visual1/vis1chart";
 import MonthlyChart from "../Visual1/vis1chartmonthly";
+import Popup from 'reactjs-popup';
 
 
 function Visual1() {
