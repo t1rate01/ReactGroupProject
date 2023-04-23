@@ -29,7 +29,7 @@ public class securityRestApi {
     }
 
 
-    @PostMapping("/users/login")
+    @PostMapping("/login")
     public ResponseEntity<String> login(@RequestHeader("Authorization") String basicAuth) {
         if(basicAuth != null && basicAuth.startsWith("Basic")){
         String credentials = basicAuth.split(" ")[1];   // basic encoodattu stringi alkaa "Basic " ja perässä encoodattu setti
@@ -49,7 +49,7 @@ public class securityRestApi {
         return new ResponseEntity<>("Wrong/Missing username or password", HttpStatus.UNAUTHORIZED);
     }
 
-    @GetMapping("/users/private")
+   /*  @GetMapping("/users/private")   // TÄMÄ ON OHJE ESIMERKKI
     public ResponseEntity<String> getPrivateData(@RequestHeader("Authorization") String bearer){
         if (bearer != null){
             if (bearer.startsWith("Bearer")){
@@ -60,7 +60,7 @@ public class securityRestApi {
             }
         }}
     return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
-    }
+    } */
 
     @DeleteMapping("/users/")
     public ResponseEntity<String> deleteUser(@RequestHeader("Authorization") String bearer){
