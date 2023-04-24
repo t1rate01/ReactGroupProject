@@ -18,8 +18,10 @@ function App() {   // kutsutaan aluksi vain MainMenu, joka ohjaa logiikkaa
     <BrowserRouter>
     <div>
       <div className='logobar'>
-        <div>Group 3</div>
-        <div>Hienosti</div>
+        <Link to ="/login"><div classname="navbutton">Log in</div></Link>
+        <Link to ="/register"><div classname="navbutton">Sign in</div></Link>
+        <Link to ="/menu"><div classname="navbutton">Show all</div></Link>
+        
       </div>
       <Routes>
         <Route path="/" element={<FrontPage />} />

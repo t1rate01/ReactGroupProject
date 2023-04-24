@@ -1,17 +1,19 @@
 .logobar {
     display: flex;
     background-color: lightgrey;
-    
+    margin-left: auto;
+    margin-right: auto;
     border-color: black;
     border-style: solid;
     border-width: 3px;
     border-radius: 10px;
-    width: 100%;
+    width: 80%;
     height: 35px;
     
 }
 
 .logobar > * {
+    text-align: center;
     margin-right: 10px;
     margin-left: 10px;
     padding: 5px;
