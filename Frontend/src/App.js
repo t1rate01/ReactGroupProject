@@ -10,6 +10,7 @@ import ChartView from './menuviews/menuchartview';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import FrontPage from './frontpage_login_register/frontpage';
+import ShowAll from './frontpage_login_register/showall';
 
 
 
@@ -27,6 +28,7 @@ function App() {   // kutsutaan aluksi vain MainMenu, joka ohjaa logiikkaa
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/menu" element={<DefaultMenu />} />
         <Route path="/menu/view" element={<ChartView />} />
+        <Route path="/showall" element={<ShowAll />} />
         </Routes>
     </div>
 
