@@ -1,0 +1,20 @@
+.logobar {
+    display: flex;
+    background-color: lightgrey;
+    
+    border-color: black;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 10px;
+    width: 100%;
+    height: 35px;
+    
+}
+
+.logobar > * {
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    border-width: 3px;
+    border-radius: 10px;
+}
