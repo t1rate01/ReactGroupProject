@@ -3,6 +3,7 @@ import {Line} from "react-chartjs-2";
 import {Chart as ChartJS} from "chart.js/auto";
 import AnnualChart from "../Visual1/vis1chart";
 import MonthlyChart from "../Visual1/vis1chartmonthly";
+import Popup from 'reactjs-popup';
 
 
 function Visual1() {
@@ -14,7 +15,7 @@ function Visual1() {
   
 }
 
-    return (<div>
+    return (<div id="visual1">
         <input
         type="radio"
         name="toggle"
@@ -34,12 +35,12 @@ function Visual1() {
         onChange={toggleOptionChange}/>
         <label>Monthly</label>
 
-<div>
+<div id="toggles">
   {toggle === "Annual"&&(<div><AnnualChart/></div>)}
   {toggle === "Monthly"&&(<div><MonthlyChart/></div>)}
 </div>
   </div>
   
-    )
+    );
   }
   export default Visual1;

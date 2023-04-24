@@ -3,7 +3,7 @@ package com.db.example.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
+
 
 import java.util.Date;
 import com.auth0.jwt.JWT;
@@ -24,9 +24,9 @@ public class securityService {
     
 
     // UUSI KÄYTTÄJÄ
-    public users register(String username, String password) {
+    public users register(String username, String password, String defaultview) {
         String encodedPassword = enco.encode(password);
-        users user = new users(username, encodedPassword);
+        users user = new users(username, encodedPassword, defaultview);
         userRepo.save(user);
         return user;
     }
@@ -80,5 +80,33 @@ public class securityService {
             //virhe kiinni
         }
         return "User not found";
+    }
+
+    public String updateDefaultView(String username, String defaultview){
+        users u = userRepo.findById(username).orElse(null);
+        try {
+            u.setdefaultview(defaultview);
+            userRepo.save(u);
+            return "Default view updated";
+        }
+        catch (Exception e) {
+            //virhe kiinni
+        }
+        return null;
+    }
+
+    public String getDefaultView(String username){
+        users u = userRepo.findById(username).orElse(null);
+        try {
+            return u.getDefaultview();
+        }
+        catch (Exception e) {
+            //virhe kiinni
+        }
+        return null;
+    }
+
+   
+
 }
-}
+
