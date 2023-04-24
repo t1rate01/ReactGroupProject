@@ -9,14 +9,16 @@ public class users {
     @Id
     private String username;
     private String pass;
+    private String defaultview;
 
 
     public users() {
     }
 
-    public users(String username, String pass) {
+    public users(String username, String pass, String defaultview) {
         this.username = username;
         this.pass = pass;
+        this.defaultview = defaultview;
     }
 
     public String getUsername() {
@@ -35,6 +37,14 @@ public class users {
         this.pass = pass;
     }
 
+    public String getDefaultview() {
+        return this.defaultview;
+    }
+
+    public void setDefaultview(String defaultview) {
+        this.defaultview = defaultview;
+    }
+
     public users username(String username) {
         setUsername(username);
         return this;
@@ -45,4 +55,8 @@ public class users {
         return this;
     }
 
+    public users setdefaultview(String defaultview) {
+        setDefaultview(defaultview);
+        return this;
+    }
 }

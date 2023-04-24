@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 
 
-
+@CrossOrigin
 @RestController
 public class securityRestApi {
     
@@ -24,7 +25,8 @@ public class securityRestApi {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestParam String username, @RequestParam String password) {
-        users u = secService.register(username, password);
+        String defaultview = "000000";
+        users u = secService.register(username, password, defaultview);
         return new ResponseEntity<>(u.getUsername(), HttpStatus.OK);
     }
 
@@ -71,6 +73,40 @@ public class securityRestApi {
                 if (username != null){
                     secService.deleteUser(username);
                     return new ResponseEntity<>("User "+username+" deleted", HttpStatus.OK);
+                }
+            }}
+        return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
+}
+
+    //update defaultview
+    @PostMapping("/users/view")
+    public ResponseEntity<String> updateDefaultView(@RequestHeader("Authorization") String bearer, @RequestParam String defaultview){
+        if (bearer != null){
+            if (bearer.startsWith("Bearer")){
+                String token = bearer.split(" ")[1];  // toinen tapa pilkkoa
+                String username = secService.validateToken(token);
+                if (username != null){
+                    String response = secService.updateDefaultView(username, defaultview);
+                    if (response != null){
+                    return new ResponseEntity<>("Default view for "+username+" updated", HttpStatus.OK);
+                    }
+                }
+            }}
+        return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
+}   
+
+    // get defaultview
+    @GetMapping("/users/view")
+    public ResponseEntity<String> getDefaultView(@RequestHeader("Authorization") String bearer){
+        if (bearer != null){
+            if (bearer.startsWith("Bearer")){
+                String token = bearer.split(" ")[1];  // toinen tapa pilkkoa
+                String username = secService.validateToken(token);
+                if (username != null){
+                    String response = secService.getDefaultView(username);
+                    if (response != null){
+                    return new ResponseEntity<>(response, HttpStatus.OK);
+                    }
                 }
             }}
         return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
