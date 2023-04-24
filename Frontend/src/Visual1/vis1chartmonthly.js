@@ -111,7 +111,7 @@ const options ={
     }
 }
 return(
-    <div style={{display: "flex", alingItems: "center", flexWrap:"wrap"}}>
+    <div className="chart">
         <div>
             <Line options={options} data={chartData} width={1500} height = {800}/>
             <Popup trigger={<button id="exit">Info</button>} position="right center">

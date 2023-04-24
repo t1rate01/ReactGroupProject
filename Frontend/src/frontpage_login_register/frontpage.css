@@ -1,0 +1,34 @@
+.frontpage{
+    background-color: #2c3333;
+    color: #e7f6f2;
+font-family: Arial, Helvetica, sans-serif;
+margin-left: 5%;
+margin-right: 5%;
+
+}
+
+.frontpage p{
+font-family: Arial, Helvetica, sans-serif;
+}
+
+#backtofront{
+    margin: 0 auto;
+    padding: 3px;
+    border-radius: 5px;
+    border-color: #a5c9ca;
+    background-color: #395b64;
+    color: #e7f6f2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.frontpage button{
+    background-color: #395b64;
+    color: #e7f6f2;
+    border-width: 1px;
+    border-radius: 10px;
+    font-size: large;
+    border-color: #a5c9ca;
+    text-align: center;
+    margin: 0 20px;
+    padding: 6px;
+}

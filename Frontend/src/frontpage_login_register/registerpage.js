@@ -39,7 +39,7 @@ const RegisterPage = () => {
 
 
     return (
-        <div>
+        <div className="frontpage">
             <h1>Log in</h1>
             <form onSubmit={regBtn}>
                 <label>

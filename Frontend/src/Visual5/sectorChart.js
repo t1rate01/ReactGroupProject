@@ -175,10 +175,10 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
           <Pie data={chartData} ref={chartRef} options={brokenDonitsiOptions} width={500} height={500} />
         </div>
       )}
-            <div className="donitsinapit">
+          <div className="donitsinapit">
             <button onClick={handleBackClick}>Back</button>
             <button onClick={handleBreakdownClick}>All Data</button>
-          </div>
+          </div>  
     </div>
   );
   

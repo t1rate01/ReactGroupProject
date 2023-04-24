@@ -155,10 +155,14 @@ let Options = {
       legend: {
         position: 'top',
       },
-      title: {
+      title:{
         display: true,
-        text: 'Visual 2',
-      },
+        text: "Co2 levels and ice core thiccnesses",
+        font: {
+            size: 20,
+            weight: "bold",
+            },
+    },
       grid: {
         drawOnChartArea: true,
       },
@@ -219,7 +223,7 @@ let Options = {
         <div>
             <div className="chart">
             <Line data={lineChartData} options={Options} />
-            <button id='exit' onClick={handleExitClick}>Exit</button><Popup trigger={<button id="exit">Info</button>} position="right center">
+            <Popup trigger={<button id="exit">Info</button>} position="right center">
                 <div>{popUpText}</div>
             </Popup>
             </div>

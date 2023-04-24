@@ -15,7 +15,7 @@ function Visual1() {
   
 }
 
-    return (<div>
+    return (<div id="visual1">
         <input
         type="radio"
         name="toggle"
@@ -35,12 +35,12 @@ function Visual1() {
         onChange={toggleOptionChange}/>
         <label>Monthly</label>
 
-<div>
+<div id="toggles">
   {toggle === "Annual"&&(<div><AnnualChart/></div>)}
   {toggle === "Monthly"&&(<div><MonthlyChart/></div>)}
 </div>
   </div>
   
-    )
+    );
   }
   export default Visual1;

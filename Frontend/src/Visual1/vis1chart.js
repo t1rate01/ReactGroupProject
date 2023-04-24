@@ -155,7 +155,11 @@ const options ={
     plugins:{
         title:{
             display: true,
-            text: "Visualization 1"
+            text: "HadCRUT5 data: earth surface temperatures",
+            font: {
+                size: 20,
+                weight: "bold",
+                },
         }
     },
     scales:{
@@ -174,8 +178,8 @@ const options ={
 
 
 return(
-    <div style={{display: "flex", alingItems: "center", flexWrap:"wrap"}}>
-        <div>
+    <div id="visual1">
+        <div className="chart">
             <Line options={options} data={chartData} width={1500} height = {800}/>
             <Popup trigger={<button id="exit">Info</button>} position="right center">
                 <div>{popUpText}</div>
