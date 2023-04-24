@@ -1,7 +1,3 @@
-
-import Visual2 from './Visual2/visual2Chart';
-import sectorChart from './Visual5/sectorChart'
-import DemoData from './Visual5/demoPiechart';
 import LoginPage from './frontpage_login_register/loginpage';
 import RegisterPage from './frontpage_login_register/registerpage';
 import DefaultMenu from './menuviews/defaultmenu';
