@@ -39,72 +39,33 @@ public class visual2restController {
    // REST MAPPAUKSET
     //getAnnuals(){
     @GetMapping("/v2annuals")
-    public ResponseEntity<List<maunaloa_annual>> getAnnuals(@RequestHeader("Authorization") String bearer){
-        if (bearer != null){
-            if (bearer.startsWith("Bearer")){
-                String token = bearer.split (" ")[1];
-                String username = secService.validateToken(token);
-                if (username != null){
-                    return new ResponseEntity<>(Visual2Service.getAnnuals(), HttpStatus.OK);
-                }
-            }}
-        return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+    public List <maunaloa_annual> getAnnuals(){
+        return Visual2Service.getAnnuals();
     }
 
     //getMonthlys(){
     @GetMapping("/v2monthlys")
-        public ResponseEntity<List<maunaloa_monthly>> getMonthlys(@RequestHeader("Authorization") String bearer){
-            if (bearer != null){
-                if (bearer.startsWith("Bearer")){
-                    String token = bearer.split (" ")[1];
-                    String username = secService.validateToken(token);
-                    if (username != null){
-                        return new ResponseEntity<>(Visual2Service.getMonthlys(), HttpStatus.OK);
-                    }
-                }}
-            return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
-     }
+    public List <maunaloa_monthly> getMonthlys(){
+        return Visual2Service.getMonthlys();
+    }
     
     // getIce_age_1s()
     @GetMapping("/v2ice_age_1")
-    public ResponseEntity<List<ice_age_1>> getIce_age_1s(@RequestHeader("Authorization") String bearer){
-        if (bearer != null){
-            if (bearer.startsWith("Bearer")){
-                String token = bearer.split (" ")[1];
-                String username = secService.validateToken(token);
-                if (username != null){
-                    return new ResponseEntity<>(Visual2Service.getIce_age_1s(), HttpStatus.OK);
-                }
-            }}
-        return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+    public List <ice_age_1> getIce_age_1s(){
+        return Visual2Service.getIce_age_1s();
     }
+
 
     //getIce_age_2s()
     @GetMapping("/v2ice_age_2")
-    public ResponseEntity<List<ice_age_2>> getIce_age_2s(@RequestHeader("Authorization") String bearer){
-        if (bearer != null){
-            if (bearer.startsWith("Bearer")){
-                String token = bearer.split (" ")[1];
-                String username = secService.validateToken(token);
-                if (username != null){
-                    return new ResponseEntity<>(Visual2Service.getIce_age_2s(), HttpStatus.OK);
-                }
-            }}
-        return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+    public List <ice_age_2> getIce_age_2s(){
+        return Visual2Service.getIce_age_2s();
     }
 
     // getIce_age_3s()
     @GetMapping("/v2ice_age_3")
-    public ResponseEntity<List<ice_age_3>> getIce_age_3s(@RequestHeader("Authorization") String bearer){
-        if (bearer != null){
-            if (bearer.startsWith("Bearer")){
-                String token = bearer.split (" ")[1];
-                String username = secService.validateToken(token);
-                if (username != null){
-                    return new ResponseEntity<>(Visual2Service.getIce_age_3s(), HttpStatus.OK);
-                }
-            }}
-        return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+    public List <ice_age_3> getIce_age_3s(){
+        return Visual2Service.getIce_age_3s();
     }
 
 }

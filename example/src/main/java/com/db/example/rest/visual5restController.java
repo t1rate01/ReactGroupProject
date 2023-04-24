@@ -34,44 +34,20 @@ public class visual5restController {
     // TÄNNE REST CONTROLLERIT POLUT JNE
     //getSectors()
     @GetMapping("/sectors")
-    public ResponseEntity<List<sectori>> getSectors(@RequestHeader("Authorization")String bearer){
-        if (bearer != null){
-            if (bearer.startsWith("Bearer")){
-                String token = bearer.split (" ")[1];
-                String username = secService.validateToken(token);
-                if (username != null){
-                    return new ResponseEntity<>(Visual5Service.getSectors(), HttpStatus.OK);
-                }
-            }}
-        return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
-        }
+    public List <sectori> getSectors(){
+        return Visual5Service.getSectors();
+    }
 
     //getSubsectors()
     @GetMapping("/subsectors")
-    public ResponseEntity<List<Sub_sector>> getSubsectors(@RequestHeader("Authorization")String bearer){
-        if (bearer != null){
-            if (bearer.startsWith("Bearer")){
-                String token = bearer.split (" ")[1];
-                String username = secService.validateToken(token);
-                if (username != null){
-                    return new ResponseEntity<>(Visual5Service.getSubsectors(), HttpStatus.OK);
-                }
-            }}
-        return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
-        }
+    public List <Sub_sector> getSubsectors(){
+        return Visual5Service.getSubsectors();
+    }
 
     //getBreakdowns()
     @GetMapping("/breakdowns")
-    public ResponseEntity<List<subsector_breakdown>> getBreakdowns(@RequestHeader("Authorization")String bearer){
-        if (bearer != null){
-            if (bearer.startsWith("Bearer")){
-                String token = bearer.split (" ")[1];
-                String username = secService.validateToken(token);
-                if (username != null){
-                    return new ResponseEntity<>(Visual5Service.getSubsector_breakdowns(), HttpStatus.OK);
-                }
-            }}
-        return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
-        }
+    public List <subsector_breakdown> getBreakdowns(){
+        return Visual5Service.getSubsector_breakdowns();
+    }
 
 }
