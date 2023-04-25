@@ -30,6 +30,12 @@ useEffect(() => {       // Tarkistaa onko käyttäjä kirjautunut sisään ja on
 }, []);
 
 
+const handleLogoutClick = (event) => { //   logout nappulan toiminto
+    console.log("handle logout click");
+    clearToken();
+}
+
+
 useEffect(() => {
 if (loggedIn === false) {
     return setReturnData(
@@ -45,7 +51,8 @@ if (loggedIn === false) {
         return setReturnData(
         <div className='logobar'>
         <div className="buttons">
-            <h1> KIRJAUTUNUT SISÄÄN TEE TARVITTAVAT MUUTOKSET</h1>
+        <Link to ="/menu"><button className="navbutton">Options</button></Link>
+        <button className="navbutton" onClick={handleLogoutClick}>Log out</button>
         </div>
         </div>)
     }

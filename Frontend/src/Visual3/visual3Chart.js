@@ -115,11 +115,11 @@ const MyVisual3Chart = () => {
       );
 
       return (
-      <>
+      <div>
       <div className="chart">
       <Line data={getCombinedDataForChart()} options={options} />
       <div style={{ marginTop: "20px" }}>
-      <div><p>Here is a line chart about global temperature and CO2 measurements from over 2 million years. There are
+      <div id="infotext"><p>Here is a line chart about global temperature and CO2 measurements from over 2 million years. There are
          also some human events that are connected to eather of those things and you can view them by pressing the button below. 
          Below is a link to the source of the info in this chart.</p>
       </div>
@@ -127,8 +127,7 @@ const MyVisual3Chart = () => {
       
       <Popup trigger={<button id="exit">Info</button>} position="right center">
                 <div>{popuptext}</div>
-            </Popup></div >
-      </>
+            </Popup></div ></div>
       );
       };
       

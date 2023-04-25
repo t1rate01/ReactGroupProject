@@ -98,20 +98,37 @@ const DefaultMenu = () => {
 // LISÄÄ LOGOUT NAPPI JA TOIMINTO
 
     return (
-       <div> <div>
-            <h1>Default Menu</h1>
-            <input type="checkbox" checked={checked1} onChange={handleChange1} />
-            <label>Visual 1</label>
-            <input type="checkbox" checked={checked2} onChange={handleChange2} />
-            <label>Visual 2</label>
-            <input type="checkbox" checked={checked3} onChange={handleChange3} />
-            <label>Visual 3</label>
-            <input type="checkbox" checked={checked4} onChange={handleChange4} />
-            <label>Visual 4</label>
-            <input type="checkbox" checked={checked5} onChange={handleChange5} />
-            <label>Visual 5</label>
+       <div className="viewoptions"> <div id="checkboxes">
+            <h1>View options</h1>
+            <p>Select charts you want to see on your personalized view:</p>
+            <div><input type="checkbox" checked={checked1} onChange={handleChange1} />
+            <label>Visual 1</label></div>
+
+            <div><input type="checkbox" checked={checked2} onChange={handleChange2} />
+            <label>Visual 2</label></div>
+
+            <div><input type="checkbox" checked={checked3} onChange={handleChange3} />
+            <label>Visual 3</label></div>
+
+            <div><input type="checkbox" checked={checked4} onChange={handleChange4} />
+            <label>Visual 4</label></div>
+
+            <div><input type="checkbox" checked={checked5} onChange={handleChange5} />
+            <label>Visual 5</label></div>
         </div>
-        <button onClick={callRender}>Render</button>
+        <p>Select layout:</p>
+        <div id ="checkboxes">
+        <div><input type ="radio"></input><label>Two side by side</label></div>
+        <div><input type ="radio"></input><label>In a row</label></div>
+        </div>
+        <div id="buttongroup">
+            <button onClick>Delete account</button>
+            <button onClick>Delete view</button>
+        </div>
+        <div id="buttongroup">
+            <button onClick={callRender}>Save view</button>
+            <button onClick>Cancel</button>
+        </div>
         </div>
     )
 }

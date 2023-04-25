@@ -51,7 +51,8 @@ public class securityRestApi {
         return new ResponseEntity<>("Wrong/Missing username or password", HttpStatus.UNAUTHORIZED);
     }
 
-@GetMapping("/users/private")   // TÄMÄ ON OHJE ESIMERKKI
+
+     @GetMapping("/users/private")   // TÄMÄ ON OHJE ESIMERKKI
     public ResponseEntity<String> getPrivateData(@RequestHeader("Authorization") String bearer){
         if (bearer != null){
             if (bearer.startsWith("Bearer")){
