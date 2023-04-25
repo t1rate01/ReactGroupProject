@@ -7,6 +7,8 @@ const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const defaultViewCompareString = "0,0,0,0,0,0"; // ohjelma tallentaa näin
+    const defaultViewCompareString2 = "000000" // databasen default toiminto tallentaa näin
 
     const loginBtn = async (event) => {
        event.preventDefault();   // event objektista löytyy, estää selaimen sekaantumisen formiin(?) ja sen sijaan mennään omilla toiminnoilla
@@ -30,8 +32,31 @@ const LoginPage = () => {
         setToken(data);
         console.log("Token datassa on " +data);
         console.log("Token on "+ getToken());
-        navigate("/menu");
+        checkDefaultView();
     }
+    }
+
+    async function checkDefaultView(){
+        fetch('http://localhost:8080/users/view', {
+            method: 'GET',  
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + getToken(),
+            },
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(" Fethin data on " +data);
+            if (data.toString() === defaultViewCompareString || data.toString() === defaultViewCompareString2){
+                navigate("/menu");
+            }
+            else{
+                navigate("/menu/view");
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error); 
+        });
     }
 
 
