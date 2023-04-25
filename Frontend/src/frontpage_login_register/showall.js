@@ -4,6 +4,7 @@ import { Link, useNavigate  } from "react-router-dom";
 import Visual1 from "../Visual1/visual1.js"; 
 import Visual2 from "../Visual2/visual2Chart";
 import MyVisual3Chart from "../Visual3/visual3Chart";
+import Visual4Chart from "../Visual4/visual4Chart";
 import SectorChart from "../Visual5/sectorChart";
 
 const ShowAll = () => {
@@ -16,7 +17,7 @@ const ShowAll = () => {
             <div><Visual1 /></div>
             <div><Visual2 /></div>
             <div><MyVisual3Chart /></div>
-            <div><p>Visual 4 here</p></div>
+            <div><Visual4Chart/></div>
             <div><SectorChart /></div>
             <Link to="/"><button id="backtofront">Back</button></Link>
         </div>
