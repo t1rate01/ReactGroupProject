@@ -95,15 +95,6 @@ const DefaultMenu = () => {
             navigate("/menu/view");
         })
     }
-
-
-  
-
-   
-
-
-
-
 // LISÄÄ LOGOUT NAPPI JA TOIMINTO
 
     return (

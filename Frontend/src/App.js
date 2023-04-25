@@ -34,18 +34,3 @@ function App() {   // kutsutaan aluksi vain MainMenu, joka ohjaa logiikkaa
 
 
 export default App;
-
-/*  <BrowserRouter>
-    <div className='router'>
-        <BrowserBar />
-      <Routes>
-        <Route path="/" element={<FrontPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/menu" element={<DefaultMenu />} />
-        <Route path="/menu/view" element={<ChartView />} />
-        <Route path="/showall" element={<ShowAll />} />
-        </Routes>
-    </div>
-
-    </BrowserRouter>*/ 
