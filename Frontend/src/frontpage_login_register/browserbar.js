@@ -24,10 +24,10 @@ useEffect(() => {
 , []);
 
 useEffect(() => {       // Tarkistaa onko käyttäjä kirjautunut sisään ja onko jollain muulla sivulla kuin etusivulla, tarvittaessa heittää etusivulle
-    if(loggedIn === false && location.pathname !== "/") {   // tähän pitää myöhemmin lisätä ehto sitä julkista linkkisivua varten jos tämä jää käyttöön
+    if(loggedIn === false && location.pathname !== "/" && location.pathname !== "/showall") {                                         // tähän pitää myöhemmin lisätä ehto sitä julkista linkkisivua varten jos tämä jää käyttöön
         navigate("/");
     } 
-}, [loggedIn]);
+}, []);
 
 
 useEffect(() => {
