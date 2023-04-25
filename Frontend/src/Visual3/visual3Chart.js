@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
+import Popup from "reactjs-popup";
 
 const MyVisual3Chart = () => {
   const [carbonData, setCarbonData] = useState([]);
@@ -99,29 +100,34 @@ const MyVisual3Chart = () => {
       },
       };
       
-      return (
-      <>
-      <div className="chart-container">
-      <Line data={getCombinedDataForChart()} options={options} />
-      <div style={{ marginTop: "20px" }}>
-      <button onClick={() => setShowHumanActions(!showHumanActions)}>
-      {showHumanActions ? "Hide" : "Show"} human actions
-      </button>
-      <div><h4>Here is a line chart about global temperature and CO2 measurements from over 2 million years. There are also some human events that are connected to eather of those things and you can view them by pressing the button above.Below is a link to the source of the info in this chart.</h4>
-      <h4>https://moodle.oulu.fi/pluginfile.php/1617782/course/section/235812/Climate%20Data%20Sources.pdf</h4></div>
-      </div>
-      </div >
-      {showHumanActions && (
-      <div style={{ marginTop: "20px", width: "800px", height: "600px", overflow: "auto" }}>
-      <h3>Human Actions</h3>
+      const popuptext =(
+        <div id="popup">
+          <h1>Human Actions</h1>
       <ul>
       {humanData.map((item, index) => (
       <li key={index}>{item.event}</li>
       ))}
       </ul>
+      <h1>Source links</h1>
+      <p><a href="https://climate.fas.harvard.edu/files/climate/files/snyder_2016.pdf">Harvard: Evolution of global temperature over the past two million years</a></p>
+      <p><a href="http://carolynsnyder.com/publications.php">Dataset link</a></p>
+        </div>
+      );
+
+      return (
+      <>
+      <div className="chart">
+      <Line data={getCombinedDataForChart()} options={options} />
+      <div style={{ marginTop: "20px" }}>
+      <div><p>Here is a line chart about global temperature and CO2 measurements from over 2 million years. There are
+         also some human events that are connected to eather of those things and you can view them by pressing the button below. 
+         Below is a link to the source of the info in this chart.</p>
+      </div>
       </div>
       
-      )}
+      <Popup trigger={<button id="exit">Info</button>} position="right center">
+                <div>{popuptext}</div>
+            </Popup></div >
       </>
       );
       };

@@ -13,10 +13,13 @@ import ShowAll from './frontpage_login_register/showall';
 function App() {   // kutsutaan aluksi vain MainMenu, joka ohjaa logiikkaa
   return (
     <BrowserRouter>
-    <div>
+    <div className='router'>
       <div className='logobar'>
-        <div>Group 3</div>
-        <div>Hienosti</div>
+        <div className="buttons">
+        <Link to ="/login"><button className="navbutton">Log in</button></Link>
+        <Link to ="/register"><button className="navbutton">Sign in</button></Link>
+        <Link to ="/showall"><button className="navbutton">Show all</button></Link>
+        </div>
       </div>
       <Routes>
         <Route path="/" element={<FrontPage />} />
@@ -29,6 +32,7 @@ function App() {   // kutsutaan aluksi vain MainMenu, joka ohjaa logiikkaa
     </div>
 
     </BrowserRouter>
+  
   );
 }
 

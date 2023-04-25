@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Render from "../menuviews/render.js";
+import "./frontpage.css"
 
 const FrontPage = () => {
 
@@ -11,11 +12,18 @@ const FrontPage = () => {
 
 
     return (
-        <div>
+        <div className="frontpage">
+            <h1>Group 3 global warming visualisations</h1>
+            <p>This react app is made by students from Oulu University of Applied Sciences.
+            This page contains visualized information about things that have influenced the 
+            global warming. Sources to the data are listed in the info box under every chart.
+
+            Please take a look at the charts and sign in, so you can make your on shareable
+             view of the charts that are most important to you!
+            </p>
+            <div>
             <Render settings={[arrayString]}/>
-            <h1>Choose</h1>
-            <Link to="login"><button>Log in</button></Link>
-            <Link to="register"><button>Register</button></Link>
+            </div>
         </div>
     )
 }
