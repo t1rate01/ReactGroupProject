@@ -22,7 +22,7 @@ const FrontPage = () => {
              view of the charts that are most important to you!
             </p>
             <div>
-            <Render settings={[arrayString]}/>
+            <Render settings={arrayString}/>
             </div>
         </div>
     )

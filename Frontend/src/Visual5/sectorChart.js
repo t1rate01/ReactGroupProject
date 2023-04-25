@@ -160,7 +160,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
       <div className="chartColumn">
         <div className="pieParent">
           <div>
-            <h2 id="pieOtsikko">{selectedSector === null && !showBreakdown ? 'Main sectors' : showBreakdown ? 'Full breakdown' : selectedSector}</h2> 
+            <h2 id="pieOtsikko">{selectedSector === null && !showBreakdown ? 'Click on a sector' : showBreakdown ? 'Full breakdown' : selectedSector}</h2> 
           </div>
           {selectedSector === null && showBreakdown === false && (
             <div className="donitsi">
