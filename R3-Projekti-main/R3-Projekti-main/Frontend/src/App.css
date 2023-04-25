@@ -1,0 +1,37 @@
+body{
+    background-color:  #2c3333;
+}
+.logobar {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 80%;
+    height: 50px;
+    background-color:  #2c3333;
+    border-width: 1px;
+    border-color: #e7f6f2;
+    
+}
+
+.buttons{
+    display: inline-block;
+}
+
+.navbutton {
+    
+    background-color: #395b64;
+    color: #e7f6f2;
+    border-width: 1px;
+    border-radius: 10px;
+    font-size: large;
+    border-color: #a5c9ca;
+    text-align: center;
+    margin: 0 20px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    float: left;
+    padding: 6px;
+}
+.router{
+    background-color: #2c3333;
+}
