@@ -38,8 +38,9 @@ const ChartView = () => {
     }, []);
 
     return (
-        <div>
-            
+        <div className="frontpage">
+            <div><h1>Here is your individualized view of the charts</h1>
+            <p>Feel free to share it to others by pressing "share"!</p></div>
             <Render settings={viewArray.toString()}/>
         </div>
     )
