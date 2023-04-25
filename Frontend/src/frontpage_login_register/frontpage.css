@@ -1,14 +1,19 @@
 .frontpage{
+    display: grid;
     background-color: #2c3333;
     color: #e7f6f2;
 font-family: Arial, Helvetica, sans-serif;
 margin-left: 5%;
 margin-right: 5%;
-
+justify-content: center;
 }
 
 .frontpage p{
 font-family: Arial, Helvetica, sans-serif;
+text-align: center;
+}
+.frontpage h1{
+    text-align: center;
 }
 
 #backtofront{
@@ -57,11 +62,13 @@ font-family: Arial, Helvetica, sans-serif;
     padding: 6px;
 }
 .viewoptions{
+    display: grid;
     background-color: #2c3333;
     color: #e7f6f2;
 font-family: Arial, Helvetica, sans-serif;
 margin-left: 5%;
 margin-right: 5%;
+justify-content: center;
 }
 .viewoptions #checkboxes{
     margin-top: 6px;

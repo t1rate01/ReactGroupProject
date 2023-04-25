@@ -41,6 +41,7 @@ const RegisterPage = () => {
     return (
         <div className="frontpage">
             <h1>Register and make your own view!</h1>
+            <div className="frontpage">
             <form onSubmit={regBtn}>
                 <div id="checkboxes"><label>
                     Username:
@@ -53,6 +54,7 @@ const RegisterPage = () => {
                 <button id="buttons" type="submit">Register</button>
             </form>
             <Link to="/"><button id="buttons">Back</button></Link>
+            </div>
         </div>
     )
 }
