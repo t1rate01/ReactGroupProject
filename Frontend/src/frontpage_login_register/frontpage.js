@@ -22,7 +22,7 @@ const FrontPage = () => {
              view of the charts that are most important to you!</p>
              <p>Below is a random chart, click "Show all" to view all charts in order.</p></div>
             <div>
-            <Render settings={[arrayString]}/>
+            <Render settings={arrayString}/>
             </div>
         </div>
     )

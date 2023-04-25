@@ -160,7 +160,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
       <div className="chartColumn">
         <div className="pieParent">
           <div>
-            <h2 id="pieOtsikko">{selectedSector === null && !showBreakdown ? 'Main sectors' : showBreakdown ? 'Full breakdown' : selectedSector}</h2> 
+            <h2 id="pieOtsikko">{selectedSector === null && !showBreakdown ? 'Click on a sector' : showBreakdown ? 'Full breakdown' : selectedSector}</h2> 
           </div>
           {selectedSector === null && showBreakdown === false && (
             <div className="donitsi">
@@ -177,9 +177,6 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
               <div className="donitsi">
                 <Pie data={chartData} ref={chartRef} options={brokenDonitsiOptions} width={500} height={500} />
               </div>
-              <div>
-                <h3 id="alaotsikko">Move your mouse on a sector to see details</h3>
-              </div>
             </div>
           )}  
         </div>
@@ -194,7 +191,11 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
           {(selectedSector !== null || showBreakdown !== false) && (
             <button onClick={handleBackClick}>Back</button>
           )}
+          
         </div> </p>
+        {showBreakdown === true && (
+          <p id="alaotsikko">Move your mouse on a sector to see details</p>
+        )}
         </div>
         
       </div>
