@@ -45,7 +45,8 @@ if (loggedIn === false) {
         return setReturnData(
         <div className='logobar'>
         <div className="buttons">
-            <h1> KIRJAUTUNUT SISÄÄN TEE TARVITTAVAT MUUTOKSET</h1>
+        <Link to ="/menu/view"><button className="navbutton">Options</button></Link>
+        <button className="navbutton" onClick={clearToken}>Log out</button>
         </div>
         </div>)
     }

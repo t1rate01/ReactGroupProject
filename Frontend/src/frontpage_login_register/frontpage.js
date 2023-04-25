@@ -17,10 +17,10 @@ const FrontPage = () => {
             <p>This react app is made by students from Oulu University of Applied Sciences.
             This page contains visualized information about things that have influenced the 
             global warming. Sources to the data are listed in the info box under every chart.
-
-            Please take a look at the charts and sign in, so you can make your on shareable
-             view of the charts that are most important to you!
             </p>
+            <p>Please take a look at the charts and sign in, so you can make your on shareable
+             view of the charts that are most important to you!</p>
+             <p>Below is a random chart, click "Show all" to view all charts in order.</p>
             <div>
             <Render settings={[arrayString]}/>
             </div>

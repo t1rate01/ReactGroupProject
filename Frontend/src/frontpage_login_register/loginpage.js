@@ -39,14 +39,14 @@ const LoginPage = () => {
         <div className="frontpage">
             <h1>Log in</h1>
             <form onSubmit={loginBtn}>
-                <label>
+                <div id="checkboxes"><label>
                     Username:
                     <input type="text" name="username" value={username} onChange={(event)=> setUsername(event.target.value)}/>
-                </label>
-                <label>
+                </label></div>
+                <div><label>
                     Password:
                     <input type="password" name="password" value={password} onChange={(event)=> setPassword(event.target.value)} />
-                </label>
+                </label></div>
                 <button type="submit">Login</button>
             </form>
             <Link to="/"><button>Back</button></Link>

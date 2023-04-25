@@ -11,7 +11,8 @@ const ShowAll = () => {
     return (
         <div className="frontpage"> 
         <div><h1>Here is all visuals listed</h1>
-        <p>In this page you can see all of the charts.</p></div>
+        <p>In this page you can see all of the charts. More info and source links are 
+            visible by clicking the "Info" button below every chart.</p></div>
             <Visual1 />
             <Visual2 />
             <MyVisual3Chart />
