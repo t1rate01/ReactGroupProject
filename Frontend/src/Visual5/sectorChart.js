@@ -96,8 +96,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
 
   const handleBackClick = (event) => {     // takaisin painike, jos on chartin etusivulla -> kutsuu mainmenun antamaa funktiota
     if(showBreakdown===false && selectedSector===null) {
-      console.log("Exit to menu");
-      exitToMenu();
+      // älä tee mitään
     }
     else { 
     setShowBreakdown(false);    // muussa tapauksessa nollaa chartin muuttujat ja palauttaa donitsin alkutilaan
@@ -156,31 +155,53 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
   // napit piirretään aina ulkopuolisena
   // .css tiedostossa on rajattu mitkä antaa pointer-eventtejä
 
-  return (    
-    <div className="maindonitsi">
-       <h1 id="donitsiotsikko">{selectedSector === null && !showBreakdown ? 'Sectors' : showBreakdown ? 'Breakdown' : selectedSector}</h1> 
-      {selectedSector === null && showBreakdown === false && (
-        <div className="donitsi">
-          <Pie data={chartData} onClick={handleSectorClick} ref={chartRef} options={donutOptions} width={500} height={500} />
+  return (
+    <div className="chartContainer">
+      <div className="chartColumn">
+        <div className="pieParent">
+          <div>
+            <h2 id="pieOtsikko">{selectedSector === null && !showBreakdown ? 'Click on a sector' : showBreakdown ? 'Full breakdown' : selectedSector}</h2> 
+          </div>
+          {selectedSector === null && showBreakdown === false && (
+            <div className="donitsi">
+              <Pie data={chartData} onClick={handleSectorClick} ref={chartRef} options={donutOptions} width={500} height={500} />
+            </div>
+          )}
+          {selectedSector !== null && !showBreakdown && (
+            <div className="donitsi">
+              <Pie data={chartData} ref={chartRef} options={donutOptions} width={500} height={500} />
+            </div>
+          )}
+          {showBreakdown && (
+            <div>
+              <div className="donitsi">
+                <Pie data={chartData} ref={chartRef} options={brokenDonitsiOptions} width={500} height={500} />
+              </div>
+            </div>
+          )}  
         </div>
-      )}
-      {selectedSector !== null && !showBreakdown && (
-        <div className="donitsi">
-          <Pie data={chartData} ref={chartRef} options={donutOptions} width={500} height={500} />
-        </div>
-      )}
-      {showBreakdown && (
-        <div className="donitsi">
-          <h3 id="alaotsikko">Move your mouse on a sector to see details</h3>
-          <Pie data={chartData} ref={chartRef} options={brokenDonitsiOptions} width={500} height={500} />
-        </div>
-      )}
-          <div className="donitsinapit">
+      </div>
+      <div className="labelColumn">
+        <div>
+        <p id="info"> CO2 Emissions by sectors. Our pie chart visualizes the share of emissions by sector, highlighting the different industries and activities that contribute to these emissions. Sectors included in the chart are electricity and heat production, industry, transportation, buildings, and other sectors. The "share" value on the pie chart represents the sectors % of the total CO2 emissions.
+        
+        <div className="donitsinapit"> 
+          {showBreakdown === false &&(
+          <button onClick={handleBreakdownClick}>All Data</button>)}
+          {(selectedSector !== null || showBreakdown !== false) && (
             <button onClick={handleBackClick}>Back</button>
-            <button onClick={handleBreakdownClick}>All Data</button>
-          </div>  
+          )}
+          
+        </div> </p>
+        {showBreakdown === true && (
+          <p id="alaotsikko">Move your mouse on a sector to see details</p>
+        )}
+        </div>
+        
+      </div>
     </div>
   );
+  
   
   }
 

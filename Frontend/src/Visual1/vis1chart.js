@@ -178,7 +178,7 @@ const options ={
 
 
 return(
-    <div id="visual1">
+    <div className="visual1">
         <div className="chart">
             <Line options={options} data={chartData} width={1500} height = {800}/>
             <Popup trigger={<button id="exit">Info</button>} position="right center">

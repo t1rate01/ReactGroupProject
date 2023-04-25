@@ -6,9 +6,8 @@ import Render from "./render.js";
 
 const ChartView = () => {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [viewArray, setViewArray] = useState();
+    const [viewArray, setViewArray] = useState([]);
     const navigate = useNavigate();
-    let settings = [viewArray];
 
     useEffect(() => {
         if (getToken() !== null) {
@@ -20,34 +19,31 @@ const ChartView = () => {
         }
     }, []);
 
-    var renderString = "";
-useEffect(() => {
-    fetch('http://localhost:8080/users/view', {
-        method: 'GET',  
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Bearer ' + getToken(),
-        },
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(" Fethin data on " +data);
-        setViewArray(data);
-    })
-    .catch((error) => {
-        console.error('Error:', error); 
-    });
-    renderString = [viewArray];
-}, [])
+    useEffect(() => {
+        fetch('http://localhost:8080/users/view', {
+            method: 'GET',  
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + getToken(),
+            },
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(" Fethin data on " +data);
+            setViewArray(data);
+        })
+        .catch((error) => {
+            console.error('Error:', error); 
+        });
+    }, []);
 
     return (
-        <div>
-            <h1>ChartView</h1>
-            <Render settings={renderString}/>
+        <div className="frontpage">
+            <div><h1>Here is your individualized view of the charts</h1>
+            <p>Feel free to share it to others by pressing "share"!</p></div>
+            <Render settings={viewArray.toString()}/>
         </div>
     )
-
 }
-
 
 export default ChartView;
