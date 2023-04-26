@@ -2,6 +2,7 @@ package com.db.example.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.comparator.BooleanComparator;
 import org.springframework.beans.factory.annotation.Value;
 
 
@@ -104,6 +105,19 @@ public class securityService {
             //virhe kiinni
         }
         return null;
+    }
+
+    public Boolean checkForUserNameAvailability(String username){
+        users u = userRepo.findById(username).orElse(null);
+        try {
+            if (u.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        catch (Exception e) {
+            //virhe kiinni
+        }
+        return true;
     }
 
    

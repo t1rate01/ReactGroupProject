@@ -74,6 +74,15 @@ justify-content: center;
     margin-top: 6px;
     margin-bottom: 6px;
 }
+
+#switchlabels 
+{
+    margin-left: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+    color: #e7f6f2;
+
+}
+
 .viewoptions input {
     margin-top: 8px;
     margin-bottom: 10px;

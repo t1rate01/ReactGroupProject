@@ -27,12 +27,15 @@ const LoginPage = () => {
                 'Authorization': 'Basic ' + btoa(username + ":" + password),
             },
         });
+        if (response.status === 200) {
         const data = await response.text();
-        if (data.lenght !== "Wrong/Missing username or password"){
         setToken(data);
         console.log("Token datassa on " +data);
         console.log("Token on "+ getToken());
         checkDefaultView();
+    }   
+    else {
+        alert("Wrong username or password");
     }
     }
 
@@ -47,7 +50,7 @@ const LoginPage = () => {
         .then(response => response.text())
         .then(data => {
             console.log(" Fethin data on " +data);
-            if (data.toString() === defaultViewCompareString || data.toString() === defaultViewCompareString2){
+            if (data.toString() === defaultViewCompareString || data.toString() === defaultViewCompareString2){ // tarkistaa onko tallennettua näkymää
                 navigate("/menu");
             }
             else{

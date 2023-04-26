@@ -5,19 +5,10 @@ import { setToken, getToken, clearToken } from "../frontpage_login_register/toke
 import Render from "./render.js";
 
 const ChartView = () => {
-    const [loggedIn, setLoggedIn] = useState(false);
+
     const [viewArray, setViewArray] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (getToken() !== null) {
-            setLoggedIn(true);
-        }
-        else {
-            setLoggedIn(false);
-            navigate("/");
-        }
-    }, []);
 
     useEffect(() => {
         fetch('http://localhost:8080/users/view', {
