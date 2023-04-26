@@ -83,6 +83,12 @@ const Visual4Chart = () => {
     });
   };
   
+  const popuptext=(<div id="popup">
+    <h1>Visual 4 Information</h1>
+    <p>
+      This chart displays data for selected countries. You can select multiple countries from the dropdown menu to compare their data.
+    </p>
+  </div>);
 
   return (
     <div>
@@ -115,7 +121,7 @@ const Visual4Chart = () => {
             </option>
           ))}
         </select>
-      </div>
+      
       <div style={{ marginTop: '20px' }}>
         <div id="infotext">
           <p>
@@ -124,14 +130,9 @@ const Visual4Chart = () => {
         </div>
       </div>
       <Popup trigger={<button id="exit">Info</button>} position="right center">
-        <div>
-          <h1>Visual 4 Information</h1>
-          <p>
-            This chart displays data for selected countries. You can select multiple countries from the dropdown menu to compare their data.
-          </p>
-        </div>
+        <div>{popuptext}</div>
       </Popup>
-    </div>
+    </div></div>
   );
 }; 
 
