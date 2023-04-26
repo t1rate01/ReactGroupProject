@@ -14,14 +14,15 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
   const colourList = [ "#FFC300", "#FF5733", "#C70039", "#900C3F", "#581845", "#A93226", "#DC7633", "#F39C12", "#F7DC6F", "#F0B27A", "#BA4A00", "#7B241C", "#D2B4DE", "#9B59B6", "#76448A", "#6C3483", "#1F618D", "#148F77", "#2ECC71", "#239B56"];
 
   const donutOptions = {  // perusdonitsien asetukset
-    layout: {
-      padding: {
-        left: 50,
-        right: 50,
-        top: 0,
-        bottom: 50,
-      },
+    labels: {
+      
     },
+    plugins: {
+    legend: {
+      position: "bottom",
+
+    },
+  },
   };
 
   // HOX  ! DONITSICHARTIN EKALTA SIVULTA PÄÄSEE ALAKATEGORIOIHIN, MUTTA KOSKA BROKEN 
@@ -30,15 +31,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
   // NAPPI JOKA ANTAA KAIKEN DATAN BROKENDOWN DATAN PERUSTEELLA
   
   const brokenDonitsiOptions = { // muotoilusyistä donitsille joka antaa kaiken datan eri asetukset
-    layout: {
-      padding: {
-        left: 50,
-        right: 50,
-        top: 0,
-        bottom: 50,
-      },
-    },
-    maintainAspectRatio: false,
+ 
     plugins: {
       legend: {
         display: false, // labelit piiloon, ainoa olennainen ero
