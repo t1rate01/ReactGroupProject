@@ -26,6 +26,12 @@ public class securityRestApi {
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestParam String username, @RequestParam String password) {
         String defaultview = "000000";
+        if (username == null || password == null) {
+            return new ResponseEntity<>("Missing username or password", HttpStatus.BAD_REQUEST);
+        }
+        if (secService.checkForUserNameAvailability(username)==false) {
+            return new ResponseEntity<>("User already exists", HttpStatus.BAD_REQUEST);
+        }
         users u = secService.register(username, password, defaultview);
         return new ResponseEntity<>(u.getUsername(), HttpStatus.OK);
     }

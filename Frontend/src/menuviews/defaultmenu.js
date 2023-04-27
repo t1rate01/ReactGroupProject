@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { getToken, setToken, clearToken } from "../frontpage_login_register/tokenStorage";
 import { Link, useNavigate } from "react-router-dom";
+import Switch from 'react-switch'
 
 
 
@@ -11,24 +12,13 @@ const DefaultMenu = () => {
     const [checked3, setChecked3] = useState(false);
     const [checked4, setChecked4] = useState(false);
     const [checked5, setChecked5] = useState(false);
+    const [viewChecked, setViewChecked] = useState(false);
+    
+
 
     const navigate = useNavigate();
     const [defaultView, setDefaultView] = useState([]);
-    const [loggedIn , setLoggedIn] = useState();
 
-    useEffect(() => {
-        if (getToken() !== null) {
-            setLoggedIn(true);
-            console.log("logged in");
-        }
-        else {
-            setLoggedIn(false);
-            navigate("/");
-        }
-        if (loggedIn === false) {
-            
-        }
-    }, []);
 
     useEffect(() => {
         fetch('http://localhost:8080/users/view', {
@@ -60,10 +50,14 @@ const DefaultMenu = () => {
     const handleChange5 = (event) => {
         setChecked5(event.target.checked);
     };
+    const handleChangeView = nextChecked => {
+        setViewChecked(nextChecked);
+    };
+    
 
     const callRender = async (event) => {
         event.preventDefault();
-        let view = [0,0,0,0,0];
+        let view = [0,0,0,0,0,0];
         if(checked1===true){
             view[0] = 1;
         }
@@ -79,6 +73,10 @@ const DefaultMenu = () => {
         if(checked5 === true){
             view[4] = 1;
         }
+        if(viewChecked === true){
+            view[5] = 1;  // hox jos 0 niin ylhäältä alas eli normaali
+        }
+        if(view[0]+view[1]+view[2]+view[3]+view[4] !== 0){
         let viewString = view.toString();
         console.log(viewString);
         fetch('http://localhost:8080/users/view', {
@@ -94,8 +92,21 @@ const DefaultMenu = () => {
             console.log(data);
             navigate("/menu/view");
         })
+    } else {
+        alert("You have to select at least one chart to view!");
     }
-// LISÄÄ LOGOUT NAPPI JA TOIMINTO
+    }
+
+    const deleteAccountHandler = async (event) => {
+      alert("Tarvii koodin tähän")
+    }
+
+    const deleteViewHandler = async (event) => {
+        alert("Tarvii koodin tähän")
+        }
+        
+
+
 
     return (
        <div className="viewoptions"> <div id="checkboxes">
@@ -118,12 +129,19 @@ const DefaultMenu = () => {
         </div>
         <p>Select layout:</p>
         <div id ="checkboxes">
-        <div><input type ="radio"></input><label>Two side by side</label></div>
-        <div><input type ="radio"></input><label>In a row</label></div>
+            <label id="switchlabels">
+        <Switch 
+        checked={viewChecked} onChange={handleChangeView} label="Vertical"
+        uncheckedIcon={false}
+        checkedIcon={false}
+        onColor="grey"
+         />
+        </label>
+        <p><span>{viewChecked ? 'Horizontal' : 'Vertical'}</span></p>
         </div>
         <div id="buttongroup">
-            <button onClick>Delete account</button>
-            <button onClick>Delete view</button>
+            <button onClick={deleteAccountHandler}>Delete account</button>
+            <button onClick={deleteViewHandler}>Delete view</button>
         </div>
         <div id="buttongroup">
             <button onClick={callRender}>Save view</button>
