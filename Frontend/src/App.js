@@ -9,6 +9,7 @@ import './App.css';
 import FrontPage from './frontpage_login_register/frontpage';
 import ShowAll from './frontpage_login_register/showall';
 import SectorChart from './Visual5/sectorChart';
+import ScrollButton from "./frontpage_login_register/scrollButton"
 
 
 
@@ -16,6 +17,7 @@ function App() {   // kutsutaan aluksi vain MainMenu, joka ohjaa logiikkaa
   return (
     <BrowserRouter>
     <div className='router'>
+    
         <BrowserBar />
       <Routes>
         <Route path="/" element={<FrontPage />} />
@@ -26,9 +28,11 @@ function App() {   // kutsutaan aluksi vain MainMenu, joka ohjaa logiikkaa
         <Route path="/showall" element={<ShowAll />} />
         </Routes>
     </div>
-
+    
     </BrowserRouter>
+    
   
+
   );
 }
 

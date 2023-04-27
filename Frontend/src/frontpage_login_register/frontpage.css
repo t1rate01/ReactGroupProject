@@ -92,3 +92,24 @@ justify-content: center;
     margin-bottom: 30px;
 
 }
+
+.horisontalRender{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-evenly;
+}
+.column{
+    width: 45%;
+   margin: 6px;
+   padding: 20px 0;
+}
+@media screen and (max-width: 1450px) {
+    .column {
+      width: 100%;
+    }
+  }
+.centered{
+    width: 50%;
+    margin: auto;
+}

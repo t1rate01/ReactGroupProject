@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { setToken, getToken, clearToken } from "../frontpage_login_register/tokenStorage";
+import AlertDialog from "./shareview";
 
 const BrowserBar = () => {
 const [loggedIn, setLoggedIn] = useState(false);
@@ -65,12 +66,17 @@ const handleLogoutClick = (event) => { //   logout nappulan toiminto
     navigate("/");    // todennäkösesti turhaan tässä, koska aiempi useEffect on varmaan jo hoksannut muutoksen ja heittänyt etusivulle
 }
 
+const handleShareClick = (event) =>{
+    //tähän pitäis saaha händleri että se kutsuu shareviewissä olevaa alertdialogia
+    //että klikatessa tulis näkyviin vähän "parempi" pikkuikkuna jossa jaettava linkki
+}
 
 useEffect(() => {
 if (loggedIn === false )  {   // vakionäkymän napit
     setReturnData(
     <div className='logobar'>
         <div className="buttons">
+        <Link to ="/"><button className="navbutton">Home</button></Link>
         <Link to ="/login"><button className="navbutton">Log in</button></Link>
         <Link to ="/register"><button className="navbutton">Sign in</button></Link>
         <Link to ="/showall"><button className="navbutton">Show all</button></Link>
@@ -83,6 +89,7 @@ if (loggedIn === false )  {   // vakionäkymän napit
             <div className="buttons">
                 <Link to ="/menu"><button className="navbutton">Options</button></Link>
                 <button className="navbutton" onClick={handleLogoutClick}>Log out</button>
+                <button className="navbutton" onClick={handleShareClick}>Share view</button>
             </div>
         </div>)
     }
