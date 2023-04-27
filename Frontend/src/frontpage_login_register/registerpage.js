@@ -3,7 +3,7 @@ import { useState } from "react";
 import { setToken, getToken, clearToken } from "./tokenStorage";
 import { Link, useNavigate  } from "react-router-dom";
 
-const RegisterPage = () => {
+const RegisterPage = ({ register }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -28,7 +28,7 @@ const RegisterPage = () => {
             },
             body: `username=${username}&password=${password}`
         });
-        console.log("REsponse status " +response.status);
+        console.log("Response status " +response.status);
         if (response.status >= 400) {
            alert("Invalid username or username already taken");   
             }
