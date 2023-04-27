@@ -21,7 +21,7 @@ const ShowAll = () => {
             <div><MyVisual3Chart /></div>
             <div><Visual4Chart/></div>
             <div><SectorChart /></div>
-            <Link to="/"><button id="backtofront">Back</button></Link>
+            <Link to="/"><button id="backtofront">Home</button></Link>
             
         </div>
     );

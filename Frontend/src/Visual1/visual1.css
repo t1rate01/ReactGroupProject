@@ -1,5 +1,10 @@
 .visual1 {
     color: #e7f6f2;
     font-family: Arial, Helvetica, sans-serif;
+    
+    
+}
+.visual1 #inputs{
+    margin-left: 4%;
 }
 

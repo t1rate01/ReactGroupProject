@@ -11,7 +11,7 @@ const FrontPage = () => {
     let arrayString = array.toString();
 
 
-    return (
+    return (<div className="centered">
         <div className="frontpage">
             <div className="frontpage"><h1>Group 3 global warming visualisations</h1>
             <p>This react app is made by students from Oulu University of Applied Sciences.
@@ -22,9 +22,9 @@ const FrontPage = () => {
              view of the charts that are most important to you!</p>
              <p>Below is a random chart, click "Show all" to view all charts in order.</p></div>
             <div>
-            <Render settings={arrayString}/>
             </div>
         </div>
+        <Render settings={arrayString}/></div>
     )
 }
 

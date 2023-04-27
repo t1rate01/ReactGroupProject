@@ -13,18 +13,17 @@ const Render = ({ settings }) => {
 
   if (parseInt(renderOptions[5]) === 1) {
     returnData = (
-      <div className='verticalRender'>
-        <h1>TÄMÄ TARVII classnamelle .verticalRender CSS muotoilun joka toimisi</h1>
-        {parseInt(renderOptions[0]) === 1 && (<div><Visual1 /></div>)}
-        {parseInt(renderOptions[1]) === 1 && (<div><Visual2 /></div>)}
-        {parseInt(renderOptions[2]) === 1 && (<div><Visual3/></div>)}
-        {parseInt(renderOptions[3]) === 1 && (<div><Visual4Chart/></div>)}
-        {parseInt(renderOptions[4]) === 1 && (<div><SectorChart /></div>)}
+      <div className='horisontalRender'>
+        {parseInt(renderOptions[0]) === 1 && (<div className="column"><Visual1 /></div>)}
+        {parseInt(renderOptions[1]) === 1 && (<div className="column"><Visual2 /></div>)}
+        {parseInt(renderOptions[2]) === 1 && (<div className="column"><Visual3/></div>)}
+        {parseInt(renderOptions[3]) === 1 && (<div className="column"><Visual4Chart/></div>)}
+        {parseInt(renderOptions[4]) === 1 && (<div className="column"><SectorChart /></div>)}
       </div>
     );
   } else {
     returnData = (
-      <div>
+      <div className='frontpage'>
         {parseInt(renderOptions[0]) === 1 && (<div><Visual1 /></div>)}
         {parseInt(renderOptions[1]) === 1 && (<div><Visual2 /></div>)}
         {parseInt(renderOptions[2]) === 1 && (<div><Visual3/></div>)}
@@ -34,9 +33,9 @@ const Render = ({ settings }) => {
     );
   }
 
-  return (<div>
-    {returnData}
-  </div>);
+  return (
+    <div>{returnData}</div>
+  );
 };
 
 export default Render;
