@@ -104,5 +104,3 @@ return (
 };
 
 export default BrowserBar;
-//Jos login tila false, teksti kopioitu suoraan App.js alkuperäisistä teksteistä'
-//Jos login tila true, täytä toiminnot, LOGOUT napille ajatuksena että se kutsus "clearToken()" ja sitten teoriassa tän pitäis osata suoraan heittää etusivulle

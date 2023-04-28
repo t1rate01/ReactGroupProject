@@ -17,8 +17,7 @@ function App() {   // kutsutaan aluksi vain MainMenu, joka ohjaa logiikkaa
   return (
     <BrowserRouter>
     <div className='router'>
-    
-        <BrowserBar />
+    <BrowserBar />
       <Routes>
         <Route path="/" element={<FrontPage />} />
         <Route path="/login" element={<LoginPage />} />
