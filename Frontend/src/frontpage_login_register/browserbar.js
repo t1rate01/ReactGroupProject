@@ -9,6 +9,7 @@ const BrowserBar = () => {
 const [loggedIn, setLoggedIn] = useState(false);
 const [returnData, setReturnData] = useState(null);
 const [displayShareView, setDisplayShareView] = useState(false);
+const [viewString, setViewString] = useState("000000"); 
 const navigate = useNavigate();
 const location = useLocation();
 const defaultViewCompareString = "0,0,0,0,0,0"; // ohjelma tallentaa näin
@@ -45,6 +46,7 @@ async function checkDefaultView(){
         }
         else{
             navigate("/menu/view");
+            setViewString(data.toString());
         }
     })
     .catch((error) => {
@@ -97,7 +99,7 @@ if (loggedIn === false )  {   // vakionäkymän napit
                 <Link to ="/menu"><button className="navbutton">Options</button></Link>
                 <button className="navbutton" onClick={handleLogoutClick}>Log out</button>
                 {location.pathname==="/menu/view" && (<button className="navbutton" onClick={handleShareClick}>Share view</button>)}
-                {location.pathname==="/menu/view" && displayShareView && <AlertDialog open={displayShareView} onClose={handleShareClose} />}
+                {location.pathname==="/menu/view" && displayShareView && <AlertDialog open={displayShareView} onClose={viewString} viewString={viewString} />}
             </div>
         </div>)
     }
