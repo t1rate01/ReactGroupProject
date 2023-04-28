@@ -8,6 +8,8 @@ import AlertDialog from "./shareview";
 const BrowserBar = () => {
 const [loggedIn, setLoggedIn] = useState(false);
 const [returnData, setReturnData] = useState(null);
+const [displayShareView, setDisplayShareView] = useState(false);
+const [viewString, setViewString] = useState("000000"); 
 const navigate = useNavigate();
 const location = useLocation();
 const defaultViewCompareString = "0,0,0,0,0,0"; // ohjelma tallentaa näin
@@ -25,6 +27,9 @@ useEffect(() => {
 }
 , [getToken()]);  // tämän hookin täytyy olla riippuvainen getToken() haun tuloksen muuttumisesta
 
+
+
+
 async function checkDefaultView(){
     fetch('http://localhost:8080/users/view', {
         method: 'GET',  
@@ -41,6 +46,7 @@ async function checkDefaultView(){
         }
         else{
             navigate("/menu/view");
+            setViewString(data.toString());
         }
     })
     .catch((error) => {
@@ -66,10 +72,13 @@ const handleLogoutClick = (event) => { //   logout nappulan toiminto
     navigate("/");    // todennäkösesti turhaan tässä, koska aiempi useEffect on varmaan jo hoksannut muutoksen ja heittänyt etusivulle
 }
 
-const handleShareClick = (event) =>{
-    //tähän pitäis saaha händleri että se kutsuu shareviewissä olevaa alertdialogia
-    //että klikatessa tulis näkyviin vähän "parempi" pikkuikkuna jossa jaettava linkki
-}
+const handleShareClick = (event) => {
+    setDisplayShareView(displayShareView => !displayShareView);  // toggle the displayShareView state
+  };
+
+const handleShareClose = (event) => {
+    setDisplayShareView(false);
+    };
 
 useEffect(() => {
 if (loggedIn === false )  {   // vakionäkymän napit
@@ -83,17 +92,18 @@ if (loggedIn === false )  {   // vakionäkymän napit
         </div>
         </div>) 
     }
-    else  {                 // sisäänkirjautuneen käyttäjän napit
+    else  {                 // sisäänkirjautuneen käyttäjän napit, kaksi if ehtoa näytetäänkö share view ja dialogiehto ja kyytiin open ja onClose
         setReturnData(
         <div className='logobar'>
             <div className="buttons">
                 <Link to ="/menu"><button className="navbutton">Options</button></Link>
                 <button className="navbutton" onClick={handleLogoutClick}>Log out</button>
-                <button className="navbutton" onClick={handleShareClick}>Share view</button>
+                {location.pathname==="/menu/view" && (<button className="navbutton" onClick={handleShareClick}>Share view</button>)}
+                {location.pathname==="/menu/view" && displayShareView && <AlertDialog open={displayShareView} onClose={viewString} viewString={viewString} />}
             </div>
         </div>)
     }
-}, [loggedIn, setReturnData]);    // riippuvainen molemmista tiloista ja niiden muutoksista
+}, [loggedIn, setReturnData, location.pathname, displayShareView]);    // riippuvainen näistä tiloista ja niiden muutoksista
 
 return (
     <div>
@@ -104,5 +114,3 @@ return (
 };
 
 export default BrowserBar;
-//Jos login tila false, teksti kopioitu suoraan App.js alkuperäisistä teksteistä'
-//Jos login tila true, täytä toiminnot, LOGOUT napille ajatuksena että se kutsus "clearToken()" ja sitten teoriassa tän pitäis osata suoraan heittää etusivulle

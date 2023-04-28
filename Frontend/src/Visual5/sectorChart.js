@@ -157,7 +157,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
           </div>
           {selectedSector === null && showBreakdown === false && (
             <div className="donitsi">
-              <Pie data={chartData} onClick={handleSectorClick} ref={chartRef} options={donutOptions} width={500} height={500} />
+              <Pie data={chartData} onClick={handleSectorClick} ref={chartRef} options={donutOptions} width={600} height={600} />
             </div>
           )}
           {selectedSector !== null && !showBreakdown && (

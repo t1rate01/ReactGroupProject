@@ -30,12 +30,14 @@ const RegisterPage = ({ register }) => {
         });
         console.log("Response status " +response.status);
         if (response.status >= 400) {
-           alert("Invalid username or username already taken");   
+           alert("Invalid username or username already taken");
+           console.log(response.status)   
             }
         else 
              {
                 const data = await response.text();
                 alert("Registration successful");
+                console.log(response.status)
                 navigate("/login"); 
             }
     }
