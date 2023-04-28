@@ -1,9 +1,27 @@
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
-import RegisterPage from "./RegisterPage";
+import App from '../App';
+import RegisterPage from "./registerpage";
 
-describe("RegisterPage", () => {
-  it("should render the form and submit the data correctly", async () => {
+test('renders content', () => {
+const registerpage = {
+  content: 'component testing',
+  important: true
+}
+render(<RegisterPage registerpage ={registerpage}/>)
+
+const element =screen.getByText('component testing')
+expect (element).toBeDefined()
+}
+)
+
+describe('RegisterPage component', () => {
+  test('should handle registration correctly', async () => {
+    render(
+      <App>
+        <RegisterPage />
+      </App>
+    );
     const { getByLabelText, getByText } = render(<RegisterPage />);
 
     // Fill in the form with test data
