@@ -2,7 +2,7 @@ package com.db.example.SavedViews;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import java.util.Objects;
+
 
 @Entity
 public class savedview {

@@ -25,12 +25,17 @@ public class savedViewRest {
 
     @PostMapping("/savedviews")
     public ResponseEntity<String> saveViewPost(@RequestHeader("Authorization") String token, @RequestParam String viewID, @RequestParam String viewstring) {
-        String username = secService.validateToken(token);
-        if (username == null) {
-            return new ResponseEntity<>("Wrong/Missing token", HttpStatus.UNAUTHORIZED);
+        if(token != null)
+        {
+            if(token.startsWith("Bearer "))
+                token = token.split(" ")[1];
         }
+        String username = secService.validateToken(token);
+        if (username != null) {
         savedViewService.saveView(new savedview(viewID, viewstring, username));
         return new ResponseEntity<>("View saved", HttpStatus.OK);
+    }
+    return new ResponseEntity<>("Wrong/Missing token", HttpStatus.UNAUTHORIZED);
     }
 
     @GetMapping("/savedviews/{viewID}")
