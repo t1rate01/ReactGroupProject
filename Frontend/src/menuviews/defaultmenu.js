@@ -98,14 +98,40 @@ const DefaultMenu = () => {
     }
 
     const deleteAccountHandler = async (event) => {
-      alert("Tarvii koodin tähän")
+        const response = await fetch('http://localhost:8080/users/', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + getToken(),
+            },
+        });
+        if(response.status === 200){
+            clearToken();
+            navigate("/menu");
+        } else {
+            alert("Something went wrong");
+            console.log(response.status)
+        }
     }
+    
 
     const deleteViewHandler = async (event) => {
-        alert("Tarvii koodin tähän")
-        }
-        
+         const response = await fetch('http://localhost:8080/users/view', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + getToken(),
+            },
+        });
+        if(response.status === 200){
+            navigate("/menu");
+        } else {
+            alert("Something went wrong");
+            console.log(response.status)
 
+        }
+    }
+        
 
 
     return (
@@ -134,7 +160,7 @@ const DefaultMenu = () => {
         checked={viewChecked} onChange={handleChangeView} label="Vertical"
         uncheckedIcon={false}
         checkedIcon={false}
-        onColor="grey"
+        onColor="#5A5A5A"
          />
         </label>
         <p><span>{viewChecked ? 'Horizontal' : 'Vertical'}</span></p>
@@ -144,8 +170,7 @@ const DefaultMenu = () => {
             <button onClick={deleteViewHandler}>Delete view</button>
         </div>
         <div id="buttongroup">
-            <button onClick={callRender}>Save view</button>
-            <button onClick>Cancel</button>
+            <button onClick={callRender}>Save&Show view</button>
         </div>
         </div>
     )

@@ -47,7 +47,7 @@ const Visual2 = ({exitToMenu}) => {
       
 
 const handleExitClick = (event) => { //   Mainmenulta perityn exitfunction kutsu
-    console.log("handleExitClick");
+    //console.log("handleExitClick");
     exitToMenu();
 }
 
