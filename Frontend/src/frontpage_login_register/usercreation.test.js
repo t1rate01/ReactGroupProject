@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
-import RegisterPage from "./RegisterPage";
+import RegisterPage from "./registerpage";
 
 describe("RegisterPage", () => {
   it("should render the form and submit the data correctly", async () => {

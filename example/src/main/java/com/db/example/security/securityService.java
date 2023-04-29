@@ -119,6 +119,18 @@ public class securityService {
         return true;
     }
 
+    public String deleteDefaultView(String username){
+        users u = userRepo.findById(username).orElse(null);
+        try {
+            u.setdefaultview("0,0,0,0,0,0");
+            userRepo.save(u);
+            return "Default view reset";
+        }
+        catch (Exception e) {
+            //virhe kiinni
+        }
+        return null;
+    }
    
 
 }
