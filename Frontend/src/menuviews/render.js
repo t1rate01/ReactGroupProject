@@ -8,7 +8,7 @@ import Visual3 from "../Visual3/visual3Chart";
 
 
 const Render = ({ settings }) => {
-  let renderOptions = settings.split(',');
+  let renderOptions = settings ? settings.split(',') : [];
   let returnData;
 
   if (parseInt(renderOptions[5]) === 1) {

@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import {FiArrowUp} from "react-icons/fi";
 import { useState} from "react";
 
@@ -24,7 +24,7 @@ const ScrollButton = () =>{
           behavior: 'smooth'
           /* you can also use 'auto' behaviour
              in place of 'smooth' */
-        });
+   /*     });
       };
 
       window.addEventListener('scroll', toggleVisible);
@@ -37,3 +37,5 @@ const ScrollButton = () =>{
   );
 }
 export default ScrollButton;
+
+*/

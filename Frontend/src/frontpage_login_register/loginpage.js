@@ -16,7 +16,7 @@ const LoginPage = () => {
               alert("Username or password missing");
               return;
          }
-        login(username, password);
+       await login(username, password);
     }
 
     async function login(username, password) {
@@ -29,13 +29,15 @@ const LoginPage = () => {
         });
         if (response.status === 200) {
         const data = await response.text();
+        console.log(response.status)
         setToken(data);
-        console.log("Token datassa on " +data);
-        console.log("Token on "+ getToken());
-        checkDefaultView();
+        //console.log("Token datassa on " +data);
+        //console.log("Token on "+ getToken());
+       await checkDefaultView();
     }   
     else {
         alert("Wrong username or password");
+        console.log(response.status)
     }
     }
 
@@ -49,8 +51,8 @@ const LoginPage = () => {
         })
         .then(response => response.text())
         .then(data => {
-            console.log(" Fethin data on " +data);
-            if (data.toString() === defaultViewCompareString || data.toString() === defaultViewCompareString2){ // tarkistaa onko tallennettua näkymää
+            //console.log(" Fethin data on " +data);
+            if (data.toString() === defaultViewCompareString || data.toString() === defaultViewCompareString2 || data.toString() === ""){ // tarkistaa onko tallennettua näkymää
                 navigate("/menu");
             }
             else{

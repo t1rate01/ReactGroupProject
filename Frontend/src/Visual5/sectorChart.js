@@ -157,7 +157,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
           </div>
           {selectedSector === null && showBreakdown === false && (
             <div className="donitsi">
-              <Pie data={chartData} onClick={handleSectorClick} ref={chartRef} options={donutOptions} width={500} height={500} />
+              <Pie data={chartData} onClick={handleSectorClick} ref={chartRef} options={donutOptions} width={600} height={600} />
             </div>
           )}
           {selectedSector !== null && !showBreakdown && (
@@ -177,7 +177,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
       <div className="labelColumn">
         <div>
         <p id="info"> CO2 Emissions by sectors. Our pie chart visualizes the share of emissions by sector, highlighting the different industries and activities that contribute to these emissions. Sectors included in the chart are electricity and heat production, industry, transportation, buildings, and other sectors. The "share" value on the pie chart represents the sectors % of the total CO2 emissions.
-        
+        </p>
         <div className="donitsinapit"> 
           {showBreakdown === false &&(
           <button onClick={handleBreakdownClick}>All Data</button>)}
@@ -185,7 +185,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
             <button onClick={handleBackClick}>Back</button>
           )}
           
-        </div> </p>
+        </div> 
         {showBreakdown === true && (
           <p id="alaotsikko">Move your mouse on a sector to see details</p>
         )}

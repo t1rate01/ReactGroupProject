@@ -1,4 +1,5 @@
-import React from "react";
+ import React from "react";
+import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -6,19 +7,15 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function AlertDialog() {
-  const [open, setOpen] = React.useState(true);
-
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+export default function AlertDialog(props) {  // Vaihdoin ottamaan tätä kutsuvasta ikkunasta funktiot
+  const {open, onClose, linkString} = props;
+  
 
   return (
     <div>
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={onClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -27,12 +24,12 @@ export default function AlertDialog() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Here is your link to share your view: 
+            Here is your link to share your view: {props.linkString || "No link available"}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={onClose}>Disagree</Button>
+          <Button onClick={onClose} autoFocus>
             Agree
           </Button>
         </DialogActions>
@@ -40,3 +37,4 @@ export default function AlertDialog() {
     </div>
   );
 }
+
