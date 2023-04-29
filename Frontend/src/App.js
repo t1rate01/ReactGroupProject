@@ -3,6 +3,7 @@ import RegisterPage from './frontpage_login_register/registerpage';
 import DefaultMenu from './menuviews/defaultmenu';
 import ChartView from './menuviews/menuchartview';
 import BrowserBar from './frontpage_login_register/browserbar';
+import SharedView from './frontpage_login_register/customlinkview';
 
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
@@ -25,6 +26,9 @@ function App() {   // kutsutaan aluksi vain MainMenu, joka ohjaa logiikkaa
         <Route path="/menu" element={<DefaultMenu />} />
         <Route path="/menu/view" element={<ChartView />} />
         <Route path="/showall" element={<ShowAll />} />
+        <Route path="/shared">
+          <Route path=":id" element={<SharedView />} />
+        </Route>
         </Routes>
     </div>
     
