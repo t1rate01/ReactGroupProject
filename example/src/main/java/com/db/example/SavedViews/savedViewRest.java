@@ -44,7 +44,8 @@ public class savedViewRest {
         if (view == null) {
             return new ResponseEntity<>("View not found", HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(view.getViewString(), HttpStatus.OK);
+        String returnString = view.getUsername() + "&&" + view.getViewString();
+        return new ResponseEntity<>(returnString, HttpStatus.OK);
     }
 
 }
