@@ -23,7 +23,7 @@ function ShareButton() {
   };
 
   return (
-    <Button onClick={shareContent} className="share-button">
+    <Button className="sharebutton" onClick={shareContent} >
       Share
     </Button>
   );
@@ -56,18 +56,18 @@ export default function AlertDialog(props) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogContent>
+        <DialogContent className="dialogwindow">
           <DialogContentText id="alert-dialog-description">
             Here is your link to share your view: {linkString || "No link available"}
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={copyToClipboard} className="linkdialog button">
+        <DialogActions className="dialogactions">
+          <Button id="dialogbutton"onClick={copyToClipboard} className="linkdialog button">
             Copy Link
           </Button>
-          <span>{linkCopiedMessage}</span>
+          <span id="linkcopytext">{linkCopiedMessage}</span>
           <ShareButton />
-          <Button onClick={onClose} className="linkdialog button">
+          <Button id="dialogbutton" onClick={onClose} className="linkdialog button">
             Close
           </Button>
         </DialogActions>
