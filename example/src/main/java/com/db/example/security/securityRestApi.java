@@ -119,4 +119,21 @@ public class securityRestApi {
         return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
 }
 
+    @DeleteMapping("/users/view")
+    public ResponseEntity<String> deleteDefaultView(@RequestHeader("Authorization") String bearer){
+        if (bearer != null){
+            if (bearer.startsWith("Bearer")){
+                String token = bearer.split(" ")[1];  // toinen tapa pilkkoa
+                String username = secService.validateToken(token);
+                if (username != null){
+                    String response = secService.deleteDefaultView(username);
+                    if (response != null){
+                    return new ResponseEntity<>("Default view for "+username+" deleted", HttpStatus.OK);
+                    }
+                }
+            }}
+        return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
+
+}
+
 }

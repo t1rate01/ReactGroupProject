@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, matchPath } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
+
 
 import { setToken, getToken, clearToken } from "../frontpage_login_register/tokenStorage";
 import AlertDialog from "./shareview";
@@ -9,7 +11,8 @@ const BrowserBar = () => {
 const [loggedIn, setLoggedIn] = useState(false);
 const [returnData, setReturnData] = useState(null);
 const [displayShareView, setDisplayShareView] = useState(false);
-const [viewString, setViewString] = useState("000000"); 
+const [viewString, setViewString] = useState(""); 
+const [link, setLink] = useState('');
 const navigate = useNavigate();
 const location = useLocation();
 const defaultViewCompareString = "0,0,0,0,0,0"; // ohjelma tallentaa näin
@@ -22,15 +25,60 @@ useEffect(() => {
     }
     else {
         setLoggedIn(false);
-        navigate("/");
     }
 }
 , [getToken()]);  // tämän hookin täytyy olla riippuvainen getToken() haun tuloksen muuttumisesta
 
 
+function createLink(viewID){
+    return "http://localhost:3000/shared/" + viewID.toString();
+  }
+  
+const handleSaveShareClick = async(event) => { 
+    let latestViewString = await updateDefaultViewString(); // ensin katotaan view ajantasalle varmasti
 
+    let viewID = uuidv4(); 
+    console.log(viewID);
+    console.log(" updaten jälkeen " + latestViewString);
+    const response = await fetch('http://localhost:8080/savedviews', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + getToken(),
+      },
+        body: `viewID=${viewID}&viewstring=${latestViewString}`
+    });
 
-async function checkDefaultView(){
+    if (response.status === 200) {
+      console.log(response.status);
+      setLink(createLink(viewID)); // linkki talteen
+      setDisplayShareView(true); // näytä linkki
+    }
+    else {
+      console.log(response.status);
+    }
+  }
+
+  async function updateDefaultViewString() {  // palauttaa stringin
+    try {
+      const response = await fetch('http://localhost:8080/users/view', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': 'Bearer ' + getToken(),
+        },
+      });
+      const data = await response.text();
+      console.log("Updaten data on " + data);
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+  }
+  
+
+async function checkDefaultView(){   // tarkistaa onko käyttäjällä tallennettua näkymää
     fetch('http://localhost:8080/users/view', {
         method: 'GET',  
         headers: {
@@ -55,8 +103,14 @@ async function checkDefaultView(){
 }
 
 
-useEffect(() => {       // Tarkistaa onko käyttäjä kirjautunut sisään ja onko jollain muulla sivulla kuin julkisella sivulla, tarvittaessa heittää etusivulle
-    if(loggedIn === false && location.pathname !== "/" && location.pathname !== "/showall" && location.pathname !== "/register") {                                         // tähän pitää myöhemmin lisätä ehto sitä julkista linkkisivua varten jos tämä jää käyttöön
+useEffect(() => {     // Tarkistaa onko käyttäjä kirjautunut sisään ja onko jollain muulla sivulla kuin julkisella sivulla, tarvittaessa heittää etusivulle
+    if(loggedIn === false && location.pathname !== "/" 
+    && location.pathname !== "/showall" 
+    && location.pathname !== "/register" 
+    && location.pathname !== "/login"
+    && !location.pathname.includes("shared")
+    ) {      
+        console.log("Redirected by browserbar") ;                                  // tähän pitää myöhemmin lisätä ehto sitä julkista linkkisivua varten jos tämä jää käyttöön
         navigate("/");
     } 
     if (loggedIn === true && location.pathname === "/") {
@@ -73,6 +127,7 @@ const handleLogoutClick = (event) => { //   logout nappulan toiminto
 }
 
 const handleShareClick = (event) => {
+    handleSaveShareClick();
     setDisplayShareView(displayShareView => !displayShareView);  // toggle the displayShareView state
   };
 
@@ -99,11 +154,11 @@ if (loggedIn === false )  {   // vakionäkymän napit
                 <Link to ="/menu"><button className="navbutton">Options</button></Link>
                 <button className="navbutton" onClick={handleLogoutClick}>Log out</button>
                 {location.pathname==="/menu/view" && (<button className="navbutton" onClick={handleShareClick}>Share view</button>)}
-                {location.pathname==="/menu/view" && displayShareView && <AlertDialog open={displayShareView} onClose={viewString} viewString={viewString} />}
+                {location.pathname==="/menu/view" && displayShareView && <AlertDialog open={displayShareView} onClose={handleShareClose} linkString={link} />}
             </div>
         </div>)
     }
-}, [loggedIn, setReturnData, location.pathname, displayShareView]);    // riippuvainen näistä tiloista ja niiden muutoksista
+}, [loggedIn, setReturnData, location.pathname, displayShareView, link]);    // riippuvainen näistä tiloista ja niiden muutoksista
 
 return (
     <div>

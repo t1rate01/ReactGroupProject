@@ -3,10 +3,9 @@ import { Chart } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import Popup from 'reactjs-popup';
 
-
 const Visual4Chart = () => {
   const [chartData, setChartData] = useState(null);
-  const [selectedCountries, setSelectedCountries] = useState([]);
+  const [selectedCountries, setSelectedCountries] = useState(['albania', 'algeria', 'angola']);
   const [allCountries, setAllCountries] = useState([]);
   const chartRef = useRef(null);
   const chartInstanceRef = useRef(null);
@@ -82,12 +81,16 @@ const Visual4Chart = () => {
       return [...prevState, value];
     });
   };
+
+  const handleClearCountries = () => {
+    setSelectedCountries([]);
+  };
   
   const popuptext=(<div id="popup">
     <h1>Visual 4 Information</h1>
-    <p>
-      This chart displays data for selected countries. You can select multiple countries from the dropdown menu to compare their data.
-    </p>
+    <p>This paper aims to provide insights into the global carbon budget, which refers to the changes in carbon dioxide in the environment since the beginning of the Industrial Era. The focus is on CO2 emissions resulting from human activities such as burning fossil fuels and land-use changes, as well as the resulting changes in carbon storage in the land and ocean. Additionally, the paper provides annual estimates of CO2 uptake by the ocean and land. However, global emissions and their partitioning among the atmosphere, ocean, and land may not necessarily add up to zero due to errors and smaller terms that are not fully accounted for in the budget estimate. To address this, the paper also considers budget imbalance, which is a measure of the mismatch between estimated emissions and changes in the atmosphere, land, and ocean. Understanding the global carbon budget and its components is essential for quantifying emissions that are compatible with climate stabilization goals.</p>
+    <p><a href="https://data.icos-cp.eu/licence_accept?ids=%5B%22lApekzcmd4DRC34oGXQqOxbJ%22%5D">Dataset link</a></p>
+    <p><a href="https://essd.copernicus.org/articles/14/1917/2022/">Source link</a></p>
   </div>);
 
   return (
@@ -121,11 +124,11 @@ const Visual4Chart = () => {
             </option>
           ))}
         </select>
-      
+        <button onClick={handleClearCountries}>Clear Countries</button>
       <div style={{ marginTop: '20px' }}>
         <div id="infotext">
           <p>
-            Here is a line chart showing selected countries' data. You can select multiple countries to compare their data.
+            Here is a line chart showing selected countries co2 data. You can select multiple countries to compare their data.
           </p>
         </div>
       </div>

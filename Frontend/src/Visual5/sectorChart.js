@@ -74,7 +74,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
     const activeSectorIndexNum = getElementsAtEvent(chartRef.current, event)[0].datasetIndex; // poista myöhemmin !!!!!!!!!!!!!!!!!!!!!!!!
     const activeSectorIndex = getElementsAtEvent(chartRef.current, event)[0].index;   // älä poista, tällä löytyy labeli arraystä
     const activeSector = sectorData[activeSectorIndex].sector;  // labelin haku indeksillä
-    console.log("activeSectorIndexNum: " + activeSectorIndexNum + " activeSectorIndex: " + activeSectorIndex);  // poista myöh
+    //console.log("activeSectorIndexNum: " + activeSectorIndexNum + " activeSectorIndex: " + activeSectorIndex);  // poista myöh
     if (activeSector) {
       setSelectedSector(activeSector);   // muuttaa muuttujaa ja se aiheuttaa if kutsun
    }
@@ -126,7 +126,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
   }
   
   if (selectedSector) {   // donitsin osioiden klikkauksen tunnistavan funktion muutettua muuttujaa, ja vaihtaa datan perustuen klikkauksesta saatuun indexinumeroon 
-    console.log("selectedSector: " + selectedSector)
+    //console.log("selectedSector: " + selectedSector)
     colourList.sort(() => Math.random() - 0.5);  // sekoittaa värit ettei aina samat subsektoreissa
     const filteredSubSectorData = subSectorData.filter((item) => item.sector_name === selectedSector);  // filtteröi tietokantadataan listyn sector_name viitaten, käyttää vertailuun klikkauksen indexin perusteella haettua labelia
     chartData = {
@@ -177,7 +177,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
       <div className="labelColumn">
         <div>
         <p id="info"> CO2 Emissions by sectors. Our pie chart visualizes the share of emissions by sector, highlighting the different industries and activities that contribute to these emissions. Sectors included in the chart are electricity and heat production, industry, transportation, buildings, and other sectors. The "share" value on the pie chart represents the sectors % of the total CO2 emissions.
-        
+        </p>
         <div className="donitsinapit"> 
           {showBreakdown === false &&(
           <button onClick={handleBreakdownClick}>All Data</button>)}
@@ -185,7 +185,7 @@ const SectorChart = ({exitToMenu}) => {   // ********** esittelyssä mukana main
             <button onClick={handleBackClick}>Back</button>
           )}
           
-        </div> </p>
+        </div> 
         {showBreakdown === true && (
           <p id="alaotsikko">Move your mouse on a sector to see details</p>
         )}
