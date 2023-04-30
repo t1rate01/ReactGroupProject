@@ -6,6 +6,29 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
+function ShareButton() {
+  const shareContent = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Your Page Title",
+          text: "Your Page Description",
+          url: window.location.href,
+        })
+        .then(() => console.log("Successful share"))
+        .catch((error) => console.log("Error sharing:", error));
+    } else {
+      alert("Web Share API is not supported in this browser.");
+    }
+  };
+
+  return (
+    <Button onClick={shareContent} className="share-button">
+      Share
+    </Button>
+  );
+}
+
 export default function AlertDialog(props) {
   const { open, onClose, linkString } = props;
   const [linkCopiedMessage, setLinkCopiedMessage] = useState("");
@@ -43,6 +66,7 @@ export default function AlertDialog(props) {
             Copy Link
           </Button>
           <span>{linkCopiedMessage}</span>
+          <ShareButton />
           <Button onClick={onClose} className="linkdialog button">
             Close
           </Button>
