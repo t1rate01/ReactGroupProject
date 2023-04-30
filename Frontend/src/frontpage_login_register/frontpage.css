@@ -83,6 +83,33 @@ justify-content: center;
 
 }
 
+.linkdialog {
+    display: grid;
+    background-color: #2c3333;
+    color: #e7f6f2;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+      }
+      
+    .linkdialog button {
+    background-color: #395b64;
+    color: #e7f6f2;
+    border-width: 1px;
+    border-radius: 10px;
+    font-size: large;
+    border-color: #a5c9ca;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin: 0 20px;
+    padding: 6px;
+      }
+      
+    .linkdialog #alert-dialog-description {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+      }
+
 .viewoptions input {
     margin-top: 8px;
     margin-bottom: 10px;
@@ -113,3 +140,4 @@ justify-content: space-evenly;
   .centered{
     
   }
+  
