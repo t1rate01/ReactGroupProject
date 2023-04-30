@@ -12,26 +12,21 @@ export default function AlertDialog(props) {  // Vaihdoin ottamaan tätä kutsuv
   
 
   return (
-    <div>
+    <div className="linkdialog">
       <Dialog
         open={open}
         onClose={onClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
+
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Here is your link to share your view: {props.linkString || "No link available"}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose}>Disagree</Button>
-          <Button onClick={onClose} autoFocus>
-            Agree
-          </Button>
+          <Button onClick={onClose}>Close</Button>
         </DialogActions>
       </Dialog>
     </div>
