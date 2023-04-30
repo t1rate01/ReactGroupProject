@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -8,11 +8,16 @@ import DialogTitle from "@mui/material/DialogTitle";
 
 export default function AlertDialog(props) {
   const { open, onClose, linkString } = props;
+  const [linkCopiedMessage, setLinkCopiedMessage] = useState("");
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(linkString).then(
       () => {
         console.log("Link copied to clipboard!");
+        setLinkCopiedMessage("Link Copied!");
+        setTimeout(() => {
+          setLinkCopiedMessage("");
+        }, 2000);
       },
       (err) => {
         console.error("Could not copy text: ", err);
@@ -37,6 +42,7 @@ export default function AlertDialog(props) {
           <Button onClick={copyToClipboard} className="linkdialog button">
             Copy Link
           </Button>
+          <span>{linkCopiedMessage}</span>
           <Button onClick={onClose} className="linkdialog button">
             Close
           </Button>
