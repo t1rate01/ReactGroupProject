@@ -4,7 +4,8 @@ import { Line } from "react-chartjs-2";
 import "chartjs-adapter-luxon";
 import Popup from 'reactjs-popup';
 
-const Visual1Chart = ({exitToMenu}) =>{ //haetaan käyrien tiedot ja muutetaan jsoniksi
+
+const Visual1Chart = () =>{ //haetaan käyrien tiedot ja muutetaan jsoniksi
     const [visual1Data, setVisual1Data] = useState([]);
 
     useEffect(()=>{
@@ -59,10 +60,7 @@ const [recoData, setRecoData] = useState([]);
     
 },[]);
 
-const handleExitClick = (event) => { //   Mainmenulta perityn exitfunction kutsu
-    console.log("handleExitClick");
-    exitToMenu();
-}
+
 const popUpText = (
     <div id="popup">
         <h1>About annual and monthly HadCRUT5 data</h1>
@@ -178,14 +176,14 @@ const options ={
 
 
 return(
-    <div className="visual1">
+    
         <div className="chart">
             <Line options={options} data={chartData} width={1500} height = {800}/>
             <Popup trigger={<button id="exit">Info</button>} position="right center">
                 <div>{popUpText}</div>
             </Popup>
         </div>
-    </div>
+    
 )
 };
 export default Visual1Chart;

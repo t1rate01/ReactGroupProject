@@ -4,6 +4,7 @@ import { Line } from "react-chartjs-2";
 import "chartjs-adapter-luxon";
 import Popup from "reactjs-popup";
 
+
 const Visual1ChartMonthly = () =>{
     const [visual1MoData, setVisual1MoData] = useState([]);
 
@@ -112,12 +113,12 @@ const options ={
 }
 return(
     <div className="chart">
-        <div>
+        
             <Line options={options} data={chartData} width={1500} height = {800}/>
             <Popup trigger={<button id="exit">Info</button>} position="right center">
                 <div>{popUpText}</div>
             </Popup>
-        </div>
+        
     </div>
 )
 };
