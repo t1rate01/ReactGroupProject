@@ -96,6 +96,8 @@ const DefaultMenu = () => {
         alert("You have to select at least one chart to view!");
     }
     }
+    const deleteButton = (event) =>{}
+    //muuta muuttujaa const showquestion true
 
     const deleteAccountHandler = async (event) => {
         const response = await fetch('http://localhost:8080/users/', {
