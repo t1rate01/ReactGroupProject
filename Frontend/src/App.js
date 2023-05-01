@@ -5,7 +5,7 @@ import DefaultMenu from './menuviews/defaultmenu';
 import ChartView from './menuviews/menuchartview';
 import BrowserBar from './frontpage_login_register/browserbar';
 import SharedView from './frontpage_login_register/customlinkview';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import FrontPage from './frontpage_login_register/frontpage';
 import ShowAll from './frontpage_login_register/showall';
@@ -16,7 +16,7 @@ import ShowAll from './frontpage_login_register/showall';
 function App() {  
   return (
     <BrowserRouter>
-    <div className='router'>
+    <div className='router' data-testid="router">
     <BrowserBar />
       <Routes>
         <Route path="/" element={<FrontPage />} />
