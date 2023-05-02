@@ -113,12 +113,12 @@ const options ={
 }
 return(
     <div className="chart">
-        <div>
+        
             <Line options={options} data={chartData} width={1500} height = {800}/>
             <Popup trigger={<button id="exit">Info</button>} position="right center">
                 <div>{popUpText}</div>
             </Popup>
-        </div>
+        
     </div>
 )
 };
