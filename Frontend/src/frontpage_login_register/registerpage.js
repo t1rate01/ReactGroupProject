@@ -20,12 +20,12 @@ const RegisterPage = () => {
 
     const regBtn = async (event) => {
        event.preventDefault();   // event objektista löytyy, estää selaimen sekaantumisen formiin(?) ja sen sijaan mennään omilla toiminnoilla
-       console.log("regBtn pressed");
+       //console.log("regBtn pressed");
        if(username === "" || password === "") {
             handleRegFail();
             return;
          }
-         console.log("Registering user " +username);
+        // console.log("Registering user " +username);
         await register(username, password);
     }
 
@@ -37,11 +37,11 @@ const RegisterPage = () => {
             },
             body: `username=${username}&password=${password}`
         });
-        console.log("Response status " +response.status);
+        console.log(response.status);
         if (response.status === 200) {
             const data = await response.text();
             handleRegSuccess();
-            console.log(data);
+           // console.log(data);
             setTimeout(() => {
             navigate("/login");
             }, 2000);

@@ -97,19 +97,20 @@ justify-content: center;
 .horisontalRender{
 display: flex;
 flex-direction: row;
-flex-wrap: wrap;
 justify-content: space-evenly;
+overflow-x: scroll;
 }
 .column{
-    width: 45%;
-   margin: 6px;
-   padding: 20px 0;
+    width: 90%;
+   margin: 1px;
+   padding: 10px 0;
 }
 @media screen and (max-width: 1450px) {
     .column {
       width: 100%;
     }
   }
+
 
   .centered{
     
@@ -134,3 +135,4 @@ justify-content: space-evenly;
     .sharebutton{
         color: #e7f6f2;
     }
+

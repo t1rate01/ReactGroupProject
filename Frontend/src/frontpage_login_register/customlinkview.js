@@ -12,7 +12,7 @@ const SharedView = () => {
 
     
     useEffect(() => {
-        console.log("SharedView.js: ", id);
+       // console.log("SharedView.js: ", id);
         fetch('http://localhost:8080/savedviews/' + id, {
             method: 'GET',
             headers: {
@@ -22,9 +22,9 @@ const SharedView = () => {
         .then(response => response.text())
         .then(data => {
             setViewName(data.split("&&")[0]);  
-            console.log("viewname on " + data.split("&&")[0]); // backend palauttaa stringin joka jaettu viidellä : merkillä
+            //console.log("viewname on " + data.split("&&")[0]); // backend palauttaa stringin joka jaettu && merkillä
             setViewString(data.split("&&")[1]);
-            console.log("viewstring on " + data.split("&&")[1]);
+            //console.log("viewstring on " + data.split("&&")[1]);
         }
         );
     }

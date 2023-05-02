@@ -122,7 +122,6 @@ useEffect(() => {     // Tarkistaa onko käyttäjä kirjautunut sisään ja onko
 const handleLogoutClick = (event) => { //   logout nappulan toiminto
     clearToken();        // tokenin poisto
      // setLoggedIn(false);   // login tilan päivitys, todennäköisesti turha koska useEffect tarkistus enivei
-    alert("Logout successful!");
     navigate("/");    // todennäkösesti turhaan tässä, koska aiempi useEffect on varmaan jo hoksannut muutoksen ja heittänyt etusivulle
 }
 
