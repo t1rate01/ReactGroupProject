@@ -15,7 +15,7 @@ function Visual1() {
     setToggle(e.target.value)
   
 }
-
+//defaulttina näkyvissä annual chart, radio button valinnan perusteella jompi kumpi näkyviin
     return (<div className="visual1">
         <div id="inputs"><input
         type="radio"
