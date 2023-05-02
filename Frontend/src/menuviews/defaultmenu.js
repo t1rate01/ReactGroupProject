@@ -199,6 +199,9 @@ const myPopup = (deleteAccountHandler) => (
         </div>
         <div id="buttongroup">
             {myPopup(deleteAccountHandler)}
+            <button onClick={deleteAccountHandler} data-testid="deleteBtn">Delete account</button>
+       </div>
+          <div id="buttongroup">
             <button onClick={deleteViewHandler}>Delete view</button>
         </div>
         <div id="buttongroup">
