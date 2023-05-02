@@ -124,7 +124,7 @@ const myPopup = (deleteAccountHandler) => (
         </div>
     )}
   </Popup>
-);
+);  //tämä pätkä luo popupin joka varmistaa haluaako käyttäjä poistaa käyttäjänsä
 
 
     const deleteAccountHandler = async (event) => {
