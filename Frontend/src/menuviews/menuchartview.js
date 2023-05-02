@@ -19,7 +19,7 @@ const ChartView = () => {
         })
         .then(response => response.text())
         .then(data => {
-            console.log(" Fethin data on " +data);
+           // console.log(" Fethin data on " +data);
             setViewArray(data);
         })
         .catch((error) => {

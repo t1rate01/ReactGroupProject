@@ -13,12 +13,16 @@ const DefaultMenu = () => {
     const [checked4, setChecked4] = useState(false);
     const [checked5, setChecked5] = useState(false);
     const [viewChecked, setViewChecked] = useState(false);
+    const [noChecked, setNoChecked] = useState(false);
     
 
 
     const navigate = useNavigate();
     const [defaultView, setDefaultView] = useState([]);
 
+    const noCheckedhandle = () => {
+        setNoChecked(true);
+    }
 
     useEffect(() => {
         fetch('http://localhost:8080/users/view', {
@@ -31,7 +35,7 @@ const DefaultMenu = () => {
         .then(response => response.text())
         .then(data => {
             setDefaultView(data);
-            console.log(data);
+           // console.log(data);
         })
     }, [])
 
@@ -78,7 +82,7 @@ const DefaultMenu = () => {
         }
         if(view[0]+view[1]+view[2]+view[3]+view[4] !== 0){
         let viewString = view.toString();
-        console.log(viewString);
+        //console.log(viewString);
         fetch('http://localhost:8080/users/view', {
             method: 'POST',
             headers: {
@@ -89,11 +93,11 @@ const DefaultMenu = () => {
         })
         .then(response => response.text())
         .then(data => {
-            console.log(data);
+           // console.log(data);
             navigate("/menu/view");
         })
     } else {
-        alert("You have to select at least one chart to view!");
+        noCheckedhandle();
     }
     }
 
@@ -128,7 +132,6 @@ const DefaultMenu = () => {
         } else {
             alert("Something went wrong");
             console.log(response.status)
-
         }
     }
         
@@ -137,7 +140,8 @@ const DefaultMenu = () => {
     return (
        <div className="viewoptions"> <div id="checkboxes">
             <h1>View options</h1>
-            <p>Select charts you want to see on your personalized view:</p>
+            {noChecked ? (<p>Error! You have to select atleast one view!</p>) :
+            (<p>Select charts you want to see on your personalized view:</p>)}
             <div><input type="checkbox" checked={checked1} onChange={handleChange1} />
             <label>Visual 1</label></div>
 
@@ -166,7 +170,7 @@ const DefaultMenu = () => {
         <p><span>{viewChecked ? 'Horizontal' : 'Vertical'}</span></p>
         </div>
         <div id="buttongroup">
-            <button onClick={deleteAccountHandler}>Delete account</button>
+            <button onClick={deleteAccountHandler} data-testid="deleteBtn">Delete account</button>
             <button onClick={deleteViewHandler}>Delete view</button>
         </div>
         <div id="buttongroup">
