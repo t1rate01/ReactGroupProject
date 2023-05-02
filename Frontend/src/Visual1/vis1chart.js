@@ -176,14 +176,14 @@ const options ={
 
 
 return(
-    <div className="visual1">
+    
         <div className="chart">
             <Line options={options} data={chartData} width={1500} height = {800}/>
             <Popup trigger={<button id="exit">Info</button>} position="right center">
                 <div>{popUpText}</div>
             </Popup>
         </div>
-    </div>
+    
 )
 };
 export default Visual1Chart;

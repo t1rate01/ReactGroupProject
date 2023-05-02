@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { getToken, setToken, clearToken } from "../frontpage_login_register/tokenStorage";
 import { Link, useNavigate } from "react-router-dom";
 import Switch from 'react-switch'
+import Popup from 'reactjs-popup';
+import "./popupstyle.css"
 
 
 
@@ -101,6 +103,30 @@ const DefaultMenu = () => {
     }
     }
 
+const myPopup = (deleteAccountHandler) => (
+  <Popup
+    trigger={<button className="button">Delete account</button>}
+    modal
+    nested
+  >
+    {close => (
+      <div className="modal">
+        <div className="header"> Are you sure you want to delete your account? </div>
+        <div className="actions">
+          <button className="button" onClick={deleteAccountHandler}>
+            Yes
+          </button>
+          <button
+            className="button" onClick={close}>
+            No
+          </button>
+          </div>
+        </div>
+    )}
+  </Popup>
+);
+
+
     const deleteAccountHandler = async (event) => {
         const response = await fetch('http://localhost:8080/users/', {
             method: 'DELETE',
@@ -117,6 +143,8 @@ const DefaultMenu = () => {
             console.log(response.status)
         }
     }
+
+
     
 
     const deleteViewHandler = async (event) => {
@@ -170,11 +198,15 @@ const DefaultMenu = () => {
         <p><span>{viewChecked ? 'Horizontal' : 'Vertical'}</span></p>
         </div>
         <div id="buttongroup">
+            {myPopup(deleteAccountHandler)}
             <button onClick={deleteAccountHandler} data-testid="deleteBtn">Delete account</button>
+       </div>
+          <div id="buttongroup">
             <button onClick={deleteViewHandler}>Delete view</button>
         </div>
         <div id="buttongroup">
             <button onClick={callRender}>Save&Show view</button>
+            <Link to = "/menu/view"><button>Back</button></Link>
         </div>
         </div>
     )
