@@ -4,10 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class visual4Data {
+public class visual4Data { // visual4Data class
     @Id
 
-private int year;
+private int year; // year variable
 private int afghanistan;
 private int albania;
 private int algeria;
@@ -247,7 +247,7 @@ private int statistical_difference;
 
 
 
-    public visual4Data() {
+    public visual4Data() { 
     }
 
     public visual4Data(Long id, int year, int afghanistan, int albania, int algeria, int andorra, int angola, int anguilla, int antigua_and_barbuda, int argentina, int armenia, int aruba, int australia, int austria, int azerbaijan, int bahamas, int bahrain, int bangladesh, int barbados, int belarus, int belgium, int belize, int benin, int bermuda, int bhutan, int bonaire, int _saint_eustatius_and_saba, int bosnia_and_herzegovina, int botswana, int brazil, int british_virgin_islands, int brunei_darussalam, int bulgaria, int burkina_faso, int burundi, int cambodia, int canada, int cape_verde, int central_african_republic, int chad, int chile, int china, int colombia, int comoros, int congo, int cook_islands, int costa_rica, int côte_divoire, int croatia, int cuba, int curaçao, int cyprus, int czech_republic, int north_korea, int democratic_republic_of_the_congo, int denmark, int djibouti, int dominica, int dominican_republic, int ecuador, int egypt, int el_salvador, int equatorial_guinea, int eritrea, int estonia, int ethiopia, int faeroe_islands, int micronesia__federated_states_of_, int fiji, int finland, int france, int french_guiana, int french_polynesia, int gabon, int gambia, int georgia, int germany, int ghana, int greece, int greenland, int grenada, int guadeloupe, int guatemala, int guinea, int guinea_bissau, int guyana, int haiti, int honduras, int hong_kong, int hungary, int iceland, int india, int indonesia, int iraq, int ireland, int iran, int israel, int italy, int jamaica, int japan, int jordan, int kazakhstan, int kenya, int kiribati, int kosovo, int kuwait, int kyrgyzstan, int laos, int latvia, int lebanon, int lesotho, int liberia, int libya, int liechtenstein, int lithuania, int luxembourg, int macao, int north_macedonia, int madagascar, int malawi, int malaysia, int maldives, int mali, int malta, int marshall_islands, int martinique, int mauritania, int mauritius, int mayotte, int mexico, int mongolia, int montenegro, int montserrat, int morocco, int mozambique, int myanmar, int namibia, int nauru, int nepal, int netherlands, int new_caledonia, int new_zealand, int nicaragua, int niger, int nigeria, int niue, int norway, int occupied_palestinian_territory, int oman, int pakistan, int palau, int panama, int papua_new_guinea, int paraguay, int peru, int philippines, int bolivia, int poland, int portugal, int qatar, int cameroon, int south_korea, int moldova, int south_sudan, int sudan, int reunion, int romania, int russian_federation, int rwanda, int saint_helena, int saint_lucia, int sint_maarten__dutch_part_, int samoa, int sao_tome_and_principe, int saudi_arabia, int senegal, int serbia, int seychelles, int sierra_leone, int singapore, int slovakia, int slovenia, int solomon_islands, int somalia, int south_africa, int spain, int sri_lanka, int saint_kitts_and_nevis, int saint_pierre_and_miquelon, int saint_vincent_and_the_grenadines, int suriname, int swaziland, int sweden, int switzerland, int syria, int taiwan, int tajikistan, int thailand, int timor_leste, int togo, int tonga, int trinidad_and_tobago, int tunisia, int turkey, int turkmenistan, int turks_and_caicos_islands, int tuvalu, int uganda, int ukraine, int united_arab_emirates, int united_kingdom, int tanzania, int usa, int uruguay, int uzbekistan, int vanuatu, int venezuela, int viet_nam, int wallis_and_futuna_islands, int yemen, int zambia, int zimbabwe, int kp_annex_b, int non_kp_annex_b, int oecd, int non_oecd, int eu27, int africa, int asia, int central_america, int europe, int middle_east, int north_america, int oceania, int south_america, int bunkers, int statistical_difference) {

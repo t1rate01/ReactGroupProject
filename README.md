@@ -16,7 +16,7 @@ Alkuun alisa teki muistiinpanot, kun pidettiin opettajan kanssa palaveria, mihin
 
 Alisalle tuli vastuualueeksi visuaali 3 eli kaavio maapallon lämpötilan kehityksestä viimeisen kahden miljoonan vuoden aikana, johon sisältyi viivakaavion teko kolmesta eri taulukosta.  
 ### Artin (*cerveku*) vastuualueet
-text text text
+Visual 4 Bakkari, react, frontti, kokonaisuutena on minun tuotoksia. Lisäksi osallistuin Jakotoiminnallisuuden tekemiseen ja työskentelin, jotta palvelu saataisiin julkiseksi.
 ## Sovelluksen käyttö
 Sovelluksen etusivulla on yksi randomilla arvottu kaavio näkymässä, sekä projektin esittelyteksti. Napista “Log in” pääsee kirjautumaan, “Sign in” pääsee rekisteröitymään käyttäjäksi ja “Show all” näyttää kaikki kaaviot peräkkäin sivulla. Mikäli käyttäjällä ei ole tallennettua “omaa näkymää” tai luodaan uusi käyttäjätunnus, siirtyy sivu oman näkymän luontiin. Samalta näkymältä voi poistaa käyttäjätunnuksen ja oman tallennetun näkymän. 
 ## Käytetty logiikka, tietokanta, RestAPI
