@@ -61,7 +61,7 @@ const [recoData, setRecoData] = useState([]);
 },[]);
 
 
-const popUpText = ( //popup infoteksti ja lähteet
+const popUpText = (
     <div id="popup">
         <h1>About annual and monthly HadCRUT5 data</h1>
         <p>HadCRUT5 is a gridded dataset of global historical surface temperature anomalies relative to a 1961-1990 
@@ -82,6 +82,7 @@ const popUpText = ( //popup infoteksti ja lähteet
 );
 
 let chartData ={
+    //labels: labels, //tässä annan x-akselin tiedot, eli vuodet 1850-2021
     datasets: [
         {
             label: "Global annual anomalies",
@@ -141,7 +142,8 @@ let chartData ={
     ]
 };
 
-
+//const allData = [...visual1Data, ...nhannual1Data, ...shannual1Data, ...recoData];  // kaikki data yhteen taulukkoon
+//let dates = [...new Set(allData.map(item => item.x))].sort((a, b) => a.localeCompare(b));
 
 const options ={
     responsive: true,
@@ -174,11 +176,11 @@ const options ={
 
 
 return(
-    //chartin kanssa infotekstien nappula ja triggeri
+    
         <div className="chart">
             <Line options={options} data={chartData} width={1500} height = {800}/>
             <Popup trigger={<button id="exit">Info</button>} position="right center">
-                <div>{popUpText}</div> 
+                <div>{popUpText}</div>
             </Popup>
         </div>
     
