@@ -5,6 +5,11 @@ import SectorChart from '../Visual5/sectorChart';
 import Visual4Chart from '../Visual4/visual4Chart';
 import Visual3 from "../Visual3/visual3Chart";
 
+
+// RENDERÖI KÄYTTÄJÄN TEKEMÄN NÄKYMÄN
+// STRINGIN VIIMEINEN NUMERO MÄÄRÄÄ ONKO NÄKYMÄ VERTIKAALINEN VAI HORISONTAALINEN
+
+
 const Render = ({ settings }) => {
   let renderOptions = settings ? settings.split(',') : [];
   let returnData;

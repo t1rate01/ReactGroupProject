@@ -10,11 +10,11 @@ const RegisterPage = () => {
     const [registerFail, setRegisterFail] = useState(false);
     const navigate = useNavigate();
     
-    const handleRegSuccess = () => {
+    const handleRegSuccess = () => {  // headerin vaihtumista varten
         setRegisterSuccess(true);
     }
 
-    const handleRegFail = () => {
+    const handleRegFail = () => {  // headerin vaihtumista varten
         setRegisterFail(true);
     }
 
