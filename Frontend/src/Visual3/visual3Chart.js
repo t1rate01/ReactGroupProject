@@ -33,7 +33,7 @@ const MyVisual3Chart = () => {
       .catch(error => console.log(error));
   }, []);
 
-  const getCombinedDataForChart = () => {
+  const getCombinedDataForChart = () => {     //tämä tuo datan taulukkoon ja luo siitä visuaalin
     const data = {
       labels: gastData.map(item => item.time),
       datasets: [
@@ -66,7 +66,7 @@ const MyVisual3Chart = () => {
     };
     return data;
   };
-    const options = {
+    const options = {     //nämä muotoilevat taulukkoa
       plugins: {
       legend: {
       position: "top",
