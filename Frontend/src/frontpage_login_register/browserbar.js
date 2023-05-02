@@ -19,6 +19,10 @@ const defaultViewCompareString = "0,0,0,0,0,0"; // ohjelma tallentaa näin
 const defaultViewCompareString2 = "000000" // databasen default toiminto tallentaa näin
 let Token = getToken();
 
+// BROWSERBAR on kokoajan renderöitynä, valvoo muunmuassa onko käyttäjä kirjautunut sisään, pysyykö sallituilla sivuilla, ja näyttää oikeat napit tilanteen mukaan. 
+
+
+
 useEffect(() => {
     if (Token !== null) {
         setLoggedIn(true);
@@ -34,10 +38,9 @@ function createLink(viewID){
     return "http://localhost:3000/shared/" + viewID.toString();
   }
   
-const handleSaveShareClick = async(event) => { 
+const handleSaveShareClick = async(event) => {      // Tarkistaa viimeisimmän view:n käyttäjältä, sitten tallentaa savedviews tableen tietokantaan.
     let latestViewString = await updateDefaultViewString(); // ensin katotaan view ajantasalle varmasti
-
-    let viewID = uuidv4(); 
+    let viewID = uuidv4();    // random id jota käytetään myös linkin luomiseen.
     console.log(viewID);
     console.log(" updaten jälkeen " + latestViewString);
     const response = await fetch('http://localhost:8080/savedviews', {
@@ -52,14 +55,14 @@ const handleSaveShareClick = async(event) => {
     if (response.status === 200) {
       console.log(response.status);
       setLink(createLink(viewID)); // linkki talteen
-      setDisplayShareView(true); // näytä linkki
+      setDisplayShareView(true); // linkkidialogi ikkunan muuttujan toggle
     }
     else {
       console.log(response.status);
     }
   }
 
-  async function updateDefaultViewString() {  // palauttaa stringin
+  async function updateDefaultViewString() {  // palauttaa stringin handlesaveshareclickille
     try {
       const response = await fetch('http://localhost:8080/users/view', {
         method: 'GET',
@@ -69,7 +72,7 @@ const handleSaveShareClick = async(event) => {
         },
       });
       const data = await response.text();
-      console.log("Updaten data on " + data);
+      //console.log("Updaten data on " + data);
       return data;
     } catch (error) {
       console.error('Error:', error);
@@ -78,7 +81,7 @@ const handleSaveShareClick = async(event) => {
   }
   
 
-async function checkDefaultView(){   // tarkistaa onko käyttäjällä tallennettua näkymää
+async function checkDefaultView(){   // tarkistaa onko käyttäjällä tallennettua näkymää ja ohjaa oikealle sivulle.
     fetch('http://localhost:8080/users/view', {
         method: 'GET',  
         headers: {
@@ -89,7 +92,7 @@ async function checkDefaultView(){   // tarkistaa onko käyttäjällä tallennet
     .then(response => response.text())
     .then(data => {
         console.log(" Fethin data on " +data);
-        if (data.toString() === defaultViewCompareString || data.toString() === defaultViewCompareString2){ // tarkistaa onko tallennettua näkymää
+        if (data.toString() === defaultViewCompareString || data.toString() === defaultViewCompareString2){ 
             navigate("/menu");
         }
         else{
@@ -110,13 +113,13 @@ useEffect(() => {     // Tarkistaa onko käyttäjä kirjautunut sisään ja onko
     && location.pathname !== "/login"
     && !location.pathname.includes("shared")
     ) {      
-        console.log("Redirected by browserbar") ;                                  // tähän pitää myöhemmin lisätä ehto sitä julkista linkkisivua varten jos tämä jää käyttöön
+        console.log("Redirected by browserbar") ;                             
         navigate("/");
     } 
-    if (loggedIn === true && location.pathname === "/") {
+    if (loggedIn === true && location.pathname === "/") {  // jos on kirjautunut sisään, niin heti näkymäntarkistus
         checkDefaultView();
     }
-}, [loggedIn]);   // tämä testaamisen perusteella riittää että on riippuvainen tästä ja tarkistaa vain kun sivu renderöityy ekan kerran.
+}, [loggedIn]);   // tämä testaamisen perusteella riittää että on riippuvainen tästä 
 
 
 const handleLogoutClick = (event) => { //   logout nappulan toiminto
@@ -125,17 +128,17 @@ const handleLogoutClick = (event) => { //   logout nappulan toiminto
     navigate("/");    // todennäkösesti turhaan tässä, koska aiempi useEffect on varmaan jo hoksannut muutoksen ja heittänyt etusivulle
 }
 
-const handleShareClick = (event) => {
+const handleShareClick = (event) => {    // share dialogin nappulan toiminto
     handleSaveShareClick();
-    setDisplayShareView(displayShareView => !displayShareView);  // toggle the displayShareView state
+    setDisplayShareView(displayShareView => !displayShareView);  // toggle displayShareView
   };
 
-const handleShareClose = (event) => {
+const handleShareClose = (event) => {   // share dialogille annettava funktio
     setDisplayShareView(false);
     };
 
 useEffect(() => {
-if (loggedIn === false )  {   // vakionäkymän napit
+if (loggedIn === false )  {   // näkymä ja napit jos ei ole kirjautunut sisään
     setReturnData(
     <div className='logobar'>
         <div className="buttons">
@@ -146,7 +149,7 @@ if (loggedIn === false )  {   // vakionäkymän napit
         </div>
         </div>) 
     }
-    else  {                 // sisäänkirjautuneen käyttäjän napit, kaksi if ehtoa näytetäänkö share view ja dialogiehto ja kyytiin open ja onClose
+    else  {                 // sisäänkirjautuneen käyttäjän napit, kaksi if ehtoa näytetäänkö share view ja dialogiehto ja kyytiin open ja onClose sekä linkString
         setReturnData(
         <div className='logobar'>
             <div className="buttons">

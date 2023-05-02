@@ -21,15 +21,15 @@ const LoginPage = () => {
        await login(username, password);
     }
 
-    const handleLoginFail = () => {
+    const handleLoginFail = () => {   // headerin vaihtumista varten
         setLoginFail(true);
     }
 
-    const handleLoginSuccess = () => {
+    const handleLoginSuccess = () => {  // headerin vaihtumista varten
         setLoginSuccess(true);
     }
 
-    async function login(username, password) {
+    async function login(username, password) {  // harjoituksen vuoksi käytetään tässä basic muotoilua (base64)
         const response = await fetch('http://localhost:8080/login', {
             method: 'POST',
             headers: {
@@ -42,7 +42,7 @@ const LoginPage = () => {
         console.log(response.status)
         setToken(data);
         handleLoginSuccess();
-        await new Promise(resolve => setTimeout(resolve, 1000)); // annetaan teksti näkyy hetken
+        await new Promise(resolve => setTimeout(resolve, 1000)); // annetaan teksti näkyy hetken ennenkuin päästetään redirectaamaan
         //console.log("Token datassa on " +data);
         //console.log("Token on "+ getToken());
        await checkDefaultView();
@@ -53,7 +53,7 @@ const LoginPage = () => {
     }
     }
 
-    async function checkDefaultView(){
+    async function checkDefaultView(){  // defaultview tarkistettua tietää mille sivulle redirect, Jos uusi käyttäjä mennään suoraan tekemään näkymää
         fetch('http://localhost:8080/users/view', {
             method: 'GET',  
             headers: {
@@ -65,10 +65,10 @@ const LoginPage = () => {
         .then(data => {
             //console.log(" Fethin data on " +data);
             if (data.toString() === defaultViewCompareString || data.toString() === defaultViewCompareString2 || data.toString() === ""){ // tarkistaa onko tallennettua näkymää
-                navigate("/menu");
+                navigate("/menu");  // näkymää ei ole, mennään tekemään sitä
             }
             else{
-                navigate("/menu/view");
+                navigate("/menu/view");  // näkymä on, mennään suoraan katsomaan sitä
             }
         })
         .catch((error) => {

@@ -7,9 +7,10 @@ import Popup from 'reactjs-popup';
 import "./popupstyle.css"
 
 
-
+// MENU JOSSA LUODAAN NÄKYMÄT
+// Tekee viisi checkboxia ja yhden vivun, jolla voi valita mitä näkymiä haluaa nähdä ja horisontal vai vertical
 const DefaultMenu = () => {
-    const [checked1, setChecked1] = useState(false);
+    const [checked1, setChecked1] = useState(false); // nappien tilat true/false, default false
     const [checked2, setChecked2] = useState(false);
     const [checked3, setChecked3] = useState(false);
     const [checked4, setChecked4] = useState(false);
@@ -22,11 +23,11 @@ const DefaultMenu = () => {
     const navigate = useNavigate();
     const [defaultView, setDefaultView] = useState([]);
 
-    const noCheckedhandle = () => {
+    const noCheckedhandle = () => {  // headerin vaihtumista varten, jos ei valitse mitään
         setNoChecked(true);
     }
 
-    useEffect(() => {
+    useEffect(() => {   // hakee defaultviewin
         fetch('http://localhost:8080/users/view', {
             method: 'GET',
             headers: {
@@ -61,7 +62,7 @@ const DefaultMenu = () => {
     };
     
 
-    const callRender = async (event) => {
+    const callRender = async (event) => {  // nappien painalluksien perusteella luodaan render.jssälle stringi jolla se hakee oikeat näkymät
         event.preventDefault();
         let view = [0,0,0,0,0,0];
         if(checked1===true){
@@ -82,10 +83,10 @@ const DefaultMenu = () => {
         if(viewChecked === true){
             view[5] = 1;  // hox jos 0 niin ylhäältä alas eli normaali
         }
-        if(view[0]+view[1]+view[2]+view[3]+view[4] !== 0){
+        if(view[0]+view[1]+view[2]+view[3]+view[4] !== 0){ // tarkistus onko mitään valittu
         let viewString = view.toString();
         //console.log(viewString);
-        fetch('http://localhost:8080/users/view', {
+        fetch('http://localhost:8080/users/view', {  // tallennetaan tehty näkymä käyttäjälle
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -99,7 +100,7 @@ const DefaultMenu = () => {
             navigate("/menu/view");
         })
     } else {
-        noCheckedhandle();
+        noCheckedhandle();  // mitään ei valittu
     }
     }
 
