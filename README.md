@@ -12,9 +12,11 @@ Opetetun mallin mukaisesti loin kaaviolle REST logiikan taustalle käyttäen Jav
 
 Tein lisäksi käyttöliittymäsuunnitelman, RESTAPI-suunnitelman ja työskentelin .css muotoilujen kanssa, jotta sovelluksesta saatiin yhtenäisen kokonaisuuden näköinen. 
 ### Alisan (*akulonpa*) vastuualueet
-Alkuun alisa teki muistiinpanot, kun pidettiin opettajan kanssa palaveria, mihin kuului mm. mistä projektin teko kannattaa aloittaa. Alisa teki myös teamsiin palaveritaulukon eli miten kenellekkin sopii palaverin pito minäkin päivänä. 
+Alkuun tein muistiinpanot, kun pidettiin opettajan kanssa palaveria, mihin kuului mm. mistä projektin teko kannattaa aloittaa. Loin  myös teamsiin palaveritaulukon eli miten kenellekkin sopii palaverin pito minäkin päivänä. 
 
-Alisalle tuli vastuualueeksi visuaali 3 eli kaavio maapallon lämpötilan kehityksestä viimeisen kahden miljoonan vuoden aikana, johon sisältyi viivakaavion teko kolmesta eri taulukosta.  
+Minulle tuli vastuualueeksi visuaali 3 eli kaavio maapallon lämpötilan kehityksestä viimeisen kahden miljoonan vuoden aikana, johon sisältyi viivakaavion teko kolmesta eri taulukosta.  
+
+Myöhemmin loin vielä varmistusnappulan käyttäjän poistamiseen ja koitin hoitaa testikoodeja. Niissä oli hieman ongelmia joten Tero auttoi niissä minua.
 ### Artin (*cerveku*) vastuualueet
 Visual 4 Bakkari, react, frontti, kokonaisuutena on minun tuotoksia. Lisäksi osallistuin Jakotoiminnallisuuden tekemiseen ja työskentelin, jotta palvelu saataisiin julkiseksi.
 ## Sovelluksen käyttö
