@@ -5,7 +5,9 @@ import "./frontpage.css"
 
 const FrontPage = () => {
 
-    let array = [0, 0, 0, 0, 0];
+    // ETUSIVULLA demochartti, joka arvotaan randomilla. render.js käyttää 6 numeroista stringiä jossa 1 = true ja 0 = false.
+    // Muutetaan randomilla yksi indexi numeroksi 1, jolloin se näkyy etusivulla
+    let array = [0, 0, 0, 0, 0, 0];
     let randomindex = Math.floor(Math.random() * 5);
     array[randomindex] = 1;
     let arrayString = array.toString();

@@ -11,8 +11,6 @@ import FrontPage from './frontpage_login_register/frontpage';
 import ShowAll from './frontpage_login_register/showall';
 
 
-
-
 function App() {  
   return (
     <BrowserRouter>

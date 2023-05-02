@@ -4,12 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { setToken, getToken, clearToken } from "../frontpage_login_register/tokenStorage";
 import Render from "./render.js";
 
+
+// KUN KÄYTTÄJÄLLÄ ON NÄKYMÄ TAI KÄYTTÄJÄ ON TEHNYT NÄKYMÄN
 const ChartView = () => {
 
     const [viewArray, setViewArray] = useState([]);
 
 
-    useEffect(() => {
+    useEffect(() => {   // haetaan näkymä
         fetch('http://localhost:8080/users/view', {
             method: 'GET',  
             headers: {
