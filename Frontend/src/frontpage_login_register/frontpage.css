@@ -97,8 +97,8 @@ justify-content: center;
 .horisontalRender{
 display: flex;
 flex-direction: row;
+flex-wrap: wrap;
 justify-content: space-evenly;
-overflow-x: scroll;
 }
 .column{
     width: 90%;
