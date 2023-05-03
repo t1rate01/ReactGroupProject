@@ -5,7 +5,7 @@ Tämä on ryhmän numero 3 esittelyteksti kevään 2023 web-ohjelmoinnin sovellu
 Projektin ensimmäisillä viikoilla kaikille jaettiin tehtäväksi tutustua Reactin kaavioihin, jaettiin viiden eri kaavioinnin visualisointien toteutus, tutustuttiin ja kerättiin data tietokantaan. Samassa alettiin käyttämään kanban-mallia työtehtävien jakoon. Kanban-mallia pidettiin mahdollisimman ajantasalla ja sinne lisättiin tehtäviä sitä mukaa, kun niitä suunniteltiin. Tehtävän perään kirjattiin oma nimi, kun otti sen työn alle.
 
 ### Teron (t1rate01) vastuualueet
-Teron vastuut alkoi alussa visualisoinnilla 5, ja kaiken tietokantaan päätyvän datan keräämisen ja sopivaan muotoon kääntämisen parissa Janitan kanssa. Seuraavaksi käyttöliittymän logiikan suunnittelua ja visualisointi 2. Omiin visualisointeihin liittyvät backend ja frontend toiminnallisuudet ja alustava html/css muotoilu.  
+Teron vastuut alkoivat alussa visualisoinnilla 5, ja kaiken tietokantaan päätyvän datan keräämisen ja sopivaan muotoon kääntämisen parissa Janitan kanssa. Seuraavaksi käyttöliittymän logiikan suunnittelua ja visualisointi 2. Omiin visualisointeihin liittyvät backend ja frontend toiminnallisuudet ja alustava html/css muotoilu.  
 
 Kun käyttöliittymästä oli karkea demo valmis, siirtyi tekemään käyttäjien rekisteröintiin, kirjautumiseen, autentikointiin ja poistoon tarvittavat backend-toiminnot. Tämän jälkeen lyötiin lopullinen käyttöliittymäsuunnitelma lukkoon, Janita toteutti suunnitelman kaavion piirron ja Tero toteutti logiikan, jolla käyttöliittymässä liikuttiin ja toimittiin. Tämän jälkeen rekisteröinti, kirjautuminen ja valikot frontendissä, sekä komponentti, joka käyttäjän asetusten mukaan tuo halutut visualisoinnit näkymään, jaettavan linkin logiikka, linkin mukaan toimiva komponentti ja meidän "browserbariksi" nimeämä komponentti joka valvoo mm. käyttäjän kirjautumisen tilaa ja sallii/siirtää sivujen välillä ja näyttää ehtojen mukaan tiettyjä nappeja.  
 
@@ -13,15 +13,15 @@ Projektin lopussa auttoi Alisaa backendin testauskoodien kanssa ja toteutti fron
 Tarjosi tukea muille ohjelmoinnissa.  
   
 ### Janitan (*saattaja*) vastuualueet
-Janitan vastuut alkoi visuaaleilla 1, 2 ja PostqreSQL-tietokannan perustaminen ja kaiken datan hallinnointi ja kääntäminen. Datan keruu ja oikeaan muotoon kääntäminen vei paljon aikaa, joten töitä jaettiin ja tehtiin yhteistyössä Teron kanssa. Piti myös yllä kanban-mallia ja siellä olevia tehtäviä.  
+Janitan vastuut alkoivat visuaaleilla 1, 2 ja PostqreSQL-tietokannan perustaminen ja kaiken datan hallinnointi ja kääntäminen. Datan keruu ja oikeaan muotoon kääntäminen vei paljon aikaa, joten töitä jaettiin ja tehtiin yhteistyössä Teron kanssa. Piti myös yllä kanban-mallia ja siellä olevia tehtäviä.  
   
-Omaan visualisointiin backend rest-toiminnot ja frontend toteutukset. Visualisoinnissa data on jaettu kahteen kaavioon, kuukausittainen ja vuosittainen, joita voi vaihdella radionappeja käyttäen. Vuosikaavio sisältää myös "Temperature reconstruction"-datan. 
+Tehtäväksi jäi visual 1 backend rest-toiminnot ja frontend toteutukset. Visualisoinnissa lämpötiladata on jaettu kahteen kaavioon, kuukausittainen ja vuosittainen, joita voi vaihdella radionappeja käyttäen. Vuosikaavio sisältää myös "Temperature reconstruction"-datan. 
   
-Käyttöliittymäsuunnitelman ensimmäisen karkean vaiheen suunnittelu ryhmän kanssa ja alustavat kaaviot. Myöhemmin lopullisen käyttöliittymän ja sen logiikan suunnittelu Teron kanssa ja siitä kaavion teko. Toteutti myös RESTAPI-kaavion/suunnitelman.  
+Janita teki käyttöliittymäsuunnitelman ensimmäisen karkean vaiheen suunnittelun ryhmän kanssa ja alustavat kaaviot. Myöhemmin lopullisen käyttöliittymän ja sen logiikan suunnittelu Teron kanssa ja siitä kaavion teko. Toteutti myös RESTAPI-kaavion/suunnitelman.  
   
 Suurin osa koko projektin lopullisista html/css muotoiluista yhtenäiseksi kuului myös Janitalle.  
   
-Alustavat deployment testailut.  
+Testasi deploymenttia, mutta vain backend osuus onnistui, joten tämä vaihe jäi muille lopullisesti. 
   
 ### Alisan (*akulonpa*) vastuualueet
 Alisa toimi alussa ensisijaisena muistiinpanojen kerääjänä palavereissa, teki palaveritaulukot joilla seurattiin aikoja, jolloin kukin on vapaa esim. palaverinpitoon. 
@@ -37,7 +37,7 @@ Visualisointi 4 sisältää kaavion jolla kuvataan jokaisen maan valtiolta kerä
   
 Osallistui eri popupikkunoiden ja jakotoimintojen toteutukseen.  
 
-Alustavat deployment testailut.  
+Testasi ja auttoi sovelluksen deployment-vaiheessa.
   
 ## Sovelluksen käyttö
 ![Photo](https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/t1rate01-deploymenfromMainAsItIs/photosForReadMe/kaytto1.png?raw=true)
@@ -64,13 +64,13 @@ Arvottua näkymää ja käyttäjän valitsemien näkymien näyttämistä varten 
 
 Valikossa, jossa näkymiä luodaan, käytetään checkboxeja joilla käännetään taulukon lukuja vastaavilla indexeillä nolla ykköseksi ja tallennuksen yhteydessä se tallennetaan ja välitetään renderille. 
 
-Linkin jakonappia painaessa ohjelma luo satunnaisen id:n ja tallentaa sen tietokantaan tokenilla autentikoituna sille tarkoitettuun tauluun. Backend purkaa tokenista myös käyttäjän käyttäjänimen, jolloin linkin käyttäjän mennessä katsomaan linkin näkymää, voidaan tässä näyttää keneltä näkymä on. Linkki ohjaa frontendissa komponenttiin, joka purkaa urlin perästä id:n ja hakee sen perusteella tietokannasta näkymän samassa kuusinumeroisessa muodossa joka syötetään samaan renderiin ja käyttäjänimen, joka näytetään myös.
+Linkin jakonappia painaessa ohjelma luo satunnaisen id:n ja tallentaa sen tietokantaan tokenilla autentikoituna sille tarkoitettuun tauluun. Backend purkaa tokenista myös käyttäjän käyttäjänimen, jolloin linkin käyttäjän mennessä katsomaan linkin näkymää, voidaan näyttää, keneltä näkymä on. Linkki ohjaa frontendissa komponenttiin, joka purkaa urlin perästä id:n ja hakee sen perusteella tietokannasta näkymän samassa kuusinumeroisessa muodossa, joka syötetään samaan renderiin ja käyttäjänimen, joka näytetään myös.
 
 Jokainen visualisointi hakee tietokannasta niille yksilöidysti tehdyistä rest päätteistä tietonsa. Visualisoinnit ovat peruslogiikaltaan samanlaisia, osa kaavioista on esimerkiksi viivakaavioita tai piirakkakaavioita, joissa ohjelmalliset erot tulevat. Esimerkkinä visualisointi 1, joka ensimmäisenä Reactin useEffect ja useState hookkeja hyödyntäen hakee tarvitsemansa datan taulukkomuodossa, käyttää .map toimintoa sen uudelleenjärjestelyyn, tässä tapauksessa x ja y arvoihin kyseisen kaavion akseleita varten.
 
 ![Photo](https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/t1rate01-deploymenfromMainAsItIs/photosForReadMe/visu1.png?raw=true)  
 
-Kyseisessä visualisoinnissa on haluttu tarjota kahta erilaista viivakaaviota valittavaksi, joten varsinaisella visual1.js komponentilla palautetaan radionappien kanssa ehdollisesti molempien kaavioiden komponenttien kutsu, mutta vain toinen näkyy kerrallaan. Itse ohjelma kutsuu tämän kohdalla visual1.jssää.  
+Yllä olevassa visualisoinnissa on haluttu tarjota kahta erilaista viivakaaviota valittavaksi, joten varsinaisella visual1.js komponentilla palautetaan radionappien kanssa ehdollisesti molempien kaavioiden komponenttien kutsu, mutta vain toinen näkyy kerrallaan. Itse ohjelma kutsuu tämän kohdalla visual1.jssää.  
   
 Sovelluksen backend sisältää visuaalikomponenteille jokaiselle yksilöidyt restcontrollerit serviceluokkineen. Lisäksi backendiin on tehty käyttäjän kirjautumista varten käyttäjien rest ja servicecontrollerit, sekä autentikointiin liittyvät servicet ja toiminnot.
 
@@ -78,4 +78,4 @@ Sovelluksen tietokanta on perustettu PostqreSQL palvelimelle ja sinne on kerätt
 Iso osa datasta ajettiin sisään tietokannan client-sovelluksen avulla, ja loput yhdistämällä Visual Studio Coden database lisäosa tietokantaan ja antamalla data SQL komennoin/scripteillä.
 
 ## Haasteet ja opittua
-Ryhmän jokaiselle jäsenelle tuli uutena datasettien keruu ja kääntäminen pääasiassa csv muotoon. Kaikki käyttivät myös ensimmäistä kertaa tietokantaa localhostin ulkopuolella ja projektin siihen yhdistäminen oli uutta. Reactin chartjs ja chartjs-2 kirjastot haastoivat myöskin itseopiskeluun ja materiaalinhakuun. Opittiin paljon terminaalitarkkaavaisuutta, erityisesti npm paketteja asentaessa, ja niiden kanssa väärin toimiessa aiheutuvien hämmentävien virheilmoituksien kanssa toimiminen. Yhteistyöstäkin opittiin paljon, ja siitä miten tärkeää on hahmotella suunnitelmia mahdollisimman alussa projektia edes karkeasti, jotta loppua kohden eri komponenttien yhtenäistäminen tai eri vaiheiden suunnittelu helpottuisi. Jatkossa myös halutaan varmasti sopia esimerkiksi .css muotoiluun liittyvien nimikkeiden käytöstä ohjelman perusrunkoa koodatessa. Projekti kehitti kaikkia myös ongelmanratkonnassa ja omatoimisessa opettelussa.
+Ryhmän jokaiselle jäsenelle tuli uutena datasettien keruu ja kääntäminen pääasiassa csv muotoon. Kaikki käyttivät myös ensimmäistä kertaa tietokantaa localhostin ulkopuolella ja projektin siihen yhdistäminen oli uutta. Reactin chartjs ja chartjs-2 kirjastot haastoivat myöskin itseopiskeluun ja materiaalinhakuun. Visual Studio Codea käytettäessä opittiin paljon terminaalitarkkaavaisuutta, erityisesti npm paketteja asentaessa, ja niiden kanssa väärin toimiessa aiheutuvien hämmentävien virheilmoituksien kanssa toimimista. Yhteistyöstäkin opittiin paljon, ja siitä miten tärkeää on hahmotella suunnitelmia mahdollisimman alussa projektia edes karkeasti, jotta loppua kohden eri komponenttien yhtenäistäminen tai eri vaiheiden suunnittelu helpottuisi. Jatkossa myös halutaan varmasti sopia esimerkiksi .css muotoiluun liittyvien nimikkeiden käytöstä ohjelman perusrunkoa koodatessa. Projekti kehitti kaikkia myös ongelmanratkonnassa ja omatoimisessa opettelussa.
