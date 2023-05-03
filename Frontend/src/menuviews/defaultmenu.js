@@ -190,17 +190,17 @@ const myPopup = (deleteAccountHandler) => (
         <div id ="checkboxes">
             <label id="switchlabels">
         <Switch 
-        checked={viewChecked} onChange={handleChangeView} label="Vertical"
+        checked={viewChecked} onChange={handleChangeView} label="One column"
         uncheckedIcon={false}
         checkedIcon={false}
         onColor="#5A5A5A"
          />
         </label>
-        <p><span>{viewChecked ? 'Horizontal' : 'Vertical'}</span></p>
+        <p><span>{viewChecked ? 'Two columns' : 'One column'}</span></p>
         </div>
         <div id="buttongroup">
             {myPopup(deleteAccountHandler)}
-            <button onClick={deleteViewHandler} data-testid="deleteBtn">Delete account</button>
+            <button onClick={deleteViewHandler} data-testid="deleteBtn">Delete view</button>
        </div>
           
         <div id="buttongroup">
