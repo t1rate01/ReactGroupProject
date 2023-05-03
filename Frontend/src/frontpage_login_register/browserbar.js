@@ -36,7 +36,7 @@ useEffect(() => {
 
 
 function createLink(viewID){
-    return baseURL + "/api/shared/" + viewID.toString();
+    return baseURL + "/shared/" + viewID.toString();
   }
   
 const handleSaveShareClick = async(event) => {      // Tarkistaa viimeisimmän view:n käyttäjältä, sitten tallentaa savedviews tableen tietokantaan.
