@@ -24,7 +24,7 @@ Suurin osa koko projektin lopullisista html/css muotoiluista yhtenäiseksi kuulu
 Alustavat deployment testailut.  
   
 ### Alisan (*akulonpa*) vastuualueet
-Alisa toimi alussa ensisijaisena muistiinpanojen keräänä palavereissa, teki palaveritaulukot joilla seurattiin aikoja, jolloin kukin on vapaa esim. palaverinpitoon. 
+Alisa toimi alussa ensisijaisena muistiinpanojen kerääjänä palavereissa, teki palaveritaulukot joilla seurattiin aikoja, jolloin kukin on vapaa esim. palaverinpitoon. 
   
 Alisan vastuut alkoi visualisoinnilla 3, sen backend rest-toiminnot ja frontend toiminnallisuudet ja muotoilu. Visualisointi 3 on viivakaavio kolmesta eri taulukosta, jotka kuvaavat maapallon lämpötilan kehistystä viimeisen kahden miljoonan vuoden aikana.  
   
