@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { setToken, getToken, clearToken } from "./tokenStorage";
 import { Link, useNavigate } from "react-router-dom";
-
+import baseURL from "../baseurl";
 const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -30,7 +30,7 @@ const LoginPage = () => {
     }
 
     async function login(username, password) {  // harjoituksen vuoksi käytetään tässä basic muotoilua (base64)
-        const response = await fetch('http://localhost:8080/login', {
+        const response = await fetch(baseURL + '/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const LoginPage = () => {
     }
 
     async function checkDefaultView(){  // defaultview tarkistettua tietää mille sivulle redirect, Jos uusi käyttäjä mennään suoraan tekemään näkymää
-        fetch('http://localhost:8080/users/view', {
+        fetch(baseURL + '/api/users/view', {
             method: 'GET',  
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

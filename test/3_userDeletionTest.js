@@ -13,7 +13,7 @@ describe('User deletion interface', () => {
     // Log in as a user and get the token
     const response = await chai
       .request(url)
-      .post('/login')
+      .post('/api/login')
       .set('Authorization', 'Basic '+btoa('testuse'+ ":" + 'testpas'))
     token = response.text;
   });
@@ -22,7 +22,7 @@ describe('User deletion interface', () => {
     // Delete the user using the token
     const response = await chai
       .request(url)
-      .delete('/users/')
+      .delete('/api/users/')
       .set({ Authorization: 'Bearer '+token });
     expect(response).to.have.status(200);
 

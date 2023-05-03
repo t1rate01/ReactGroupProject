@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"; // tällä saa urlista parametrin
-
+import baseURL from "../baseurl";
 import Render from "../menuviews/render";
 
 // vastaanottaa urlista parametrin, joka on tallennetun viewn id, jonka perusteella haetaan databasesta. Database palauttaa näkymän tehneen käyttäjän nimen sekä viewstringin esim 0,1,0,1,1,1, erotettuna "&&"
@@ -16,7 +16,7 @@ const SharedView = () => {
     
     useEffect(() => {
        // console.log("SharedView.js: ", id);
-        fetch('http://localhost:8080/savedviews/' + id, {  // haku avoimeen polkuun urlista saadun id:n kanssa
+        fetch(baseURL + '/api/savedviews/' + id, {  // haku avoimeen polkuun urlista saadun id:n kanssa
             method: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

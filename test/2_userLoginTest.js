@@ -11,7 +11,7 @@ describe('User login', () => {
   it('should log in and get token', async () => {
     const res = await chai
       .request(appUrl)
-      .post('/login')
+      .post('/api/login')
       .set('content-type', 'application/json')
       .set('Authorization', 'Basic '+btoa('testuse'+ ":" + 'testpas'))
 
@@ -25,7 +25,7 @@ describe('User login', () => {
     // use the stored authToken variable here
     const res = await chai
       .request(appUrl)
-      .get('/users/private')
+      .get('/api/users/private')
       .set({ Authorization: 'Bearer '+authToken });
 
     expect(res).to.have.status(200);
