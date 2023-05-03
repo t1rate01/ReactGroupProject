@@ -23,7 +23,7 @@ public class savedViewRest {
     securityService secService;
 
 
-    @PostMapping("/savedviews")
+    @PostMapping("/api/savedviews")
     public ResponseEntity<String> saveViewPost(@RequestHeader("Authorization") String token, @RequestParam String viewID, @RequestParam String viewstring) {
         if(token != null)
         {
@@ -38,7 +38,7 @@ public class savedViewRest {
     return new ResponseEntity<>("Wrong/Missing token", HttpStatus.UNAUTHORIZED);
     }
 
-    @GetMapping("/savedviews/{viewID}")
+    @GetMapping("/api/savedviews/{viewID}")
     public ResponseEntity<String> getView(@PathVariable String viewID) {
         savedview view = savedViewService.getView(viewID);
         if (view == null) {

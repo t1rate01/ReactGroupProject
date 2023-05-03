@@ -1,0 +1,75 @@
+
+.description {
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 1.1;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .chart {
+    width: 90%;
+    height: 90%;
+    min-width: 600px;
+    margin: auto;
+    padding: 6px;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color:  white;
+  }
+
+  .chart #exit {
+    margin: 0 auto;
+    padding: 3px;
+    border-radius: 5px;
+    border-color: #a5c9ca;
+    background-color: #395b64;
+    color: #e7f6f2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  .chart p{
+    color: darkslategray;
+  }
+  .char #infotext{
+    padding-top: 20px;
+  }
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+    font-size: 14.5px;
+    line-height: 1.2;
+}
+
+#link {
+  font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 5px;
+    line-height: 1.2;
+}
+
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    margin: auto;
+    background: rgb(255, 255, 255);
+    padding: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    height : 500px;
+    width : 800px;
+    overflow: auto;
+  }
+  #popup ul{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+ 
