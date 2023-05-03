@@ -26,7 +26,7 @@ const Render = ({ settings }) => {
     );
   } else {
     returnData = (
-      <div>
+      <div className="centered">
         {parseInt(renderOptions[0]) === 1 && (<div><Visual1 /></div>)}
         {parseInt(renderOptions[1]) === 1 && (<div><Visual2 /></div>)}
         {parseInt(renderOptions[2]) === 1 && (<div><Visual3/></div>)}
