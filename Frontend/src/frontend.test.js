@@ -226,7 +226,7 @@ test('Login correctly and attempt to access secret data with token, expect 200 O
     const token = getToken();
 
     try {
-        const response = await fetch('http://localhost:8080/users/private', {
+        const response = await fetch(baseURL +'/api/users/private', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

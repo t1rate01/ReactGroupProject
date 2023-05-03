@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Chart } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import Popup from 'reactjs-popup';
-
+import baseURL from "../baseurl";
 const Visual4Chart = () => {
   const [chartData, setChartData] = useState(null); // Alustetaan muuttuja chartData, joka sisältää graafin datan.
   const [selectedCountries, setSelectedCountries] = useState(['albania', 'algeria', 'angola']); // Alustetaan muuttuja selectedCountries, joka sisältää valitut maat vertailua varten.
@@ -14,7 +14,7 @@ const Visual4Chart = () => {
   useEffect(() => {
     const fetchDataAndCreateChart = async () => {
       try {
-        const response = await fetch('http://localhost:8080/v4data'); // Haetaan datatiedot palvelimelta.
+        const response = await fetch(baseURL +'/v4data'); // Haetaan datatiedot palvelimelta.
         const rawData = await response.text(); // Parsitaan vastauksen tekstisisältö.
 
         const lastChar = rawData[rawData.length - 1];

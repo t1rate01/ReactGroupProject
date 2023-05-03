@@ -3,13 +3,13 @@ import { Chart } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-luxon";
 import Popup from "reactjs-popup";
-
+import baseURL from "../baseurl";
 
 const Visual1ChartMonthly = () =>{
     const [visual1MoData, setVisual1MoData] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:8080/globalmonthly")
+        fetch(baseURL +"/globalmonthly")
         .then(response=>response.json())
         .then(result=>{
             console.log(result);
@@ -22,7 +22,7 @@ const Visual1ChartMonthly = () =>{
 const [nhmonthlyData, setnhmonthlyData] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:8080/nhmonthly")
+        fetch(baseURL +"/nhmonthly")
         .then(response=>response.json())
         .then(result=>{
             console.log(result);
@@ -35,7 +35,7 @@ const [nhmonthlyData, setnhmonthlyData] = useState([]);
 const [shmonthlyData, setshmonthlyData] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:8080/shmonthly")
+        fetch(baseURL +"/shmonthly")
         .then(response=>response.json())
         .then(result=>{
             console.log(result);

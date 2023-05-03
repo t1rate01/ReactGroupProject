@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Switch from 'react-switch'
 import Popup from 'reactjs-popup';
 import "./popupstyle.css"
-
+import baseURL from "../baseurl";
 
 // MENU JOSSA LUODAAN NÄKYMÄT
 // Tekee viisi checkboxia ja yhden vivun, jolla voi valita mitä näkymiä haluaa nähdä ja horisontal vai vertical
@@ -28,7 +28,7 @@ const DefaultMenu = () => {
     }
 
     useEffect(() => {   // hakee defaultviewin
-        fetch('http://localhost:8080/users/view', {
+        fetch(baseURL + '/api/users/view', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -86,7 +86,7 @@ const DefaultMenu = () => {
         if(view[0]+view[1]+view[2]+view[3]+view[4] !== 0){ // tarkistus onko mitään valittu
         let viewString = view.toString();
         //console.log(viewString);
-        fetch('http://localhost:8080/users/view', {  // tallennetaan tehty näkymä käyttäjälle
+        fetch(baseURL + '/api/users/view', {  // tallennetaan tehty näkymä käyttäjälle
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -129,7 +129,7 @@ const myPopup = (deleteAccountHandler) => (
 
 
     const deleteAccountHandler = async (event) => {
-        const response = await fetch('http://localhost:8080/users/', {
+        const response = await fetch(baseURL + '/api/users/', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -149,7 +149,7 @@ const myPopup = (deleteAccountHandler) => (
     
 
     const deleteViewHandler = async (event) => {
-         const response = await fetch('http://localhost:8080/users/view', {
+         const response = await fetch(baseURL + '/api/users/view', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

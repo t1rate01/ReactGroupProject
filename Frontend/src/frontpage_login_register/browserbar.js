@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { getToken, clearToken } from "../frontpage_login_register/tokenStorage";
 import AlertDialog from "./shareview";
-
+import baseURL from "../baseurl";
 const BrowserBar = () => {
 const [loggedIn, setLoggedIn] = useState(false);
 const [returnData, setReturnData] = useState(null);
@@ -18,6 +18,7 @@ const location = useLocation();
 const defaultViewCompareString = "0,0,0,0,0,0"; // ohjelma tallentaa näin
 const defaultViewCompareString2 = "000000" // databasen default toiminto tallentaa näin
 let Token = getToken();
+
 
 // BROWSERBAR on kokoajan renderöitynä, valvoo muunmuassa onko käyttäjä kirjautunut sisään, pysyykö sallituilla sivuilla, ja näyttää oikeat napit tilanteen mukaan. 
 
@@ -35,7 +36,7 @@ useEffect(() => {
 
 
 function createLink(viewID){
-    return "http://localhost:3000/shared/" + viewID.toString();
+    return baseURL + "/api/shared/" + viewID.toString();
   }
   
 const handleSaveShareClick = async(event) => {      // Tarkistaa viimeisimmän view:n käyttäjältä, sitten tallentaa savedviews tableen tietokantaan.
@@ -43,7 +44,7 @@ const handleSaveShareClick = async(event) => {      // Tarkistaa viimeisimmän v
     let viewID = uuidv4();    // random id jota käytetään myös linkin luomiseen.
     console.log(viewID);
     console.log(" updaten jälkeen " + latestViewString);
-    const response = await fetch('http://localhost:8080/savedviews', {
+    const response = await fetch(baseURL + '/api/savedviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -64,7 +65,7 @@ const handleSaveShareClick = async(event) => {      // Tarkistaa viimeisimmän v
 
   async function updateDefaultViewString() {  // palauttaa stringin handlesaveshareclickille
     try {
-      const response = await fetch('http://localhost:8080/users/view', {
+      const response = await fetch(baseURL + '/api/users/view', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -82,7 +83,7 @@ const handleSaveShareClick = async(event) => {      // Tarkistaa viimeisimmän v
   
 
 async function checkDefaultView(){   // tarkistaa onko käyttäjällä tallennettua näkymää ja ohjaa oikealle sivulle.
-    fetch('http://localhost:8080/users/view', {
+    fetch(baseURL + '/api/users/view', {
         method: 'GET',  
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

@@ -23,7 +23,7 @@ public class securityRestApi {
     securityService secService;
     
 
-    @PostMapping("/register")
+    @PostMapping("/api/register")
     public ResponseEntity<String> register(@RequestParam String username, @RequestParam String password) {
         String defaultview = "000000";
         if (username == null || password == null) {
@@ -37,7 +37,7 @@ public class securityRestApi {
     }
 
 
-    @PostMapping("/login")
+    @PostMapping("/api/login")
     public ResponseEntity<String> login(@RequestHeader("Authorization") String basicAuth) {
         if(basicAuth != null && basicAuth.startsWith("Basic")){
         String credentials = basicAuth.split(" ")[1];   // basic encoodattu stringi alkaa "Basic " ja perässä encoodattu setti
@@ -58,7 +58,7 @@ public class securityRestApi {
     }
 
 
-     @GetMapping("/users/private")   // TÄMÄ ON OHJE ESIMERKKI
+     @GetMapping("/api/users/private")   // TÄMÄ ON OHJE ESIMERKKI
     public ResponseEntity<String> getPrivateData(@RequestHeader("Authorization") String bearer){
         if (bearer != null){
             if (bearer.startsWith("Bearer")){
@@ -71,7 +71,7 @@ public class securityRestApi {
     return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
     } 
 
-    @DeleteMapping("/users/")
+    @DeleteMapping("/api/users/")
     public ResponseEntity<String> deleteUser(@RequestHeader("Authorization") String bearer){
         if (bearer != null){
             if (bearer.startsWith("Bearer")){
@@ -86,7 +86,7 @@ public class securityRestApi {
 }
 
     //update defaultview
-    @PostMapping("/users/view")
+    @PostMapping("/api/users/view")
     public ResponseEntity<String> updateDefaultView(@RequestHeader("Authorization") String bearer, @RequestParam String defaultview){
         if (bearer != null){
             if (bearer.startsWith("Bearer")){
@@ -103,7 +103,7 @@ public class securityRestApi {
 }   
 
     // get defaultview
-    @GetMapping("/users/view")
+    @GetMapping("/api/users/view")
     public ResponseEntity<String> getDefaultView(@RequestHeader("Authorization") String bearer){
         if (bearer != null){
             if (bearer.startsWith("Bearer")){
@@ -119,7 +119,7 @@ public class securityRestApi {
         return new ResponseEntity<>("Forbidden", HttpStatus.FORBIDDEN);
 }
 
-    @DeleteMapping("/users/view")
+    @DeleteMapping("/api/users/view")
     public ResponseEntity<String> deleteDefaultView(@RequestHeader("Authorization") String bearer){
         if (bearer != null){
             if (bearer.startsWith("Bearer")){

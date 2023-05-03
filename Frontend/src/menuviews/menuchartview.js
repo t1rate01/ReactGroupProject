@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setToken, getToken, clearToken } from "../frontpage_login_register/tokenStorage";
 import Render from "./render.js";
-
+import baseURL from "../baseurl";
 
 // KUN KÄYTTÄJÄLLÄ ON NÄKYMÄ TAI KÄYTTÄJÄ ON TEHNYT NÄKYMÄN
 const ChartView = () => {
@@ -12,7 +12,7 @@ const ChartView = () => {
 
 
     useEffect(() => {   // haetaan näkymä
-        fetch('http://localhost:8080/users/view', {
+        fetch(baseURL + '/api/users/view', {
             method: 'GET',  
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

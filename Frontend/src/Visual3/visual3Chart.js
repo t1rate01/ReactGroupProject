@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import Popup from "reactjs-popup";
-
+import baseURL from "../baseurl";
 const MyVisual3Chart = () => {
   const [carbonData, setCarbonData] = useState([]);
   const [gastData, setGastData] = useState([]);
@@ -11,21 +11,21 @@ const MyVisual3Chart = () => {
   const [showHumanActions, setShowHumanActions] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8080/carbon")
+    fetch(baseURL +"/carbon")
       .then(response => response.json())
       .then(result => {
         setCarbonData(result);
       })
       .catch(error => console.log(error));
 
-    fetch("http://localhost:8080/gast")
+    fetch(baseURL +"/gast")
       .then(response => response.json())
       .then(result => {
         setGastData(result);
       })
       .catch(error => console.log(error));
 
-    fetch("http://localhost:8080/humanactivities")
+    fetch(baseURL +"/humanactivities")
       .then(response => response.json())
       .then(result => {
         setHumanData(result);

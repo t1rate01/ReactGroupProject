@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 describe('User Creation', () => {
   it('should create a new user', (done) => {
     chai.request('http://localhost:8080')
-      .post('/register')
+      .post('/api/register')
       .set('content-type', 'application/x-www-form-urlencoded')
       .send("username=testuse&password=testpas")
       .end((err, res) => {
