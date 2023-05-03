@@ -40,14 +40,14 @@ Osallistui eri popupikkunoiden ja jakotoimintojen toteutukseen.
 Alustavat deployment testailut.  
   
 ## Sovelluksen käyttö
-![Photo](photosForReadMe\kaytto1.png)
+![Photo](https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/t1rate01-deploymenfromMainAsItIs/photosForReadMe/kaytto1.png?raw=true)
 > Etusivunäkymä
 
 Käyttäjän näkökulmasta sovellus alkaa aina etusivulta, jolle arvotaan yksi viidestä visualisoinnista näkyviin ja ylhäällä on "browserbar", joka sisältää nappeja rekisteröitymiseen, kirjautumiseen ja "Show all" näkymään jossa kuka tahansa näkee kaikki visualisoinnit.
 
 Käyttäjän rekisteröidyttyä tämä ohjataan kirjautumaan sisään. Sisäänkirjautumisen yhteydessä sovellus tarkistaa onko käyttäjä uusi käyttäjä, vai onko hänellä jo aiempia näkymäasetuksia tallennettuna. Jos käyttäjä on uusi/näkymiä ei ole, käyttäjä ohjataan suoraan valikkoon, jossa sellaisen voi luoda. 
 
-![Photo](photosForReadMe\options.png)
+![Photo](https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/t1rate01-deploymenfromMainAsItIs/photosForReadMe/options.png?raw=true)
 > Näkymänluontivalikko. Käyttäjä voi "rasti ruutuun" periaatteella valita visualisoinnit, jotka haluaa nähdä ja valita niille asettelun.
 
 Näkymänsä luotua käyttäjä ohjataan sivulle, jossa halutut näkymät piirretään. Samassa käyttäjällä on mahdollisuus painaa yläpalkista "Share" nappia, jolloin saadaan linkki, jonka voi jakaa kenelle tahansa ja pääsee samaan näkymään. Muita toimintoja valikoissa on tehdyn näkymän poistaminen ja käyttäjätilin poistaminen.
@@ -55,11 +55,11 @@ Näkymänsä luotua käyttäjä ohjataan sivulle, jossa halutut näkymät piirre
 ## Käyttöliittymän logiikka, tietokanta, RestAPI
 Käyttäjälle näkyvä ohjelma on toteutettu React.js komponentein. Jokaisella sivulla näkyvä "BrowserBar" komponentti hoitaa käyttäjän kirjautumisen tilan valvonnan ja tarvittavan uudelleenohjauksen. BrowserBar sisältää myös logiikkaa, jolla eri näkymissä näytetään eri nappeja toimintoineen, kuten kirjautumisen toiminnot ja linkin jaon toiminnot. Käyttäjän kirjauduttua backendistä saatu tokeni tallennetaan paikallismuistiin, ja browserbar valvoo sen tilaa, jotta tietää käyttäjän kirjautumisen tilan.
   
-![Photo](photosForReadMe\browserbarReturn.png)
+![Photo](https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/t1rate01-deploymenfromMainAsItIs/photosForReadMe/browserbarReturn.png?raw=true)
 
 Arvottua näkymää ja käyttäjän valitsemien näkymien näyttämistä varten on luotu oma "render" komponentti, jolle annetaan suunnitteluvaiheessa sovittu 6 numeroa pilkulla erotettuna sisältävä stringi, jota render lukee kuin se olisi binäärimuodossa oleva true/false taulukko. 5 ensimmäistä indexiä vastaa kukin yhtä visualisointia ja kuudes indexi asettelua vertikaalisesti tai horisontaalisesti. 
 
-![Photo](photosForReadMe\renderjs.png)
+![Photo](https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/t1rate01-deploymenfromMainAsItIs/photosForReadMe/renderjs.png)
 > Esimerkki miten viidennen indexin/kuudennen numeron ollessa 1, palautetaan horisontaalisessa näkymässä visualisointeja.
 
 Valikossa, jossa näkymiä luodaan, käytetään checkboxeja joilla käännetään taulukon lukuja vastaavilla indexeillä nolla ykköseksi ja tallennuksen yhteydessä se tallennetaan ja välitetään renderille. 
@@ -68,7 +68,7 @@ Linkin jakonappia painaessa ohjelma luo satunnaisen id:n ja tallentaa sen tietok
 
 Jokainen visualisointi hakee tietokannasta niille yksilöidysti tehdyistä rest päätteistä tietonsa. Visualisoinnit ovat peruslogiikaltaan samanlaisia, osa kaavioista on esimerkiksi viivakaavioita tai piirakkakaavioita, joissa ohjelmalliset erot tulevat. Esimerkkinä visualisointi 1, joka ensimmäisenä Reactin useEffect ja useState hookkeja hyödyntäen hakee tarvitsemansa datan taulukkomuodossa, käyttää .map toimintoa sen uudelleenjärjestelyyn, tässä tapauksessa x ja y arvoihin kyseisen kaavion akseleita varten.
 
-![Photo](photosForReadMe\visu1.png)  
+![Photo](https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/t1rate01-deploymenfromMainAsItIs/photosForReadMe/visu1.png?raw=true)  
 
 Kyseisessä visualisoinnissa on haluttu tarjota kahta erilaista viivakaaviota valittavaksi, joten varsinaisella visual1.js komponentilla palautetaan radionappien kanssa ehdollisesti molempien kaavioiden kutsu, mutta vain toinen näkyy kerrallaan. Itse ohjelma kutsuu tämän kohdalla visual1.jssää.  
   
