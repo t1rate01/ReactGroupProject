@@ -5,7 +5,7 @@ import "chartjs-adapter-luxon";
 import Popup from "reactjs-popup";
 
 
-const Visual1ChartMonthly = () =>{//haetaan kannasta chartin tiedot ja laitetaan jsoniksi
+const Visual1ChartMonthly = () =>{
     const [visual1MoData, setVisual1MoData] = useState([]);
 
     useEffect(()=>{
@@ -50,7 +50,7 @@ const temp = visual1MoData.map(t => t.anomaly);
 const nhmotemp = nhmonthlyData.map(t => t.anomaly);
 const shmotemp = shmonthlyData.map(t => t.anomaly);
 
-const popUpText = (//lähteet
+const popUpText = (
     <div id="popup">
         <h1>About annual and monthly HadCRUT5 data</h1>
         <p>HadCRUT5 is a gridded dataset of global historical surface temperature anomalies relative to a 1961-1990 
