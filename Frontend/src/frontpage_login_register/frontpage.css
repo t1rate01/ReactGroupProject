@@ -98,12 +98,12 @@ justify-content: center;
 display: flex;
 flex-direction: row;
 justify-content: space-evenly;
-overflow-x: scroll;
+flex-wrap: wrap;
 }
 .column{
-    width: 90%;
-   margin: 1px;
-   padding: 10px 0;
+    width: 45%;
+   margin: 6px;
+   padding: 20px 0;
 }
 @media screen and (max-width: 1450px) {
     .column {
