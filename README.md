@@ -4,7 +4,7 @@ Tämä on ryhmän numero 3 esittelyteksti kevään 2023 web-ohjelmoinnin sovellu
 ## Projektin vaiheet ja vastuualueet
 Projektin ensimmäisillä viikoilla kaikille jaettiin tehtäväksi tutustua Reactin kaavioihin, jaettiin viiden eri kaavioinnin visualisointien toteutus, tutustuttiin ja kerättiin data tietokantaan. Samassa alettiin käyttämään kanban-mallia työtehtävien jakoon. Kanban-mallia pidettiin mahdollisimman ajantasalla ja sinne lisättiin tehtäviä sitä mukaa, kun niitä suunniteltiin. Tehtävän perään kirjattiin oma nimi, kun otti sen työn alle.
 
-### Teron (*t1rate01 *) vastuualueet
+### Teron (t1rate01) vastuualueet
 Teron vastuut alkoi alussa visualisoinnilla 5, ja kaiken tietokantaan päätyvän datan keräämisen ja sopivaan muotoon kääntämisen parissa Janitan kanssa. Seuraavaksi käyttöliittymän logiikan suunnittelua ja visualisointi 2. Omiin visualisointeihin liittyvät backend ja frontend toiminnallisuudet ja alustava html/css muotoilu.  
 
 Kun käyttöliittymästä oli karkea demo valmis, siirtyi tekemään käyttäjien rekisteröintiin, kirjautumiseen, autentikointiin ja poistoon tarvittavat backend-toiminnot. Tämän jälkeen lyötiin lopullinen käyttöliittymäsuunnitelma lukkoon, Janita toteutti suunnitelman kaavion piirron ja Tero toteutti logiikan, jolla käyttöliittymässä liikuttiin ja toimittiin. Tämän jälkeen rekisteröinti, kirjautuminen ja valikot frontendissä, sekä komponentti, joka käyttäjän asetusten mukaan tuo halutut visualisoinnit näkymään, jaettavan linkin logiikka, linkin mukaan toimiva komponentti ja meidän "browserbariksi" nimeämä komponentti joka valvoo mm. käyttäjän kirjautumisen tilaa ja sallii/siirtää sivujen välillä ja näyttää ehtojen mukaan tiettyjä nappeja.  
