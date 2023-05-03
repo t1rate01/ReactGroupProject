@@ -70,7 +70,7 @@ Jokainen visualisointi hakee tietokannasta niille yksilöidysti tehdyistä rest 
 
 ![Photo](https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/t1rate01-deploymenfromMainAsItIs/photosForReadMe/visu1.png?raw=true)  
 
-Kyseisessä visualisoinnissa on haluttu tarjota kahta erilaista viivakaaviota valittavaksi, joten varsinaisella visual1.js komponentilla palautetaan radionappien kanssa ehdollisesti molempien kaavioiden kutsu, mutta vain toinen näkyy kerrallaan. Itse ohjelma kutsuu tämän kohdalla visual1.jssää.  
+Kyseisessä visualisoinnissa on haluttu tarjota kahta erilaista viivakaaviota valittavaksi, joten varsinaisella visual1.js komponentilla palautetaan radionappien kanssa ehdollisesti molempien kaavioiden komponenttien kutsu, mutta vain toinen näkyy kerrallaan. Itse ohjelma kutsuu tämän kohdalla visual1.jssää.  
   
 Sovelluksen backend sisältää visuaalikomponenteille jokaiselle yksilöidyt restcontrollerit serviceluokkineen. Lisäksi backendiin on tehty käyttäjän kirjautumista varten käyttäjien rest ja servicecontrollerit, sekä autentikointiin liittyvät servicet ja toiminnot.
 
