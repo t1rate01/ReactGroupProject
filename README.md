@@ -14,7 +14,7 @@ Projektin lopussa auttoi Alisaa backendin testauskoodien kanssa ja toteutti fron
 Tarjosi tukea muille ohjelmoinnissa.  
   
 ### Janitan (*saattaja*) vastuualueet
-Janitan vastuut alkoivat visuaaleilla 1, 2 ja PostqreSQL-tietokannan perustaminen ja kaiken datan hallinnointi ja kääntäminen. Datan keruu ja oikeaan muotoon kääntäminen vei paljon aikaa, joten töitä jaettiin ja tehtiin yhteistyössä Teron kanssa. Piti myös yllä kanban-mallia ja siellä olevia tehtäviä.  
+Janitan vastuut alkoivat visuaaleilla 1, 2 ja PostgreSQL-tietokannan perustaminen ja kaiken datan hallinnointi ja kääntäminen. Datan keruu ja oikeaan muotoon kääntäminen vei paljon aikaa, joten töitä jaettiin ja tehtiin yhteistyössä Teron kanssa. Piti myös yllä kanban-mallia ja siellä olevia tehtäviä.  
   
 Tehtäväksi jäi visual 1 backend rest-toiminnot ja frontend toteutukset. Visualisoinnissa lämpötiladata on jaettu kahteen kaavioon, kuukausittainen ja vuosittainen, joita voi vaihdella radionappeja käyttäen. Vuosikaavio sisältää myös "Temperature reconstruction"-datan. 
   
