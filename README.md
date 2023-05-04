@@ -20,7 +20,7 @@ Tehtäväksi jäi visual 1 backend rest-toiminnot ja frontend toteutukset. Visua
   
 Janita teki käyttöliittymäsuunnitelman ensimmäisen karkean vaiheen suunnittelun ryhmän kanssa ja alustavat kaaviot. Myöhemmin lopullisen käyttöliittymän ja sen logiikan suunnittelu Teron kanssa ja siitä kaavion teko. Toteutti myös RESTAPI-kaavion/suunnitelman.  
   
-Suurin osa koko projektin lopullisista html/css muotoiluista yhtenäiseksi kuului myös Janitalle.  
+Suurin osa koko projektin lopullisista html/css muotoiluista yhtenäiseksi käyttöliittymäksi suunnitelman mukaisesti kuului Janitalle. 
   
 Testasi deploymenttia, mutta vain backend osuus onnistui, joten tämä vaihe jäi muille lopullisesti. 
   
