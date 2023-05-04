@@ -1,25 +1,26 @@
 # Ilmastonmuutosgraafeja Reactilla, ryhmä 3
 
-Tämä on ryhmän numero 3 esittelyteksti kevään 2023 web-ohjelmoinnin sovellusprojektista. Ryhmän jäseniä ovat Tero Rantanen, Janita Kaikkonen, Alisa Kulonpää ja Art Karimäki. Aiheeksi annettiin tehdä React-websovellus, joka sisältää viisi erilaista visualisointia erilaisista ilmastonmuutoksesta kertovista datatauluista. Lisäksi sovelluksessa on kirjautumismahdollisuus, ja käyttäjä voi tallentaa itselleen oman näkymän kaavioista. Sovelluksessa käytettiin Javaa palvelinpuoleen ja ReactJS käyttöliittymään. Sovellus on julkisessa netissä nähtävillä osoitteessa:  https://g3-webdev-react-chart-app.onrender.com
+Tämä on ryhmän numero 3 esittelyteksti kevään 2023 web-ohjelmoinnin sovellusprojektista. Ryhmän jäseniä ovat Tero Rantanen, Janita Kaikkonen, Alisa Kulonpää ja Art Karimäki. Aiheeksi annettiin tehdä React-websovellus, joka sisältää viisi erilaista visualisointia erilaisista ilmastonmuutoksesta kertovista datatauluista. Lisäksi sovelluksessa on kirjautumismahdollisuus, ja käyttäjä voi tallentaa itselleen oman näkymän kaavioista. Sovelluksessa käytettiin Javaa palvelinpuoleen ja ReactJS käyttöliittymään. Sovellus on julkisessa netissä nähtävillä [**TÄÄLLÄ.**](https://g3-webdev-react-chart-app.onrender.com)
+Esittelyvideon osoite: [YouTube](https://youtu.be/NeVM4KCwfFY)
 ## Projektin vaiheet ja vastuualueet
 Projektin ensimmäisillä viikoilla kaikille jaettiin tehtäväksi tutustua Reactin kaavioihin, jaettiin viiden eri kaavioinnin visualisointien toteutus, tutustuttiin ja kerättiin data tietokantaan. Samassa alettiin käyttämään kanban-mallia työtehtävien jakoon. Kanban-mallia pidettiin mahdollisimman ajantasalla ja sinne lisättiin tehtäviä sitä mukaa, kun niitä suunniteltiin. Tehtävän perään kirjattiin oma nimi, kun otti sen työn alle.
 
 ### Teron (t1rate01) vastuualueet
 Teron vastuut alkoivat alussa visualisoinnilla 5, ja kaiken tietokantaan päätyvän datan keräämisen ja sopivaan muotoon kääntämisen parissa Janitan kanssa. Seuraavaksi käyttöliittymän logiikan suunnittelua ja visualisointi 2. Omiin visualisointeihin liittyvät backend ja frontend toiminnallisuudet ja alustava html/css muotoilu.  
 
-Kun käyttöliittymästä oli karkea demo valmis, siirtyi tekemään käyttäjien rekisteröintiin, kirjautumiseen, autentikointiin ja poistoon tarvittavat backend-toiminnot. Tämän jälkeen lyötiin lopullinen käyttöliittymäsuunnitelma lukkoon, Janita toteutti suunnitelman kaavion piirron ja Tero toteutti logiikan, jolla käyttöliittymässä liikuttiin ja toimittiin. Tämän jälkeen rekisteröinti, kirjautuminen ja valikot frontendissä, sekä komponentti, joka käyttäjän asetusten mukaan tuo halutut visualisoinnit näkymään, jaettavan linkin logiikka, linkin mukaan toimiva komponentti ja meidän "browserbariksi" nimeämä komponentti joka valvoo mm. käyttäjän kirjautumisen tilaa ja sallii/siirtää sivujen välillä ja näyttää ehtojen mukaan tiettyjä nappeja.  
+Kun käyttöliittymästä oli karkea demo valmis, siirtyi tekemään käyttäjien rekisteröintiin, kirjautumiseen, autentikointiin ja poistoon tarvittavat backend-toiminnot. Tämän jälkeen lyötiin lopullinen käyttöliittymäsuunnitelma lukkoon, Janita toteutti suunnitelman kaavion piirron ja Tero toteutti logiikan, jolla käyttöliittymässä liikuttiin ja toimittiin. Tämän jälkeen rekisteröinti, kirjautuminen ja valikot frontendissä, sekä komponentti, joka käyttäjän asetusten mukaan tuo halutut visualisoinnit näkymään, jaettavan linkin logiikka, linkin mukaan toimiva komponentti ja  "browserbariksi" nimetty komponentti joka valvoo mm. käyttäjän kirjautumisen tilaa ja sallii/siirtää sivujen välillä ja näyttää ehtojen mukaan tiettyjä nappeja.  
 
 Projektin lopussa auttoi Alisaa backendin testauskoodien kanssa ja toteutti frontendin testauksen koodin. Toteutti myös lopullisen deploymentin.
 Tarjosi tukea muille ohjelmoinnissa.  
   
 ### Janitan (*saattaja*) vastuualueet
-Janitan vastuut alkoivat visuaaleilla 1, 2 ja PostqreSQL-tietokannan perustaminen ja kaiken datan hallinnointi ja kääntäminen. Datan keruu ja oikeaan muotoon kääntäminen vei paljon aikaa, joten töitä jaettiin ja tehtiin yhteistyössä Teron kanssa. Piti myös yllä kanban-mallia ja siellä olevia tehtäviä.  
+Janitan vastuut alkoivat visuaaleilla 1, 2 ja PostgreSQL-tietokannan perustaminen ja kaiken datan hallinnointi ja kääntäminen. Datan keruu ja oikeaan muotoon kääntäminen vei paljon aikaa, joten töitä jaettiin ja tehtiin yhteistyössä Teron kanssa. Piti myös yllä kanban-mallia ja siellä olevia tehtäviä.  
   
 Tehtäväksi jäi visual 1 backend rest-toiminnot ja frontend toteutukset. Visualisoinnissa lämpötiladata on jaettu kahteen kaavioon, kuukausittainen ja vuosittainen, joita voi vaihdella radionappeja käyttäen. Vuosikaavio sisältää myös "Temperature reconstruction"-datan. 
   
 Janita teki käyttöliittymäsuunnitelman ensimmäisen karkean vaiheen suunnittelun ryhmän kanssa ja alustavat kaaviot. Myöhemmin lopullisen käyttöliittymän ja sen logiikan suunnittelu Teron kanssa ja siitä kaavion teko. Toteutti myös RESTAPI-kaavion/suunnitelman.  
   
-Suurin osa koko projektin lopullisista html/css muotoiluista yhtenäiseksi kuului myös Janitalle.  
+Suurin osa koko projektin lopullisista html/css muotoiluista yhtenäiseksi käyttöliittymäksi suunnitelman mukaisesti kuului Janitalle. 
   
 Testasi deploymenttia, mutta vain backend osuus onnistui, joten tämä vaihe jäi muille lopullisesti. 
   
@@ -79,3 +80,8 @@ Iso osa datasta ajettiin sisään tietokannan client-sovelluksen avulla, ja lopu
 
 ## Haasteet ja opittua
 Ryhmän jokaiselle jäsenelle tuli uutena datasettien keruu ja kääntäminen pääasiassa csv muotoon. Kaikki käyttivät myös ensimmäistä kertaa tietokantaa localhostin ulkopuolella ja projektin siihen yhdistäminen oli uutta. Reactin chartjs ja chartjs-2 kirjastot haastoivat myöskin itseopiskeluun ja materiaalinhakuun. Visual Studio Codea käytettäessä opittiin paljon terminaalitarkkaavaisuutta, erityisesti npm paketteja asentaessa, ja niiden kanssa väärin toimiessa aiheutuvien hämmentävien virheilmoituksien kanssa toimimista. Yhteistyöstäkin opittiin paljon, ja siitä miten tärkeää on hahmotella suunnitelmia mahdollisimman alussa projektia edes karkeasti, jotta loppua kohden eri komponenttien yhtenäistäminen tai eri vaiheiden suunnittelu helpottuisi. Jatkossa myös halutaan varmasti sopia esimerkiksi .css muotoiluun liittyvien nimikkeiden käytöstä ohjelman perusrunkoa koodatessa. Projekti kehitti kaikkia myös ongelmanratkonnassa ja omatoimisessa opettelussa.
+
+## Suunnitteludokumentit
+[Käyttöliittymäsuunnitelma](https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/df482de1333e0f23fcd671376c065327206c0b10/photosForReadMe/global%20warming%20react%20app%20ui%20design%20(3).jpeg)
+
+[RestAPI](https://tvt22kmo-group3.stoplight.io/explore/tvt22kmo-group3/rv78mbrqx8wz8-test)
