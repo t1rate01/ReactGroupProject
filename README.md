@@ -82,6 +82,6 @@ Iso osa datasta ajettiin sisään tietokannan client-sovelluksen avulla, ja lopu
 Ryhmän jokaiselle jäsenelle tuli uutena datasettien keruu ja kääntäminen pääasiassa csv muotoon. Kaikki käyttivät myös ensimmäistä kertaa tietokantaa localhostin ulkopuolella ja projektin siihen yhdistäminen oli uutta. Reactin chartjs ja chartjs-2 kirjastot haastoivat myöskin itseopiskeluun ja materiaalinhakuun. Visual Studio Codea käytettäessä opittiin paljon terminaalitarkkaavaisuutta, erityisesti npm paketteja asentaessa, ja niiden kanssa väärin toimiessa aiheutuvien hämmentävien virheilmoituksien kanssa toimimista. Yhteistyöstäkin opittiin paljon, ja siitä miten tärkeää on hahmotella suunnitelmia mahdollisimman alussa projektia edes karkeasti, jotta loppua kohden eri komponenttien yhtenäistäminen tai eri vaiheiden suunnittelu helpottuisi. Jatkossa myös halutaan varmasti sopia esimerkiksi .css muotoiluun liittyvien nimikkeiden käytöstä ohjelman perusrunkoa koodatessa. Projekti kehitti kaikkia myös ongelmanratkonnassa ja omatoimisessa opettelussa.
 
 ## Suunnitteludokumentit
-Käyttöliittymäsuunnitelma: https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/df482de1333e0f23fcd671376c065327206c0b10/photosForReadMe/global%20warming%20react%20app%20ui%20design%20(3).jpeg
+[Käyttöliittymäsuunnitelma](https://github.com/TVT22KMO-WP-GROUP-3/R3-Projekti/blob/df482de1333e0f23fcd671376c065327206c0b10/photosForReadMe/global%20warming%20react%20app%20ui%20design%20(3).jpeg)
 
-RestAPI:https://tvt22kmo-group3.stoplight.io/explore/tvt22kmo-group3/rv78mbrqx8wz8-test
+[RestAPI](https://tvt22kmo-group3.stoplight.io/explore/tvt22kmo-group3/rv78mbrqx8wz8-test)
