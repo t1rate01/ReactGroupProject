@@ -5,7 +5,7 @@ import "chartjs-adapter-luxon";
 import Popup from "reactjs-popup";
 import baseURL from "../baseurl";
 
-const Visual1ChartMonthly = () =>{
+const Visual1ChartMonthly = () =>{ //haetaan kannasta käyrien data ja muutetaan jsoniksi
     const [visual1MoData, setVisual1MoData] = useState([]);
 
     useEffect(()=>{
@@ -45,11 +45,13 @@ const [shmonthlyData, setshmonthlyData] = useState([]);
     
 },[]);
 
+//tallennetaan muuttujaan y akselin data muuttujaan
 const labels = visual1MoData.map(d => d.yearmo);
 const temp = visual1MoData.map(t => t.anomaly);
 const nhmotemp = nhmonthlyData.map(t => t.anomaly);
 const shmotemp = shmonthlyData.map(t => t.anomaly);
 
+//infoikkunan tekstit ja lähteet
 const popUpText = (
     <div id="popup">
         <h1>About annual and monthly HadCRUT5 data</h1>
@@ -69,7 +71,7 @@ const popUpText = (
         
     </div>
 );
-
+//kaavioiden data
 const chartData ={
     labels: labels,
     datasets: [
@@ -97,6 +99,7 @@ const chartData ={
     ]
 };
 
+//kaavioiden asetukset
 const options ={
     responsive: true,
     lineTension: 0,

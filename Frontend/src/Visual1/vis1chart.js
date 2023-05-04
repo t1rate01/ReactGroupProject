@@ -60,7 +60,7 @@ const [recoData, setRecoData] = useState([]);
     
 },[]);
 
-
+//popup ikkunan info ja lähteet
 const popUpText = (
     <div id="popup">
         <h1>About annual and monthly HadCRUT5 data</h1>
@@ -81,8 +81,9 @@ const popUpText = (
     </div>
 );
 
+//kaavioon piirtyvät käyrät
 let chartData ={
-    //labels: labels, //tässä annan x-akselin tiedot, eli vuodet 1850-2021
+    
     datasets: [
         {
             label: "Global annual anomalies",
@@ -142,9 +143,7 @@ let chartData ={
     ]
 };
 
-//const allData = [...visual1Data, ...nhannual1Data, ...shannual1Data, ...recoData];  // kaikki data yhteen taulukkoon
-//let dates = [...new Set(allData.map(item => item.x))].sort((a, b) => a.localeCompare(b));
-
+//kaavioiden asetukset
 const options ={
     responsive: true,
     lineTension: 0,

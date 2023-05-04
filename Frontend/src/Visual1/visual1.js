@@ -8,7 +8,8 @@ import "./visual1.css";
 
 
 function Visual1() {
-
+//annual ja monthly data ovat eri kaavioissa, joten näkymä muutetaan napilla
+//defaulttina näkymä Annual
   const [toggle, setToggle] = useState("Annual");
 
   const toggleOptionChange = e =>{
