@@ -1,5 +1,7 @@
 # Ilmastonmuutosgraafeja Reactilla, ryhmä 3
 
+IN ENGLISH [HERE](readmeENG.md)
+
 Tämä on ryhmän numero 3 esittelyteksti kevään 2023 web-ohjelmoinnin sovellusprojektista. Ryhmän jäseniä ovat Tero Rantanen, Janita Kaikkonen, Alisa Kulonpää ja Art Karimäki. Aiheeksi annettiin tehdä React-websovellus, joka sisältää viisi erilaista visualisointia erilaisista ilmastonmuutoksesta kertovista datatauluista. Lisäksi sovelluksessa on kirjautumismahdollisuus, ja käyttäjä voi tallentaa itselleen oman näkymän kaavioista. Sovelluksessa käytettiin Javaa palvelinpuoleen ja ReactJS käyttöliittymään. Sovellus on julkisessa netissä nähtävillä [**TÄÄLLÄ.**](https://g3-webdev-react-chart-app.onrender.com)
 Esittelyvideon osoite: [YouTube](https://youtu.be/NeVM4KCwfFY)
 ## Projektin vaiheet ja vastuualueet
